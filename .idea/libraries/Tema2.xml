@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Tema2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JAVA/out/production/JAVA/Tema2/PracticaClase2.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JAVA/out/production/JAVA/Tema2/EstructurasBasicasDeControl.zip!/" />
+      <root url="jar://$PROJECT_DIR$/JAVA/out/production/JAVA/Tema2/PracticaClase.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
