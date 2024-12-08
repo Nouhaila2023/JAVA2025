@@ -8,7 +8,10 @@ public class Ejercicio11 {
 
         String cadena = "Esta tarde no voy";
 
+        String cadenaSinEspacio = cadena.replace(" ", "");
+
         System.out.println(cadena);
+        System.out.println(cadenaSinEspacio);
 
     }
 
