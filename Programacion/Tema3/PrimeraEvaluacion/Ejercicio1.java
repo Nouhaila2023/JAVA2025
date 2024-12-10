@@ -58,8 +58,6 @@ public class Ejercicio1 {
             opcions =0;
         }
 
-
-
        return opcions;
     }
 
@@ -181,7 +179,7 @@ public class Ejercicio1 {
                     System.out.println("Opcion7: Salir");
                     break;
                 default:
-                    System.out.println("b");
+                    System.out.println("");
             }
 
             System.out.println("-----------------------");
