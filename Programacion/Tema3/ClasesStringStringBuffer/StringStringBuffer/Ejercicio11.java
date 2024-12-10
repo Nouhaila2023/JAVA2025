@@ -1,4 +1,4 @@
-package Tema3.ClasesStringStringBuffer;
+package Tema3.ClasesStringStringBuffer.StringStringBuffer;
 
 public class Ejercicio11 {
 

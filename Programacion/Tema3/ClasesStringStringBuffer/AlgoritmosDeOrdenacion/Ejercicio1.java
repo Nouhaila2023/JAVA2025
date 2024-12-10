@@ -8,6 +8,25 @@ public class Ejercicio1 {
         return (int) (Math.random() * (max - min + 1) + min);
     }
 
+    public static int burbuja(int numero[]) {
+
+        int guardar = 0;
+
+        for (int i = 0; i < numero.length - 1; i++) {
+            for (int j = 0; j < numero.length - 1; j++) {
+                if (numero[j] > numero[j + 1]) {
+                    guardar = numero[j];
+                    numero[j] = numero[j + 1];
+                    numero[j + 1] = guardar;
+                }
+            }
+        }
+
+        System.out.println("Array ordenado: " + Arrays.toString(numero));
+
+        return guardar;
+    }
+
     /**
      * Realiza un programa que cree un array de 50 posiciones cargado con valores
      * aleatorios.
@@ -30,9 +49,9 @@ public class Ejercicio1 {
 
         }
 
-        Arrays.sort(numero);
+        System.out.println("Array original: " + Arrays.toString(numero));
 
-        System.out.println(Arrays.toString(numero));
+        burbuja(numero);
 
     }
 
