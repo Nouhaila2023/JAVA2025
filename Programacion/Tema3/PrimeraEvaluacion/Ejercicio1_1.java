@@ -228,6 +228,12 @@ primera por los valores de la segunda.*/
         }
     }
 
+
+    /* *
+    *   12    34
+    *  43      21
+    * */
+
 /*7. Salir*/
 
     public static void main(String[] args) {
