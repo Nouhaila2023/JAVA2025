@@ -1,4 +1,4 @@
-package Tema3.ClasesStringStringBuffer;
+package Tema3.ClasesStringStringBuffer.StringStringBuffer;
 
 public class Ejercicio3 {
 
@@ -8,18 +8,29 @@ public class Ejercicio3 {
 
     public static void main(String[] args) {
 
-
         String texto = "En un lugar de la mancha de cuyo nombre de lo que nose de que";
 
-        int pocicion = texto.indexOf("de");
+        int palabra = texto.indexOf("de");
+
+        //Forma 1
         int contador = 0;
-        String palabra = "de";
+        int posicion = 0;
+        while (posicion >= 0) {
+            posicion = texto.indexOf(palabra,posicion);
+            if (posicion == -1)
+                break;
+            //posicion++;
+            contador++;
+        }
+        System.out.println("Palabra aparece " + (contador) + " veces");
 
-
-
-
-
-        System.out.println(contador);
+        //Forma 2
+        posicion = -1;
+        contador = 0;
+        while ( (posicion = texto.indexOf(palabra,posicion+1)) >= 0) {
+            contador++;
+        }
+        System.out.println("Palabra aparece " + (contador) + " veces");
 
     }
 
