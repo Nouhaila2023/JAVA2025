@@ -1,6 +1,6 @@
 package Tema4.OpenWebinars.IntroduccionPOO;
 
-public class App {
+public class TestCoche {
 
     public static void main(String[] args) {
 
@@ -10,7 +10,18 @@ public class App {
         var coche2 = new Coche("Fod", "Ibiza" , 2003 , 0 , 0);
         coche2.arrancar();
 
+        System.out.println("----------------------------");
         Coche coche3 = new Coche("A" , "A" , 2067 , 0 ,23);
         coche3.arrancar();
+
+        System.out.println("----------------------------");
+        Coche coche4 = new Coche("Seat" , "Ibiza");
+        coche4.arrancar();
+        coche4.repostar(20);
+        coche4.arrancar();
+        coche4.viajar(100);
+
+
+
     }
 }
