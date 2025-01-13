@@ -79,7 +79,21 @@ public class Alumno {
         this.telefono = telefono;
     }
 
-//Se deben implementar los metodos equals, hashCode y toString
+    //Se debe añader un metodo que nos indique si el alumno es mayor de edad(>= 18)
+
+    public boolean MayorEdad(){
+        if (edad >= 18){
+            System.out.println("EL alumno " + nombre + " " + apellido + ": es mayor edad");
+            return true;
+        }else {
+            System.out.println("EL alumno " + nombre + " " + apellido + ": no es mayor edad");
+            return false;
+        }
+
+    }
+
+
+    //Se deben implementar los metodos equals, hashCode y toString
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -104,16 +118,6 @@ public class Alumno {
         return sb.toString();
     }
 
-//Se debe añader un metodo que nos indique si el alumno es mayor de edad(>= 18)
-
-    public boolean Edad(){
-        if (edad >= 18){
-            System.out.println("EL alumno " + nombre + " " + apellido + ": es mayor edad");
-        }else {
-            System.out.println("EL alumno " + nombre + " " + apellido + ": no es mayor edad");
-        }
-        return true;
-    }
 
 
 }
