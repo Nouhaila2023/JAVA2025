@@ -1,6 +1,6 @@
 package Tema4.Practica.Arma;
 
-import Tema4.Practica.Personaje.Percsonaje;
+import Tema4.Practica.Personaje.Personaje;
 
 /**
  * 1. Crear una nueva clase Arma
@@ -32,7 +32,7 @@ import Tema4.Practica.Personaje.Percsonaje;
 public class Arma {
 
     //PROPIEDADES
-    enum  TipoArma {ESPADA, MARTILLO, HACHA};
+    public enum  TipoArma {ESPADA, MARTILLO, HACHA};
 
     private  String nombre;
     private TipoArma tipo;
@@ -90,7 +90,7 @@ public class Arma {
     }
 
     //Metodo de golpear
-    public void  golpear(Percsonaje personaje){
+    public void  golpear(Personaje personaje){
         personaje.setVida(personaje.getVida() - this.golpe);
     }
 

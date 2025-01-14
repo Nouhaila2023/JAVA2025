@@ -1,5 +1,7 @@
 package Tema4.Practica.Personaje;
 
+import Tema4.Practica.Arma.Arma;
+
 public class TestPersonaje {
 
     /**
@@ -14,9 +16,13 @@ public class TestPersonaje {
 
     public static void main(String[] args) {
 
-        Percsonaje p1 = new Percsonaje("nouhaila" , "elfo" , "mujer" , 10);
-        Percsonaje p2 = new Percsonaje("ali" , "elfo" , "hombre" , 19);
 
+        Arma a1 = new Arma("fuego", Arma.TipoArma.HACHA, 4);
+        Arma a2 = new Arma("agua", Arma.TipoArma.MARTILLO, 3);
+
+
+        Personaje p1 = new Personaje("Ali", "Elfo", "Hombre", 19, a1);
+        Personaje p2 = new Personaje("Erano", "Enano", "Hombre", 100, a2);
         System.out.println(p1);
         System.out.println(p2);
 

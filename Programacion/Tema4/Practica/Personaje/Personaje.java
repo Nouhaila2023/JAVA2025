@@ -25,6 +25,8 @@ package Tema4.Practica.Personaje;
    */
 
 
+import Tema4.Practica.Arma.Arma;
+
 /**
  * 1. Modifica la clase Personaje
  *  - Añande una propiedad nueva de tipo Arma
@@ -48,29 +50,27 @@ package Tema4.Practica.Personaje;
  */
 
 
-
-
-
-
-public class Percsonaje {
+public class Personaje {
 
     private String nombre;
     private String clase;
     private String sexo;
     private  int vida;
+    private Arma arma;
 
 
     //Constructor
-    public Percsonaje(String nombre, String clase, String sexo, int vida) {
+    public Personaje(String nombre, String clase, String sexo, int vida, Arma arma) {
         this.nombre = nombre;
         this.clase = clase;
         this.sexo = sexo;
         this.vida = vida;
+        this.arma = arma;
     }
 
     //COnstructor vacio
 
-    public Percsonaje(String nouhaila) {
+    public Personaje(String nouhaila) {
         this.nombre = "SinNombre";
         this.clase = "nodefinido";
         this.sexo = "hombre";
@@ -113,18 +113,32 @@ public class Percsonaje {
         this.vida = vida;
     }
 
-
-    //toString
-    @Override
-    public String toString() {
-        return "Percsonaje{" +
-                "nombre='" + nombre + '\'' +
-                ", clase='" + clase + '\'' +
-                ", sexo='" + sexo + '\'' +
-                ", vida=" + vida +
-                '}';
+    public Arma getArma() {
+        return arma;
     }
 
+    public void setArma(Arma arma) {
+        this.arma = arma;
+    }
+
+    //toString
+
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Percsonaje{");
+        sb.append("nombre='").append(nombre).append('\'');
+        sb.append(", clase='").append(clase).append('\'');
+        sb.append(", sexo='").append(sexo).append('\'');
+        sb.append(", vida=").append(vida);
+        sb.append(", arma=").append(arma);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    public void golpear(Personaje personaje) {
+         this.arma.golpear(personaje);
+    }
 
 
 
