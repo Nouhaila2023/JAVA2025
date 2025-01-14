@@ -75,6 +75,7 @@ public class Personaje {
         this.clase = "nodefinido";
         this.sexo = "hombre";
         this.vida = 10;
+        this.arma = null;
     }
 
 
