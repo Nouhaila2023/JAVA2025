@@ -16,17 +16,11 @@ public class TestPersonaje {
 
     public static void main(String[] args) {
 
-
         Arma a1 = new Arma("fuego", Arma.TipoArma.HACHA, 4);
         Arma a2 = new Arma("agua", Arma.TipoArma.MARTILLO, 3);
 
-
         Personaje p1 = new Personaje("Ali", "Elfo", "Hombre", 19, a1);
         Personaje p2 = new Personaje("Erano", "Enano", "Hombre", 100, a2);
-        System.out.println(p1);
-        System.out.println(p2);
-
-        System.out.println("-------------------------------------------------------");
 
         p1.setNombre("Erano");
         p2.setVida(75);
@@ -34,6 +28,10 @@ public class TestPersonaje {
         System.out.println(p1);
         System.out.println(p2);
 
+        p1.golpear(p2);
+
+        System.out.println("EL jugador1 golpear el jugador2");
+        System.out.println(p2);
 
 
     }

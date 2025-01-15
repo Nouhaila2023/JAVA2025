@@ -13,13 +13,13 @@ public class TestArma {
 
 
 
-            System.out.println(soldado);
+           /* System.out.println(soldado);
 
             espada.golpear(soldado);
 
             System.out.println(espada);
             System.out.println(martillo);
             System.out.println(soldado);
-
+*/
         }
 }
