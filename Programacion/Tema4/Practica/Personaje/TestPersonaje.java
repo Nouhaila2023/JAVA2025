@@ -32,6 +32,8 @@ public class TestPersonaje {
 
         System.out.println("EL jugador1 golpear el jugador2");
         System.out.println(p2);
+        System.out.println("El numero de personajes del juego es: " + Personaje.getNumPersonajes());
+
 
 
     }

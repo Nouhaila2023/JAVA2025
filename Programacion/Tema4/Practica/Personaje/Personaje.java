@@ -57,6 +57,8 @@ public class Personaje {
     private String sexo;
     private  int vida;
     private Arma arma;
+    private static final int MAX_VIDA=100;//no pude cambiar
+    private static int numPersonajes=0; //Propiedad común a todos los objetos Personaje
 
 
     //Constructor
@@ -66,6 +68,7 @@ public class Personaje {
         this.sexo = sexo;
         this.vida = vida;
         this.arma = arma;
+        Personaje.numPersonajes++;
     }
 
     //COnstructor vacio
@@ -76,6 +79,7 @@ public class Personaje {
         this.sexo = "hombre";
         this.vida = 10;
         this.arma = null;
+        Personaje.numPersonajes++;
     }
 
 
@@ -121,6 +125,17 @@ public class Personaje {
     public void setArma(Arma arma) {
         this.arma = arma;
     }
+
+    public static int getNumPersonajes() {
+        return numPersonajes;
+    }
+
+    public static void setNumPersonajes(int numPersonajes) {
+        Personaje.numPersonajes = numPersonajes;
+    }
+
+
+
 
     //toString
 

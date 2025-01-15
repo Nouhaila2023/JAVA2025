@@ -7,15 +7,14 @@ public class TarjetaRegalo {
      * fusionarTarjeta(TarjetaRegalo t)
      */
 
-    private String numero;
-    private double saldo;
+    public String numero;
+    public double saldo;
+    public static Integer numeroTarjeta = 0;
 
     public TarjetaRegalo(double saldo) {
         this.saldo = saldo;
-
-    }
-
-    public TarjetaRegalo(int cantidad) {
+        TarjetaRegalo.numeroTarjeta++;
+        this.numero = "Tarjeta " + TarjetaRegalo.numeroTarjeta + ": ";
     }
 
     public String getNumero() {
@@ -34,21 +33,27 @@ public class TarjetaRegalo {
         this.saldo = saldo;
     }
 
+    public static Integer getNumeroTarjeta() {
+        return numeroTarjeta;
+    }
+
+    public static void setNumeroTarjeta(Integer numeroTarjeta) {
+        TarjetaRegalo.numeroTarjeta = numeroTarjeta;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("TarjetaRegalo{");
-        sb.append("numero=").append(numero);
+        sb.append("numero='").append(numero).append('\'');
         sb.append(", saldo=").append(saldo);
         sb.append('}');
         return sb.toString();
     }
 
-    public void gasa(double cantidad) throws Exception {
-        if ((this.saldo - cantidad) >= 0){
-            this.saldo -= cantidad;
-        }else {
-            throw new Exception("La cantidad no valida:)");
-        }
+    public void fusionarTarjeta(TarjetaRegalo t){
+        this.saldo += t.getSaldo();
+        t.setSaldo(0.0);
     }
+
 
 }
