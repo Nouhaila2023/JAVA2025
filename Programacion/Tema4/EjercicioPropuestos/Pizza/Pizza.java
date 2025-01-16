@@ -8,6 +8,8 @@ public class Pizza {
      */
     enum tamaño {pequina, mediana, grande};
     enum tipo {vegetariana, sin_gluten, gluten};
+    enum estado {preparada, en_preparacion, servida};
+
 
 
 
