@@ -20,4 +20,5 @@ public class Temperatura {
         return (farenheit-32)/1.8;
     }
 
+
 }

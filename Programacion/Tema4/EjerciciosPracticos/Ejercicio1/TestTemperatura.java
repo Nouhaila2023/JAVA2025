@@ -5,6 +5,11 @@ public class TestTemperatura {
 
         Temperatura tempetatura = new Temperatura();
 
+        System.out.println(tempetatura.celsiusFarenheit(23));
+        System.out.println(tempetatura.farenheitCelsius(23));
+
+        System.out.println("------------------------------");
+
         double celsius = tempetatura.farenheitCelsius(77);
         double fahrenheit = tempetatura.celsiusFarenheit(25);
 
