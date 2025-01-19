@@ -8,18 +8,14 @@ public class Coche {
         velocidad = 0;
     }
 
-    //Int getVelocidad(). Este metodo devuelve ña velocidad actual.
     public int getVelocidad() {
         return velocidad;
     }
-
-   //Void acelera(int mas). este metodo actualiza la velocidad a mas km mas (suma).
 
     public void acelera(int mas){
         velocidad += mas;
     }
 
-    //Void frena(int menos). Este metodo actualiza la velocidad a menos km menos (restar).
 
     public void frena(int menos){
         velocidad -= menos;
