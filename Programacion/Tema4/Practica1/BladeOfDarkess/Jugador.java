@@ -1,26 +1,31 @@
 package Tema4.Practica1.BladeOfDarkess;
 
+import com.sun.nio.sctp.SctpStandardSocketOptions;
+
 public class Jugador {
 
+    /////////// PROPIEDADES ///////////////////////
     private String nombre;
-    private int nivel = 1;
-    private int experiencia = 0;
-    private int salud = 200;
-    private Arma armaDerecha = null;
-    private Arma armaIzquierda = null;
-    enum Tipo {Mago, Brujo, Barbaro, Caballero};
+    private int nivel;
+    private int experiencia;
+    private double salud;
+    private Arma armaDerecha;
+    private Arma armaIzquierda;
+    public enum Tipo {Mago, Brujo, Barbaro, Caballero};
     private Tipo tipo;
 
-
-    // Un método para subir de nivel, subirNivel(), que incremente el nivel en 1 y suba su salud en 2.5 elevado a
-    //nivel. El nivel máximo es 10.
-
-
-
+    ///////////////Constructor///////////////
     public Jugador(String nombre) {
         this.nombre = nombre;
+        this.nivel = 1;
+        this.experiencia = 0;
+        this.salud = 200;
+        this.armaDerecha = null;
+        this.armaIzquierda = null;
     }
 
+
+    ///////////Get and Set ///////////////////////
     public String getNombre() {
         return nombre;
     }
@@ -45,7 +50,7 @@ public class Jugador {
         this.experiencia = experiencia;
     }
 
-    public int getSalud() {
+    public double getSalud() {
         return salud;
     }
 
@@ -77,6 +82,8 @@ public class Jugador {
         this.tipo = tipo;
     }
 
+
+    /// ///////////toString//////////////////////
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Jugador{");
@@ -90,5 +97,92 @@ public class Jugador {
         sb.append('}');
         return sb.toString();
     }
+
+    //////////////METODOS/////////////////////
+
+    // Un metodo para subir de nivel, subirNivel(), que incremente el nivel en 1 y suba su salud en 2.5 elevado a
+    //nivel. El nivel máximo es 10.
+
+    public void subirNienel(){
+        this.nivel++;
+        double nuevaSalud = 2.5 * Math.pow(this.nivel, 2);
+
+        // Actualizamos la salud actual
+        this.salud += nuevaSalud;
+
+        // Comrprobamos si el nivel es maximo de 10
+        if(this.nivel >= 10){
+            this.nivel = 10;
+
+        }
+
+    }
+
+    /**
+     * ●​ Un método equipar(Arma arma). Si están libres el arma derecha o izquierda, asignará esa arma a uno de los
+     * dos y devolverá true. Si están ocupados los dos devolverá false pues no se puede poner el arma. Si lo que
+     * intentas equipar es un arma a dos manos, solo se puede poner si están los dos brazos libres, y se pone la
+     * misma arma en los brazos. Se empieza equipando por la derecha.
+     */
+    public boolean equipar(Arma arma) {
+
+        boolean estaEquipada = false;
+
+        if (armaDerecha == null) {
+            armaDerecha = arma;
+            estaEquipada = true;
+        }
+
+        // Primer caso --X
+        // 1. Comprobar si el arma esta libre a dos manos
+        // 2. Solo se puede poner si estan libres las dos manos
+        // 3. Si estan libres las dos se pondr la misma arma
+        // IMPORTANTE: Se empieza a equipar por la mano derecha
+        if (arma.isDosManos() == true) {
+
+            if (this.armaDerecha == null && this.armaIzquierda == null) {
+                this.armaDerecha = arma;
+                this.armaIzquierda = arma;
+                estaEquipada = true;
+            }
+        } else {
+
+            // Segundo caso --x
+            //1. Si el arma derecha esta libre
+            //2. Si el arma izquierda esta libre
+            //3. Si estan ocupadas las dos
+
+            if (this.armaDerecha == null) {
+                this.armaDerecha = arma;
+                estaEquipada = true;
+
+            } else if (this.armaIzquierda == null) {
+                this.armaIzquierda = arma;
+                estaEquipada = true;
+            }
+
+        }
+
+        if (estaEquipada == false) {
+            System.out.println("Imposible equipar el arma, las dos manos estan ocuapadas");
+
+        }
+        return estaEquipada;
+    }
+
+
+
+
+    //Un método tomarPocion(int puntosS): método que sube la salud del jugador tanto como indica puntosS,
+    //hasta un máximo de 10000.
+    public int tomarPocion(int puntosS){
+        this.salud += puntosS; //Subir el salud del jugador
+        return this.salud = Math.min(this.salud, 1000); //el maximo del salud es 10 000.
+    }
+
+
+
+
+
 
 }
