@@ -171,13 +171,29 @@ public class Jugador {
     }
 
 
-
-
     //Un método tomarPocion(int puntosS): método que sube la salud del jugador tanto como indica puntosS,
     //hasta un máximo de 10000.
     public int tomarPocion(int puntosS){
         this.salud += puntosS; //Subir el salud del jugador
-        return this.salud = Math.min(this.salud, 1000); //el maximo del salud es 10 000.
+        return (int) (this.salud = Math.min(this.salud, 1000)); //el maximo del salud es 10 000.
+    }
+
+/**
+ * Un metodo reducirVida(int puntosD): reduce la propia salud del jugador tanto como indica puntosD. Si la
+ * salud no es cero tras restar devuelve false, si la salud queda a cero o menos, la salud se pone a cero y se
+ * devuelve true (muerto).
+ */
+
+    public boolean reducirVida(int puntosD){
+        if (this.getSalud() <= 0){
+            salud = 0;
+            return true;
+        } else if (salud > 0) {
+            salud--;
+            System.out.println("Muerto");
+            return false;
+        }
+        return false;//Despues vuelvo para ver que tengop que hacer
     }
 
 
