@@ -188,12 +188,12 @@ public class Jugador {
         if (this.getSalud() <= 0){
             salud = 0;
             return true;
-        } else if (salud > 0) {
-            salud--;
-            System.out.println("Muerto");
+        }
+        if (salud > 0) {
+            salud -= puntosD;
             return false;
         }
-        return false;//Despues vuelvo para ver que tengop que hacer
+        return false;
     }
 
 
