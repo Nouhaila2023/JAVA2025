@@ -108,6 +108,15 @@ public class Monstruo {
     }
 
 
+    /**
+     * Un método golpear(Jugador jugador): reduce la salud del jugador tanto como sea el valor de la propiedad
+     * puntosD del monstruo. Para reducir la salud debes llamar al método correspondiente de la clase Jugador
+     */
+
+    public void golpear(Jugador jugador){
+
+    }
+
 
 
 

@@ -105,7 +105,7 @@ public class Jugador {
 
     public void subirNienel(){
         this.nivel++;
-        double nuevaSalud = 2.5 * Math.pow(this.nivel, 2);
+        double nuevaSalud = Math.pow(2.5 , this.nivel );
 
         // Actualizamos la salud actual
         this.salud += nuevaSalud;
@@ -197,6 +197,39 @@ public class Jugador {
     }
 
 
+    /**
+     * Un método golpear(Monstruo monstruo): reduce la salud del monstruo tanto como sea el valor de la
+     * propiedad puntosD de las armas que lleve equipada el jugador, si el arma es doble solo quita el valor de uno
+     * de los brazos. Para reducir la salud debes llamar al método correspondiente reducirVida de la clase Monstruo.
+     * Si del golpe matas a un monstruo tu experiencia sube 10 por el nivel del monstruo. Además, cada vez que tu
+     * experiencia suba una centena (100, 200, 300, …) subes de nivel. El máximo de experiencia será por tanto
+     * 1000.
+     */
+
+
+    public void golpear(Monstruo monstruo){
+        if (this.getArmaDerecha() != null) {
+            monstruo.reducirVida(this.getArmaDerecha().getPuntpsD());
+            if (! this.getArmaDerecha().isDosManos()){
+                if (this.getArmaIzquierda() != null)
+                    monstruo.reducirVida(this.getArmaIzquierda().getPuntpsD());
+            }
+        }
+
+        //Comptobar si has matado al monstruo
+
+        if (monstruo.getSalud() <= 0){
+            this.experiencia += 10;
+        }
+
+        //Subir la experiencia y el nivel si correspondira
+        this.experiencia = Math.min(this.experiencia, 1000);
+
+        if (this.experiencia % 100 == 0){
+            subirNienel();
+        }
+
+    }
 
 
 
