@@ -145,6 +145,7 @@ public class Jugador {
                 this.armaIzquierda = arma;
                 estaEquipada = true;
             }
+
         } else {
 
             // Segundo caso --x
@@ -173,6 +174,7 @@ public class Jugador {
 
     //Un método tomarPocion(int puntosS): método que sube la salud del jugador tanto como indica puntosS,
     //hasta un máximo de 10000.
+
     public int tomarPocion(int puntosS){
         this.salud += puntosS; //Subir el salud del jugador
         return (int) (this.salud = Math.min(this.salud, 1000)); //el maximo del salud es 10 000.
