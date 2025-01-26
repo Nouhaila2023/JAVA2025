@@ -128,11 +128,6 @@ public class Jugador {
 
         boolean estaEquipada = false;
 
-        if (armaDerecha == null) {
-            armaDerecha = arma;
-            estaEquipada = true;
-        }
-
         // Primer caso --X
         // 1. Comprobar si el arma esta libre a dos manos
         // 2. Solo se puede poner si estan libres las dos manos
@@ -161,12 +156,10 @@ public class Jugador {
                 this.armaIzquierda = arma;
                 estaEquipada = true;
             }
-
         }
 
         if (estaEquipada == false) {
             System.out.println("Imposible equipar el arma, las dos manos estan ocuapadas");
-
         }
         return estaEquipada;
     }
@@ -191,10 +184,7 @@ public class Jugador {
             salud = 0;
             return true;
         }
-        if (salud > 0) {
-            salud -= puntosD;
-            return false;
-        }
+        salud -= puntosD;
         return false;
     }
 
@@ -210,6 +200,7 @@ public class Jugador {
 
 
     public void golpear(Monstruo monstruo){
+
         if (this.getArmaDerecha() != null) {
             monstruo.reducirVida(this.getArmaDerecha().getPuntpsD());
             if (! this.getArmaDerecha().isDosManos()){
@@ -221,7 +212,7 @@ public class Jugador {
         //Comptobar si has matado al monstruo
 
         if (monstruo.getSalud() <= 0){
-            this.experiencia += 10;
+            this.experiencia += (10 * monstruo.getSalud());
         }
 
         //Subir la experiencia y el nivel si correspondira

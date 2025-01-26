@@ -1,9 +1,10 @@
 package Tema4.Practica1.BladeOfDarkess;
 
 public class Monstruo {
+
     private String nombre;
     private int nivel = 1;
-    private int salud = 100;
+    private double salud = 100;
     private int puntosD; //Puntos de daño que el monstruo al golpear
     enum Tipo {Goblin, Troll, Skall, Demonio, Fantasma};
     private Tipo tipo;
@@ -33,7 +34,7 @@ public class Monstruo {
         this.nivel = nivel;
     }
 
-    public int getSalud() {
+    public double getSalud() {
         return salud;
     }
 
@@ -114,6 +115,8 @@ public class Monstruo {
      */
 
     public void golpear(Jugador jugador){
+
+        jugador.reducirVida(puntosD);
 
     }
 
