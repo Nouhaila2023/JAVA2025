@@ -63,6 +63,10 @@ public class Mago {
      * this.hechizos.add(hechizo);
      */
 
+    /**
+     * Añader un hechizo pasado como parametro, a la lista de hechizos que el mago tiene aprendido
+     * @param hechizo
+     */
     public void aprenderHechizo(Hechizo hechizo){
         this.hechizos.add(hechizo);
     }
@@ -73,10 +77,45 @@ public class Mago {
      * Para ver si el hechizo está en la lista podéis hacer un metodo nuevo de la siguiente manera:
      */
 
+    /**
+     * Le método primero buscar que el Mago tenga un hechizo con el mismo nombre
+     * que se la pasa com String. si no lo tiene devuelve false y acaba.
+     * si el mago si tiene ese Hechizo comprueba (esEfectivo) que puede superar la prueva.
+     * si el Hechizo es efectivo suma la recompenso de la prueva a la energia del magp y devuelve true
+     * si no devuelve false y aplica una perfida de energia( la dificultad de la prueba
+     * @param nombreHechizo
+     * @param prueba
+     * @return
+     */
+
+
+    public boolean lanzarHechizo(String nombreHechizo, Prueba prueba){
+
+        Hechizo miHechazo = this.buscar(nombreHechizo);
+
+        if (miHechazo == null){
+            return false;
+        }else {
+
+            //Comprovar si el mago tiene energia para lanzar el hechizo
+            if (this.getEnergia() >= miHechazo.getEnergiaNecesaria()){
+
+                if (miHechazo.esEfectivo(prueba)){
+                    this.setEnergia(energia + prueba.getRecompensa() );
+                    return true;
+                }else {
+                    this.setEnergia(energia - prueba.getRecompensa());
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
 
     public Hechizo buscar(String nombreHechizo){
+
         for (Hechizo hechizo : hechizos){
-            if(hechizo.getNombre().equals(nombreHechizo)){
+            if(hechizo.getNombre().equalsIgnoreCase(nombreHechizo)){
                 return hechizo;//Hechizo encontrado
             }
         }
@@ -89,7 +128,9 @@ public class Mago {
     /*recargarEnergia(int cantidad): Aumenta la energía del mago (sin superar el máximo de 100).*/
 
     public void recargarEnergia(int cantidad){
-        if (this.getEnergia() <= 100){
+        if (this.getEnergia() + cantidad >= 100){
+            this.setEnergia(100);
+        }else {
             this.energia += cantidad;
         }
     }

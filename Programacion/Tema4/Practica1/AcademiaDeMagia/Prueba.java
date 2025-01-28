@@ -1,12 +1,12 @@
 package Tema4.Practica1.AcademiaDeMagia;
 
-public class Pruba {
+public class Prueba {
     private String descripcion;
     private int nivelDificultad = 10;
     private int recompensa;
 
     /*Constructor*/
-    public Pruba(String descripcion, int nivelDificultad, int recompensa) {
+    public Prueba(String descripcion, int nivelDificultad, int recompensa) {
         this.descripcion = descripcion;
         this.nivelDificultad = nivelDificultad;
         this.recompensa = recompensa;
@@ -58,6 +58,11 @@ public class Pruba {
      */
 
     public boolean resolver(Hechizo hechizo){
-        return hechizo.getPotencia() >= nivelDificultad;
+        if (hechizo.getPotencia() >= nivelDificultad){
+            return true;
+        }else {
+            return false;
+        }
     }
+
 }

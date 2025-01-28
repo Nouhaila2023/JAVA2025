@@ -34,13 +34,28 @@ public class Hechizo {
         return potencia;
     }
 
+
     public void setPotencia(int potencia) {
         this.potencia = potencia;
-        if (potencia <= 1 && potencia >= 10){
+        if (potencia < 1 || potencia > 10){
             System.out.println("El potencia tiene que estar dentro de 1 y 10");
         }
     }
 
+
+    /**
+     * esEfectivo(Prueba prueba): Compara la potencia del hechizo con el nivel de dificultad de la prueba. Si es
+     * mayor o igual, el hechizo es efectivo.
+     * @param prueba
+     * @return
+     */
+    public boolean esEfectivo(Prueba prueba){
+        if (this.getPotencia() >= prueba.getNivelDificultad()){
+            return true ;
+        }else {
+            return false;
+        }
+    }
 
 
 }
