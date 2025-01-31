@@ -201,11 +201,14 @@ public class Jugador {
         /*Comprobar si has matado al monstruo*/
         if (monstruo.getPuntosD() == 0){
             System.out.println("Han matado el Monstruo");
-            experiencia += 10*nivel;
+            experiencia += (10*monstruo.getSalud());
         }
 
         /*Subir la experiencia y el nivel si correspondiera*/
         if (experiencia >= 1000){
+            if (this.experiencia % 100 == 0){
+                subirNivel();
+            }
 
         }
 

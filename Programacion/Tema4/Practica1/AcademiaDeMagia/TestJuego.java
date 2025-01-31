@@ -21,6 +21,5 @@ public class TestJuego {
         Prueba prueba3 = new Prueba("derrotar elfo oscuro", 10, 20);
 
 
-
     }
 }
