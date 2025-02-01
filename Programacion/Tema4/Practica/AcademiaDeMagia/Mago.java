@@ -66,14 +66,42 @@ public class Mago {
  * el hechizo supera la prueba, devuelve un éxito. Si no, pierde energía adicional.
  */
 
+    /**
+     * Le metodo primero buscar que el Mago tenga un hechizo con el mismo nombre
+     * que se la pasa com String. si no lo tiene devuelve false y acaba.
+     * si el mago si tiene ese Hechizo comprueba (esEfectivo) que puede superar la prueva.
+     * si el Hechizo es efectivo suma la recompenso de la prueva a la energia del magp y devuelve true
+     * si no devuelve false y aplica una perfida de energia( la dificultad de la prueba
+     * @param nombreHechizo
+     * @param prueba
+     * @return
+     */
 
-    public void lanzarHechizo(String nombreHechizo, Prueba prueba){
+    public boolean lanzarHechizo(String nombreHechizo, Prueba prueba){
 
+        Hechizo miHechizo = this.buscar(nombreHechizo);
 
+        if (miHechizo == null){
+            return false;
+        }else {
 
-
-
-
+            if (miHechizo.getEnergiaNecisaria() < this.energia){
+                System.out.println("Necisita recargar su energia");
+                return false;
+            }else {
+                if (miHechizo.esEfectivo(prueba)){
+                    this.energia += prueba.getRecompensa();
+                    return true;
+                }else {
+                    this.energia -= prueba.getNivelDificultad();
+                    //si queda sin energia termina el juego
+                    if (this.energia <= 0){
+                        System.out.println("Sin energia:) ha terminado.");
+                    }
+                    return false;
+                }
+            }
+        }
     }
 
     //Metodo Buscar

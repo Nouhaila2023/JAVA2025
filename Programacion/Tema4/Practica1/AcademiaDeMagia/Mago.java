@@ -96,7 +96,6 @@ public class Mago {
         if (miHechazo == null){
             return false;
         }else {
-
             //Comprovar si el mago tiene energia para lanzar el hechizo
             if (this.getEnergia() >= miHechazo.getEnergiaNecesaria()){
 

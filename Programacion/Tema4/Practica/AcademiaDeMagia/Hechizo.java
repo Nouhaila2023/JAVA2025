@@ -54,6 +54,7 @@ public class Hechizo {
     /**
      * esEfectivo(Prueba prueba): Compara la potencia del hechizo con el nivel de dificultad de la prueba. Si es
      * mayor o igual, el hechizo es efectivo.*/
+
      public boolean esEfectivo(Prueba prueba){
          //IGual
          if (this.potencia >= prueba.getNivelDificultad()){
