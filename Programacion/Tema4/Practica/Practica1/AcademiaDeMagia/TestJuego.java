@@ -1,4 +1,4 @@
-package Tema4.Practica.AcademiaDeMagia;
+package Tema4.Practica.Practica1.AcademiaDeMagia;
 
 import Tema4.Practica1.AcademiaDeMagia.Hechizo;
 import Tema4.Practica1.AcademiaDeMagia.Mago;

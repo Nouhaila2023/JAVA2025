@@ -1,4 +1,4 @@
-package Tema4.Practica.AcademiaDeMagia;
+package Tema4.Practica.Practica1.AcademiaDeMagia;
 
 public class Prueba {
 
