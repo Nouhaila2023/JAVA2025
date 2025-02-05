@@ -1,5 +1,7 @@
 package Tema5.EjercicioPOO.Ejercicio2;
 
+import Tema5.Practica.StringBuffer.StringBuffer1;
+
 public class Pssword {
 
     public static int numero_aleatorio(int min , int max){
@@ -47,4 +49,43 @@ public class Pssword {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
+
+    //toString
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Pssword{");
+        sb.append("longitud=").append(longitud);
+        sb.append(", contraseña='").append(contraseña).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
+
+    private String generarPassword() {
+        StringBuffer sb = new StringBuffer(this.longitud);
+        int tipo, valor;
+
+        for (int i = 0; i < this.longitud; i++) {
+            tipo = Pssword.numero_aleatorio(4,1);
+            switch (tipo){
+                case 1:
+                    valor = numero_aleatorio(90,65);
+                    sb.append((char) valor);
+                    break;
+                case 2:
+                    valor = numero_aleatorio(122,97);
+                    sb.append((char) valor);
+                    break;
+                case 3:
+                    valor = numero_aleatorio(57,48);
+                    sb.append((char) valor);
+                    break;
+                case 4:
+                    valor = numero_aleatorio(47,33);
+                    sb.append((char) valor);
+                    break;
+            }
+        }
+        return sb.toString();
+    }
+
 }
