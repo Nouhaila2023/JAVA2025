@@ -38,30 +38,9 @@ public class Agenda {
             return true;
         } else
             System.out.println("No existe esta contacto");
-            return false;
+        return false;
 
     }
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
