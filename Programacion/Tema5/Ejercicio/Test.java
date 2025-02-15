@@ -6,7 +6,9 @@ public class Test {
         Scanner sc = new Scanner(System.in);
         Equipo equipo = new Equipo("Equipo1" , "España");
 
-        while (true){
+        int opcion;
+
+        do {
             System.out.println("++++++++++++++++Menú++++++++++++++++++");
             System.out.println("1. Imprimir datos del equipo.");
             System.out.println("2. Añadir un ciclista al equipo");
@@ -15,25 +17,25 @@ public class Test {
             System.out.println("5. Buscar ciclista");
             System.out.println("6. Salir");
 
-            int opcion = sc.nextInt();
-            sc.nextLine();
+            opcion = Integer.parseInt(sc.nextLine());
+
             switch(opcion){
                 case 1:
-                    equipo.toString();
+                    System.out.println(equipo);
                     break;
                 case 2:
                     System.out.println("Intrega el id");
-                    int id = sc.nextInt();
+                    int id = Integer.parseInt(sc.nextLine());
                     System.out.println("Intrega el nombre");
                     String nombre = sc.nextLine();
                     System.out.println("Intrega el tiempo (1= Velocista, 2= Escalador, 3= Contrarrelojista)");
-                    int tiempo = sc.nextInt();
+                    int tiempo = Integer.parseInt(sc.nextLine());
                     Ciclista ciclista = null;
                     if (tiempo == 1){
                         System.out.println("Intrega la potencia");
-                        int potencia = sc.nextInt();
+                        int potencia = Integer.parseInt(sc.nextLine());
                         System.out.println("Intrega el velocidad");
-                        int velocidad = sc.nextInt();
+                        int velocidad = Integer.parseInt(sc.nextLine());
                         ciclista = new Velocista(id, nombre, tiempo, potencia, velocidad);
                     }else if (tiempo == 2){
                         System.out.println("Ingrese aceleración");
@@ -59,7 +61,7 @@ public class Test {
                     break;
                 case 5:
                     System.out.println("Intrega el id del ciclista");
-                    int ide = sc.nextInt();
+                    int ide = Integer.parseInt(sc.nextLine());
                     equipo.byscarCiclista(ide);
                     break;
                 case 6:
@@ -69,7 +71,6 @@ public class Test {
                 default:
                     System.out.println("Opcion no valida");
             }
-            sc.close();
-        }
+        }while (opcion != 6);
     }
 }

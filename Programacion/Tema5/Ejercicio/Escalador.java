@@ -19,7 +19,7 @@ public class Escalador extends Ciclista{
 
     @Override
     public String imprimirTipo() {
-        return "";
+        return "Escalador";
     }
 
     //Getter and Setter

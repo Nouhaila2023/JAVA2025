@@ -10,12 +10,10 @@ public class Equipo {
     private List<Ciclista> ciclistas;
 
     //Constructor
-
-
     public Equipo(String nombre, String pais) {
         this.nombre = nombre;
         this.pais = pais;
-        this.ciclistas = ciclistas;
+        this.ciclistas = new ArrayList<>();
     }
 
     //Getter and Setter
@@ -47,10 +45,6 @@ public class Equipo {
         return ciclistas;
     }
 
-    public void setCiclistas(List<Ciclista> ciclistas) {
-        this.ciclistas = ciclistas;
-    }
-
     //toString
     @Override
     public String toString() {
@@ -72,14 +66,11 @@ public class Equipo {
 
     //Calcular el total de tiempos de los ciclistas del equipo (suma de los tiempos de carrera de sus
     //ciclistas, su atributo estático).
-
     public int totalTiempo(){
-        int totalTiempo = 0;
         for (Ciclista ciclista : ciclistas) {
-            totalTiempo += ciclista.getTiempoAcumulado();
+            tiempoEquipo += ciclista.getTiempoAcumulado();
         }
-
-        return totalTiempo;
+        return tiempoEquipo;
     }
 
     //Listar los nombres de todos los ciclistas que conforman el equipo.
@@ -95,14 +86,15 @@ public class Equipo {
 
     //Dado un identificador de un ciclista por teclado, es necesario imprimir en pantalla los datos
     //del ciclista. Si no existe, debe aparecer el mensaje correspondiente.
-
-    public void byscarCiclista(int id){
+    public Ciclista byscarCiclista(int id){
         for (Ciclista ciclista : ciclistas) {
             if (ciclista.getIdentificador() == id){
                 System.out.println("Ciclista encontrado con el identificador: " + id);
+                return ciclista;
             }
         }
         System.out.println("Ciclista no encontrado con el identificador: " + id);
+        return null;
     }
 
 

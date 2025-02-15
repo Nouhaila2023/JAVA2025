@@ -17,7 +17,7 @@ public class Velocista extends Ciclista {
 
     @Override
     public String imprimirTipo() {
-        return "";
+        return "Velocista";
     }
 
     //Getter And Setter
@@ -38,7 +38,6 @@ public class Velocista extends Ciclista {
     }
 
     //toString
-
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Velocidad{");

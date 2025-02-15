@@ -6,7 +6,6 @@ public abstract class Ciclista {
     private String nombreCiclista;
     private int tiempoAcumulado; //En min
 
-
     //Constructor
     public Ciclista(int identificador, String nombreCiclista, int tiempoAcumulado) {
         this.identificador = identificador;
@@ -51,11 +50,6 @@ public abstract class Ciclista {
     }
 
     //Un ciclista tiene un metodo abstracto imprimirTipo que devuelve un String
-   public abstract String imprimirTipo();
-
-
-
-
-
+    public abstract String imprimirTipo();
 
 }
