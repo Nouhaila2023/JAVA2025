@@ -8,13 +8,41 @@ public abstract class  Personaje{
     El método golpear() se declaró abstracto en Personaje para que Jugador y Monstruo
     lo implementen de manera específica.*/
 
-    private String nombre;
-    private int nivel;
-    double salud = 100;
+    protected String nombre;
+    protected int nivel;
+    protected double salud = 100;
 
     public Personaje(String nombre, int nivel, double salud) {
         this.nombre = nombre;
         this.nivel = nivel;
+        this.salud = salud;
+    }
+
+    public Personaje() {
+
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public double getSalud() {
+        return salud;
+    }
+
+    public void setSalud(double salud) {
         this.salud = salud;
     }
 
@@ -51,5 +79,9 @@ public abstract class  Personaje{
             return false;
         }
     }
+
+   public abstract void golpear(Personaje personaje);
+
+
 
 }

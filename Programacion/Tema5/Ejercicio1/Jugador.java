@@ -1,25 +1,26 @@
 package Tema5.Ejercicio1;
 
 import Tema4.Practica1.BladeOfDarkess.Arma;
-import Tema4.Practica1.BladeOfDarkess.Monstruo;
+import Tema5.Ejercicio1.enums.TipoJugador;
 
-public class Jugador extends Personaje{
+public class Jugador extends Personaje {
 
     /////////// PROPIEDADES ///////////////////////
     private int experiencia;
     private Arma armaDerecha;
     private Arma armaIzquierda;
-    public enum Tipo {Mago, Brujo, Barbaro, Caballero};
-    private Tipo tipo;
+    private TipoJugador tipoJugador;
 
     ///////////////Constructor///////////////
-    public Jugador(String nombre, int nivel, double salud, int experiencia, Arma armaDerecha, Arma armaIzquierda, Tipo tipo) {
+    public Jugador(String nombre, int nivel, double salud, int experiencia, Arma armaDerecha, Arma armaIzquierda,
+            TipoJugador tipoJugador) {
         super(nombre, nivel, salud);
         this.experiencia = experiencia;
         this.armaDerecha = armaDerecha;
         this.armaIzquierda = armaIzquierda;
-        this.tipo = tipo;
+        this.tipoJugador = tipoJugador;
     }
+
     ///////////Get and Set ///////////////////////
     public int getExperiencia() {
         return experiencia;
@@ -45,31 +46,37 @@ public class Jugador extends Personaje{
         this.armaIzquierda = armaIzquierda;
     }
 
-    public Tipo getTipo() {
-        return tipo;
+    public TipoJugador getTipo() {
+        return tipoJugador;
     }
 
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
+    public void setTipo(TipoJugador tipoJugador) {
+        this.tipoJugador = tipoJugador;
     }
+
     /// ///////////toString//////////////////////
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Jugador{");
-        sb.append("experiencia=").append(experiencia);
+        sb.append("nombre='").append(nombre).append('\'');
+        sb.append(", nivel=").append(nivel);
+        sb.append(", salud=").append(salud);
+        sb.append(", experiencia=").append(experiencia);
         sb.append(", armaDerecha=").append(armaDerecha);
         sb.append(", armaIzquierda=").append(armaIzquierda);
-        sb.append(", tipo=").append(tipo);
+        sb.append(", tipo=").append(tipoJugador);
         sb.append('}');
         return sb.toString();
     }
     //////////////METODOS/////////////////////
 
-
     /**
-     * ●​ Un método equipar(Arma arma). Si están libres el arma derecha o izquierda, asignará esa arma a uno de los
-     * dos y devolverá true. Si están ocupados los dos devolverá false pues no se puede poner el arma. Si lo que
-     * intentas equipar es un arma a dos manos, solo se puede poner si están los dos brazos libres, y se pone la
+     * ●​ Un método equipar(Arma arma). Si están libres el arma derecha o izquierda,
+     * asignará esa arma a uno de los
+     * dos y devolverá true. Si están ocupados los dos devolverá false pues no se
+     * puede poner el arma. Si lo que
+     * intentas equipar es un arma a dos manos, solo se puede poner si están los dos
+     * brazos libres, y se pone la
      * misma arma en los brazos. Se empieza equipando por la derecha.
      */
     public boolean equipar(Arma arma) {
@@ -92,9 +99,9 @@ public class Jugador extends Personaje{
         } else {
 
             // Segundo caso --x
-            //1. Si el arma derecha esta libre
-            //2. Si el arma izquierda esta libre
-            //3. Si estan ocupadas las dos
+            // 1. Si el arma derecha esta libre
+            // 2. Si el arma izquierda esta libre
+            // 3. Si estan ocupadas las dos
 
             if (this.armaDerecha == null) {
                 this.armaDerecha = arma;
@@ -106,58 +113,68 @@ public class Jugador extends Personaje{
             }
         }
 
-        if (estaEquipada == false) {
+        if (!estaEquipada) {
             System.out.println("Imposible equipar el arma, las dos manos estan ocuapadas");
         }
         return estaEquipada;
     }
 
+    // Un método tomarPocion(int puntosS): método que sube la salud del jugador
+    // tanto como indica puntosS,
+    // hasta un máximo de 10000.
 
-    //Un método tomarPocion(int puntosS): método que sube la salud del jugador tanto como indica puntosS,
-    //hasta un máximo de 10000.
-
-    public int tomarPocion(int puntosS){
-        this.salud += puntosS; //Subir el salud del jugador
-        return (int) (this.salud = Math.min(this.salud, 1000)); //el maximo del salud es 10 000.
+    public int tomarPocion(int puntosS) {
+        this.salud += puntosS; // Subir el salud del jugador
+        return (int) (this.salud = Math.min(this.salud, 1000)); // el maximo del salud es 10 000.
     }
 
+    @Override
+    public void subirNivel() {
+        super.subirNivel();
+    }
+
+    @Override
+    public boolean reducirVida(int puntosD) {
+        return super.reducirVida(puntosD);
+    }
 
     /**
-     * Un método golpear(Monstruo monstruo): reduce la salud del monstruo tanto como sea el valor de la
-     * propiedad puntosD de las armas que lleve equipada el jugador, si el arma es doble solo quita el valor de uno
-     * de los brazos. Para reducir la salud debes llamar al método correspondiente reducirVida de la clase Monstruo.
-     * Si del golpe matas a un monstruo tu experiencia sube 10 por el nivel del monstruo. Además, cada vez que tu
-     * experiencia suba una centena (100, 200, 300, …) subes de nivel. El máximo de experiencia será por tanto
+     * Un método golpear(Monstruo monstruo): reduce la salud del monstruo tanto como
+     * sea el valor de la
+     * propiedad puntosD de las armas que lleve equipada el jugador, si el arma es
+     * doble solo quita el valor de uno
+     * de los brazos. Para reducir la salud debes llamar al método correspondiente
+     * reducirVida de la clase Monstruo.
+     * Si del golpe matas a un monstruo tu experiencia sube 10 por el nivel del
+     * monstruo. Además, cada vez que tu
+     * experiencia suba una centena (100, 200, 300, …) subes de nivel. El máximo de
+     * experiencia será por tanto
      * 1000.
      */
 
-
-    public void golpear(Monstruo monstruo){
+    public void golpear(Personaje personaje) {
 
         if (this.getArmaDerecha() != null) {
-            monstruo.reducirVida(this.getArmaDerecha().getPuntpsD());
-            if (! this.getArmaDerecha().isDosManos()){
+            personaje.reducirVida(this.getArmaDerecha().getPuntpsD());
+            if (!this.getArmaDerecha().isDosManos()) {
                 if (this.getArmaIzquierda() != null)
-                    monstruo.reducirVida(this.getArmaIzquierda().getPuntpsD());
+                    personaje.reducirVida(this.getArmaIzquierda().getPuntpsD());
             }
         }
 
-        //Comptobar si has matado al monstruo
+        // Comptobar si has matado al monstruo
 
-        if (monstruo.getSalud() <= 0){
-            this.experiencia += (10 * monstruo.getSalud());
+        if (personaje.getSalud() <= 0) {
+            this.experiencia += (int) (10 * personaje.getSalud());
         }
 
-        //Subir la experiencia y el nivel si correspondira
+        // Subir la experiencia y el nivel si correspondira
         this.experiencia = Math.min(this.experiencia, 1000);
 
-        if (this.experiencia % 100 == 0){
+        if (this.experiencia % 100 == 0) {
             subirNivel();
         }
 
     }
-
-
-
 
 }

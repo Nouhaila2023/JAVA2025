@@ -1,23 +1,25 @@
 package Tema5.Ejercicio1;
 
 import Tema4.Practica1.BladeOfDarkess.Jugador;
+import Tema5.Ejercicio1.enums.TipoMonstruo;
 
 public class Monstruo extends Personaje {
 
-    private int puntosD; //Puntos de daño que el monstruo al golpear
-    enum Tipo {Goblin, Troll, Skall, Demonio, Fantasma};
-    private Tipo tipo;
+    protected int puntosD; //Puntos de daño que el monstruo al golpear
+    protected TipoMonstruo tipo;
 
-    /// //////////METODOS/////////////////////////
+    /////////////METODOS/////////////////////////
 
     //Construres
-
-    public Monstruo(String nombre, int nivel, double salud, int puntosD, Tipo tipo) {
+    public Monstruo(String nombre, int nivel, double salud, int puntosD, TipoMonstruo tipo) {
         super(nombre, nivel, salud);
         this.puntosD = puntosD;
         this.tipo = tipo;
     }
 
+    public Monstruo() {
+        super();
+    }
 
     /////////Get and Set /////////////////////////
     public int getPuntosD() {
@@ -28,22 +30,37 @@ public class Monstruo extends Personaje {
         this.puntosD = puntosD;
     }
 
-    public Tipo getTipo() {
+    public TipoMonstruo getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipo tipo) {
+    public void setTipo(TipoMonstruo tipo) {
         this.tipo = tipo;
     }
-    ///////////////toString////////////////////////
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Monstruo{");
-        sb.append("puntosD=").append(puntosD);
-        sb.append(", tipo=").append(tipo);
+        sb.append("nombre='").append(nombre).append('\'');
+        sb.append(", nivel=").append(nivel);
         sb.append(", salud=").append(salud);
+        sb.append(", puntosD=").append(puntosD);
+        sb.append(", tipo=").append(tipo);
         sb.append('}');
         return sb.toString();
+    }
+
+    ///////////////toString////////////////////////
+
+
+    @Override
+    public void subirNivel() {
+        super.subirNivel();
+    }
+
+    @Override
+    public boolean reducirVida(int puntosD) {
+        return super.reducirVida(puntosD);
     }
 
     /**
@@ -51,8 +68,8 @@ public class Monstruo extends Personaje {
      * puntosD del monstruo. Para reducir la salud debes llamar al método correspondiente de la clase Jugador
      */
 
-    public void golpear(Jugador jugador){
-        jugador.reducirVida(puntosD);
+    public void golpear(Personaje personaje) {
+        personaje.reducirVida(puntosD);
     }
 
 

@@ -5,6 +5,11 @@ public class Arma {
     private String nombre;
     private int puntpsD;//Puntod de daño
     private boolean dosManos;
+
+    public Arma() {
+
+    }
+
     public enum tipo {Espada, Hacha, Baston, Arco};
     private tipo tipoArco;
 
