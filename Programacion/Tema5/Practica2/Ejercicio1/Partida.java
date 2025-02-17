@@ -1,6 +1,6 @@
-package Tema5.Ejercicio1;
+package Tema5.Practica2.Ejercicio1;
 import Tema4.Practica1.BladeOfDarkess.Arma;
-import Tema5.Ejercicio1.enums.TipoMonstruo;
+import Tema5.Practica2.Ejercicio1.enums.TipoMonstruo;
 
 import java.util.ArrayList;
 import java.util.List;

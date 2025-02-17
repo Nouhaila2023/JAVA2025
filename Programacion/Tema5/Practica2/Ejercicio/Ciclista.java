@@ -1,4 +1,4 @@
-package Tema5.Ejercicio;
+package Tema5.Practica2.Ejercicio;
 
 public abstract class Ciclista {
     //Atributos

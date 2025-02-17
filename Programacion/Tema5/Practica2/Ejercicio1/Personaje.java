@@ -1,4 +1,4 @@
-package Tema5.Ejercicio1;
+package Tema5.Practica2.Ejercicio1;
 
 public abstract class  Personaje{
 

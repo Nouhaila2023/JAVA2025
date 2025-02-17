@@ -1,4 +1,4 @@
-package Tema5.Ejercicio;
+package Tema5.Practica2.Ejercicio;
 import java.util.Scanner;
 
 public class Test {

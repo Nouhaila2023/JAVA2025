@@ -1,6 +1,6 @@
-package Tema5.Ejercicio1;
+package Tema5.Practica2.Ejercicio1;
 
-import Tema5.Ejercicio1.enums.TipoJugador;
+import Tema5.Practica2.Ejercicio1.enums.TipoJugador;
 
 public class TestJuego {
     /**

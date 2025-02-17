@@ -1,4 +1,4 @@
-package Tema5.Ejercicio;
+package Tema5.Practica2.Ejercicio;
 
 public class Velocista extends Ciclista {
     // • Velocista: tiene nuevos atributos como potencia promedio (en vatios) y velocidad promedio
