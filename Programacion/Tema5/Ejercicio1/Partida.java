@@ -1,5 +1,6 @@
 package Tema5.Ejercicio1;
 import Tema4.Practica1.BladeOfDarkess.Arma;
+import Tema5.Ejercicio1.enums.TipoMonstruo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,17 +12,18 @@ public class Partida {
     private List<Monstruo> monstruos;
 
     //Constructor
-    public Partida(Jugador jugador, List<Monstruo> monstruos) {
+    public Partida(Jugador j1) {
         this.jugador = jugador;
         this.monstruos = new ArrayList<>();
         //Agregar 8 al normal
         for (int i = 0; i < 8; i++) {
-            this.monstruos.add(new Monstruo());
+          monstruos.add(new Monstruo("monst", 13,TipoMonstruo.Demonio));
         }
         //Agregar 2 al monstruos final
         for (int i = 0; i < 2; i++) {
-            this.monstruos.add(new MonstruoFinalNivel());
+            monstruos.add(new MonstruoFinalNivel("MonstFN",24, TipoMonstruo.Fantasma));
         }
+        this.iniciarPartida();
     }
 
     /**
@@ -32,12 +34,49 @@ public class Partida {
      */
 
     public void iniciarPartida() {
+
         for (int i = 0; i < 100; i++) {
-            this.monstruos.add(new Monstruo());
-            jugador.equipar(new Arma());
+            this.monstruos.add(new Monstruo("Monstuo", 56,TipoMonstruo.Fantasma ));
         }
+        this.jugador.equipar(new Arma("Espada", 35,true, Arma.tipo.Espada));
     }
 
+    /**
+     * turnoJugador(): recorrerá el ArrayList de Monstruos, y el primero que
+     * encuentre le golpeará con sus armas. Si el enemigo tiene 0 o menos de vida
+     * se quitará del ArrayList de la partida. Si no quedan enemigos vivos en el
+     * ArrayList, el jugador gana la partida, y termina (return).
+     * @return
+     */
+      public void turnoJugador(){
+          for (Monstruo monstruo : monstruos) {
+              this.jugador.golpear(monstruo);
+              if (monstruo.getSalud()<=0){
+                  this.monstruos.remove(monstruo);
+                  System.out.println("Ha ganado el monstruo " + monstruo.getNombre());
+              } else if (monstruos.size()==0) {
+                  System.out.println("El jugador gana la partida " + jugador.getNombre());
+                  return;
+              }
+          }
+      }
+
+    /**
+     * turnoEnemigos(): el primer Monstruo vivo que haya en el ArrayList, golpea
+     * al jugador. Si el Jugador se queda sin vida, pierde la partida y el juego acaba
+     * (return).
+     * @return
+     */
+     public void turnoEnemigos(){
+         for (Monstruo monstruo : monstruos) {
+             monstruo.golpear(jugador);
+             System.out.println("Ha ganado el monstruo " + monstruo.getNombre());
+             if (jugador.getSalud()<=0){
+                 System.out.println("El jugador pierde la partida " + monstruo.getNombre() );
+                 return;
+             }
+         }
+     }
 
     //Getter and Setter
     public Jugador getJugador() {
@@ -52,7 +91,4 @@ public class Partida {
         return monstruos;
     }
 
-    public void setMonstruos(List<Monstruo> monstruos) {
-        this.monstruos = monstruos;
-    }
 }

@@ -12,15 +12,10 @@ public abstract class  Personaje{
     protected int nivel;
     protected double salud = 100;
 
-    public Personaje(String nombre, int nivel, double salud) {
+    public Personaje(String nombre) {
         this.nombre = nombre;
-        this.nivel = nivel;
-        this.salud = salud;
     }
 
-    public Personaje() {
-
-    }
 
     public String getNombre() {
         return nombre;

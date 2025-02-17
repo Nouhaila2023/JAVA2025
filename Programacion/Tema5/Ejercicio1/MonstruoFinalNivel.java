@@ -6,18 +6,12 @@ public class MonstruoFinalNivel extends Monstruo{
 
     // Propiedades
     private int golpeEspecial;
-    private int usosGolpeEspecial;
+    private int usosGolpeEspecial =3;
 
 
     //Construres
-    public MonstruoFinalNivel(String nombre, int nivel, double salud, int puntosD, TipoMonstruo tipo) {
-        super(nombre, nivel, salud, puntosD, tipo);
-        this.golpeEspecial = puntosD;
-        this.usosGolpeEspecial = 3;
-    }
-
-    public MonstruoFinalNivel() {
-
+    public MonstruoFinalNivel(String nombre, int puntosD, TipoMonstruo tipo) {
+        super(nombre, puntosD, tipo);
     }
 
     // Getters y Setters

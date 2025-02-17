@@ -1,5 +1,4 @@
 package Tema5.Ejercicio1;
-
 import Tema4.Practica1.BladeOfDarkess.Arma;
 import Tema5.Ejercicio1.enums.TipoJugador;
 
@@ -12,9 +11,9 @@ public class Jugador extends Personaje {
     private TipoJugador tipoJugador;
 
     ///////////////Constructor///////////////
-    public Jugador(String nombre, int nivel, double salud, int experiencia, Arma armaDerecha, Arma armaIzquierda,
+    public Jugador(String nombre, int experiencia,
             TipoJugador tipoJugador) {
-        super(nombre, nivel, salud);
+        super(nombre);
         this.experiencia = experiencia;
         this.armaDerecha = armaDerecha;
         this.armaIzquierda = armaIzquierda;

@@ -1,6 +1,5 @@
 package Tema5.Ejercicio1;
 
-import Tema4.Practica1.BladeOfDarkess.Jugador;
 import Tema5.Ejercicio1.enums.TipoMonstruo;
 
 public class Monstruo extends Personaje {
@@ -11,14 +10,12 @@ public class Monstruo extends Personaje {
     /////////////METODOS/////////////////////////
 
     //Construres
-    public Monstruo(String nombre, int nivel, double salud, int puntosD, TipoMonstruo tipo) {
-        super(nombre, nivel, salud);
+
+
+    public Monstruo(String nombre, int puntosD, TipoMonstruo tipo) {
+        super(nombre);
         this.puntosD = puntosD;
         this.tipo = tipo;
-    }
-
-    public Monstruo() {
-        super();
     }
 
     /////////Get and Set /////////////////////////
