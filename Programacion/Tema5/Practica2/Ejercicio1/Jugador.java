@@ -13,7 +13,7 @@ public class Jugador extends Personaje {
     ///////////////Constructor///////////////
     public Jugador(String nombre, int experiencia,
             TipoJugador tipoJugador) {
-        super(nombre);
+        super(nombre,1,200);
         this.experiencia = experiencia;
         this.armaDerecha = armaDerecha;
         this.armaIzquierda = armaIzquierda;

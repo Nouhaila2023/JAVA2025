@@ -75,8 +75,6 @@ public class Monstruo {
      * Un método para subir de nivel, subirNivel(), que incremente el nivel en 1 y suba su salud en 2 elevado a nivel.
      * El nivel máximo es 10.
      */
-
-
     public void subirNivel(){
         //Subir el nivel
         if(nivel <= 10){
@@ -94,8 +92,6 @@ public class Monstruo {
      * salud no es cero tras restar devuelve false, si la salud queda a cero o menos, la salud se pone a cero y se
      * devuelve true (muerto).
      */
-
-
     public boolean reducirVida(int puntosD){
 
         if (this.salud <= 0){
@@ -108,16 +104,12 @@ public class Monstruo {
 
     }
 
-
     /**
      * Un método golpear(Jugador jugador): reduce la salud del jugador tanto como sea el valor de la propiedad
      * puntosD del monstruo. Para reducir la salud debes llamar al método correspondiente de la clase Jugador
      */
-
-    public void golpear(Jugador jugador){
-
-        jugador.reducirVida(puntosD);
-
+    public boolean golpear(Jugador jugador){
+        return jugador.reducirVida(puntosD);
     }
 
 

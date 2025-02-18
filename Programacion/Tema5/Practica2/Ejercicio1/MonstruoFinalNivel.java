@@ -37,9 +37,9 @@ public class MonstruoFinalNivel extends Monstruo{
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("MonstruoFinalNivel{");
+        sb.append(", nombre='").append(nombre).append('\'');
         sb.append("salud=").append(salud);
         sb.append(", nivel=").append(nivel);
-        sb.append(", nombre='").append(nombre).append('\'');
         sb.append(", puntosD=").append(puntosD);
         sb.append(", usosGolpeEspecial=").append(usosGolpeEspecial);
         sb.append(", golpeEspecial=").append(golpeEspecial);
@@ -47,13 +47,15 @@ public class MonstruoFinalNivel extends Monstruo{
         return sb.toString();
     }
 
+
+
     @Override
     public void golpear(Personaje personaje) {
         if (this.usosGolpeEspecial > 0){
-            super.golpear(personaje);
             personaje.reducirVida(this.golpeEspecial);
             this.usosGolpeEspecial--;
         }else {
+            super.golpear(personaje);
             System.out.print("No te quedan golpes especiales");
         }
 

@@ -10,7 +10,7 @@ public class TestJuego {
 
     public static void main(String[] args) {
 
-        Jugador j1 = new Jugador("JugadorA");
+        Jugador j1 = new Jugador("JugadorA", Jugador.Tipo.Brujo);
         Arma a1 = new Arma("ArmaA",120, true, Arma.tipo.Espada);
         j1.equipar(a1);
 

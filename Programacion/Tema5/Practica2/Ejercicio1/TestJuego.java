@@ -20,23 +20,11 @@ public class TestJuego {
 
         for (int i = 0; i < turno; i++) {
             System.out.println("Turno " + (i+1));
-            p1.iniciarPartida();
             System.out.println("Partida para el jugador ");
             p1.turnoJugador();
             System.out.println("Partida para el enemigo ");
             p1.turnoEnemigos();
-            if (j1.getSalud() < 0){
-                System.out.println("No hay salud");
-                System.out.println("Ha ganado el enemigo");
-                break;
-            }else {
-                System.out.println("Ha ganado el jugador");
-            }
-
-            if (j1.getSalud() != 0 ){
-
-            }
-
+            System.out.println(p1);
 
 
         }

@@ -15,8 +15,9 @@ public class Jugador {
     private Tipo tipo;
 
     ///////////////Constructor///////////////
-    public Jugador(String nombre) {
+    public Jugador(String nombre, Tipo tipo) {
         this.nombre = nombre;
+        this.tipo = tipo;
         this.nivel = 1;
         this.experiencia = 0;
         this.salud = 200;
@@ -125,39 +126,31 @@ public class Jugador {
      * misma arma en los brazos. Se empieza equipando por la derecha.
      */
     public boolean equipar(Arma arma) {
-
         boolean estaEquipada = false;
-
         // Primer caso --X
         // 1. Comprobar si el arma esta libre a dos manos
         // 2. Solo se puede poner si estan libres las dos manos
         // 3. Si estan libres las dos se pondr la misma arma
         // IMPORTANTE: Se empieza a equipar por la mano derecha
         if (arma.isDosManos() == true) {
-
             if (this.armaDerecha == null && this.armaIzquierda == null) {
                 this.armaDerecha = arma;
                 this.armaIzquierda = arma;
                 estaEquipada = true;
             }
-
         } else {
-
             // Segundo caso --x
             //1. Si el arma derecha esta libre
             //2. Si el arma izquierda esta libre
             //3. Si estan ocupadas las dos
-
             if (this.armaDerecha == null) {
                 this.armaDerecha = arma;
                 estaEquipada = true;
-
             } else if (this.armaIzquierda == null) {
                 this.armaIzquierda = arma;
                 estaEquipada = true;
             }
         }
-
         if (estaEquipada == false) {
             System.out.println("Imposible equipar el arma, las dos manos estan ocuapadas");
         }
@@ -212,7 +205,7 @@ public class Jugador {
         //Comptobar si has matado al monstruo
 
         if (monstruo.getSalud() <= 0){
-            this.experiencia += (10 * monstruo.getSalud());
+            this.experiencia += (10 * monstruo.getNivel());
         }
 
         //Subir la experiencia y el nivel si correspondira

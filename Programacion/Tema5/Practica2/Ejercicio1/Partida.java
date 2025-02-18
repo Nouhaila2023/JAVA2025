@@ -34,11 +34,11 @@ public class Partida {
      */
 
     public void iniciarPartida() {
-
+        this.jugador.equipar(new Arma("Espada", 35,true, Arma.tipo.Espada));
         for (int i = 0; i < 100; i++) {
             this.monstruos.add(new Monstruo("Monstuo", 56,TipoMonstruo.Fantasma ));
         }
-        this.jugador.equipar(new Arma("Espada", 35,true, Arma.tipo.Espada));
+
     }
 
     /**
@@ -54,7 +54,7 @@ public class Partida {
               if (monstruo.getSalud()<=0){
                   this.monstruos.remove(monstruo);
                   System.out.println("Ha ganado el monstruo " + monstruo.getNombre());
-              } else if (monstruos.size()==0) {
+              } else if (monstruos.isEmpty()) {
                   System.out.println("El jugador gana la partida " + jugador.getNombre());
                   return;
               }
@@ -75,6 +75,7 @@ public class Partida {
                  System.out.println("El jugador pierde la partida " + monstruo.getNombre() );
                  return;
              }
+             break;
          }
      }
 

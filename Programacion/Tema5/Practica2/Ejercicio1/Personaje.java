@@ -10,12 +10,13 @@ public abstract class  Personaje{
 
     protected String nombre;
     protected int nivel;
-    protected double salud = 100;
+    protected double salud;
 
-    public Personaje(String nombre) {
+    public Personaje(String nombre, int nivel, double salud) {
         this.nombre = nombre;
+        this.nivel = nivel;
+        this.salud = salud;
     }
-
 
     public String getNombre() {
         return nombre;
@@ -39,6 +40,16 @@ public abstract class  Personaje{
 
     public void setSalud(double salud) {
         this.salud = salud;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Personaje{");
+        sb.append("nombre='").append(nombre).append('\'');
+        sb.append(", nivel=").append(nivel);
+        sb.append(", salud=").append(salud);
+        sb.append('}');
+        return sb.toString();
     }
 
     /**
