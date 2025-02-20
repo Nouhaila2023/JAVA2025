@@ -30,6 +30,8 @@ public class Tienda {
 
     //void eliminarProducto(String codigo)
     public void eliminarProducto(String codigo){
+        Producto pto = null;
+
         productos.remove(codigo);
     }
 
@@ -39,7 +41,6 @@ public class Tienda {
 
         for (Producto producto : productos){
             if (producto.getCodigo().equalsIgnoreCase(codigo)){
-                producto.getCodigo();
                 producto.getPrecio();
                 producto.getStock();
 
@@ -54,17 +55,17 @@ public class Tienda {
         for (Producto producto : productos){
 
             if (producto.getCodigo().equalsIgnoreCase(codigo)){
-                System.out.println("Corecto " + codigo);
+                if (producto.getStock() >= cantidad){
+                    System.out.println("El stock es suficiente");
+                }else {
+                    System.out.println("StockInsuficienteException");
+                }
             }else {
-                System.out.println("En corecto " + producto.getCodigo() + " y " + codigo);
+
             }
 
 
-            if (producto.getStock() >= cantidad){
-                System.out.println("El stock es suficiente");
-            }else {
-                System.out.println("StockInsuficienteException");
-            }
+
 
         }
         return false;
