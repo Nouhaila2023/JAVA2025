@@ -6,11 +6,6 @@ public class Equipamiento extends ProductoBasa{
     private  String deporte;
     private  String marca;
 
-    @Override
-    public int getStock() {
-        return 0;
-    }
-
     //Constructor
     public Equipamiento(String codigo, String nombre, double precion, int stock, String deporte, String marca) {
         super(codigo, nombre, precion, stock);
@@ -18,6 +13,21 @@ public class Equipamiento extends ProductoBasa{
         this.deporte = deporte;
     }
 
+    public String getDeporte() {
+        return deporte;
+    }
+
+    public void setDeporte(String deporte) {
+        this.deporte = deporte;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
 
     @Override
     public String toString() {
@@ -30,5 +40,10 @@ public class Equipamiento extends ProductoBasa{
         sb.append(", stock=").append(stock);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public String getInfo() {
+        return "";
     }
 }

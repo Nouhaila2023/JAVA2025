@@ -29,6 +29,21 @@ public abstract class ProductoBasa implements Producto{
         return nombre;
     }
 
+    @Override
+    public double getPrecio() {
+        return 0;
+    }
+
+    @Override
+    public int getStock() {
+        return 0;
+    }
+
+    @Override
+    public void setPrecio(double precio) {
+
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -42,16 +57,17 @@ public abstract class ProductoBasa implements Producto{
     }
 
     //metodo abstracto
-    public abstract int getStock();
+    public abstract String getInfo();
 
     public void setStock(int stock) {
         this.stock = stock;
     }
 
-
     public void descontarStok(int cantidad) {
-
+        stock -= cantidad;
     }
+
+
 
 
 }

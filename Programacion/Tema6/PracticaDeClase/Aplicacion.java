@@ -1,5 +1,6 @@
 package Tema6.PracticaDeClase;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -32,6 +33,7 @@ public class Aplicacion {
                 switch (opcion){
                     case 1:
                         tienda.añadirProducto((Producto)new RopaDeportiva("RD1", "ropo", 22.0, 100,"S, M, L", "algudon") );
+                        break;
                     case 2:
                         System.out.println("Agrega los informaciones");
                         System.out.println("Codigo");
@@ -45,6 +47,7 @@ public class Aplicacion {
 
                         break;
                     case 3:
+                        System.out.println("Entrega el codigo");
                         String code = sc.nextLine();
                         tienda.eliminarProducto(code);
                         break;
@@ -68,13 +71,15 @@ public class Aplicacion {
                         String codigo2 = sc.nextLine();
                         int conti = Integer.parseInt(sc.nextLine());
                         System.out.println("Cantidad");
-                        if (tienda.realizarCompra(codigo2,conti)){
-                            System.out.println("Compra realizada");
+                        try {
+                            tienda.realizarCompra(codigo2,conti);
+                        }catch (StockInsuficienteException e){
+                            System.out.println(e.getMessage());
                         }
 
                         break;
                     case 6:
-                        System.out.println("");
+                        tienda.mostrarHistorialCompras();
                         break;
                     case 7:
                         System.out.println("Ha terminado la programa. Gracia");
