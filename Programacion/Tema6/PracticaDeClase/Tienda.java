@@ -72,7 +72,7 @@ public class Tienda {
     }
 
 
-    public  void mpostrarInventario(){
+    public void mpostrarInventario(){
         for (Producto producto : productos){
             System.out.println(producto.getInfo());
         }
