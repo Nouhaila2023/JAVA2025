@@ -30,54 +30,23 @@ public class Aplicacion {
 
                 switch (opcion) {
                    case 1:
-                       tienda.mostrarInventario();
+
                        break;
                    case 2:
-                       System.out.println("Agrega los informaciones");
-                       System.out.println("Codigo");
-                       String codigo = sc.nextLine();
-                       System.out.println("Nombre");
-                       String nombre = sc.nextLine();
-                       System.out.println("Precio");
-                       double precio = sc.nextDouble();
 
-                       Tema6.PracticaDeClase.Equipamiento equipamiento = new Tema6.PracticaDeClase.Equipamiento(codigo, nombre, precio, 50, "mde", "marca");
                        break;
 
                    case 3:
-                       System.out.println("Entrega el codigo del prodocto que quieres eleminar:)");
-                       String codigoEntregado = sc.nextLine();
-                       tienda.eliminarProducto(codigoEntregado);
+
                         break;
                    case 4:
-                       System.out.println("Agrega los informaciones");
-                       System.out.println("Codigo");
-                       String codigo1 = sc.nextLine();
-                       System.out.println("Precio");
-                       double precio1 = sc.nextDouble();
-                       System.out.println("Stock");
-                       int stock1 = Integer.parseInt(sc.nextLine());
-                       System.out.println("Stock");
 
-                       /*if (tienda.actualizarProducto(codigo1, precio1, stock1)){
-                           System.out.println("Corecto");
-                       }else {
-                           System.out.println("Incorecto");
-                       }*/
                         break;
                    case 5:
-                       System.out.println("Codigo");
-                       String codigo2 = sc.nextLine();
-                       int conti = Integer.parseInt(sc.nextLine());
-                       System.out.println("Cantidad");
-                       try {
-                           tienda.realizarCompra(codigo2,conti);
-                       }catch (Tema6.PracticaDeClase.StockInsuficienteException e){
-                           System.out.println(e.getMessage());
-                       }
+
                         break;
                    case 6:
-                        tienda.mostrarHistorialCompras();
+
                         break;
                    case 7:
                        System.out.println("Gracias para usar nuestro Aplicacion:)");
