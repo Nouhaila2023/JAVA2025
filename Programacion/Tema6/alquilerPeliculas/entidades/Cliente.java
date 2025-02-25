@@ -2,7 +2,7 @@ package Tema6.alquilerPeliculas.entidades;
 
 import java.util.Objects;
 
-public abstract class Client {
+public abstract class Cliente {
 
     /**
      * Atributes
@@ -15,13 +15,13 @@ public abstract class Client {
     /**
      * Constructod por defecto
      */
-    public Client() {
+    public Cliente() {
     }
 
     /**
      * Constructores menos precioMensual
      */
-    public Client(String dni, String nombre, String email) {
+    public Cliente(String dni, String nombre, String email) {
         this.dni = dni;
         this.nombre = nombre;
         this.email = email;
@@ -35,7 +35,7 @@ public abstract class Client {
         return dni;
     }
 
-    public Client setDni(String dni) {
+    public Cliente setDni(String dni) {
         this.dni = dni;
         return this;
     }
@@ -44,7 +44,7 @@ public abstract class Client {
         return nombre;
     }
 
-    public Client setNombre(String nombre) {
+    public Cliente setNombre(String nombre) {
         this.nombre = nombre;
         return this;
     }
@@ -53,12 +53,12 @@ public abstract class Client {
         return email;
     }
 
-    public Client setEmail(String email) {
+    public Cliente setEmail(String email) {
         this.email = email;
         return this;
     }
 
-    public Client setPrecioMensual(double precioMensual) {
+    public Cliente setPrecioMensual(double precioMensual) {
         this.precioMensual = precioMensual;
         return this;
     }
@@ -84,7 +84,7 @@ public abstract class Client {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Client client = (Client) o;
+        Cliente client = (Cliente) o;
         return Objects.equals(dni, client.dni);
     }
 

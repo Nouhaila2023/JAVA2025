@@ -1,6 +1,6 @@
 package Tema6.alquilerPeliculas.entidades;
 
-public class ClientePrimePro extends Client{
+public class ClientePrimePro extends Cliente {
 
     private double precioMensual;
 
