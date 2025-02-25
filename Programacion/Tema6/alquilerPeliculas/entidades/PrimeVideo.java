@@ -22,11 +22,14 @@ public class PrimeVideo {
      * Añadir un Cliente
      */
 
-    public void addSuscriptore(Cliente cliente, String dni) {
-
-
-
-
+    public void addSuscriptore(Cliente cliente) {
+        for (Cliente c : suscriptore){
+            if (!(c.getDni().equals(cliente.dni))){
+                suscriptore.add(c);
+            }else {
+                System.out.println("No pudemos añadir esta cliente -> {Ya lo tenemos}");
+            }
+        }
     }
 
     public void buscar(String dni){
@@ -37,6 +40,20 @@ public class PrimeVideo {
         }
 
     }
+
+    /**
+     * Método añade una película al catálogo, si no estaba ya
+     */
+
+    public void addMultimedia(Multimedia multimedia){
+
+
+
+
+
+    }
+
+
 
 
 

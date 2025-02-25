@@ -12,6 +12,7 @@ public abstract class ProductoBase implements Producto {
     protected double precio;
     protected int stock;
 
+
     /**
      * Getters de producto
      * @return
