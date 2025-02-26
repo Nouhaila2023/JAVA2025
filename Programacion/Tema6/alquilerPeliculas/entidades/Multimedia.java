@@ -15,7 +15,7 @@ public class Multimedia {
     protected boolean plus;
     protected double precio;
     protected Genero genero;
-    protected static int autoincremento;
+    protected static Long autoincremento;
 
     /**
      * Constructos por defecto
@@ -23,11 +23,20 @@ public class Multimedia {
     public Multimedia() {
     }
 
-    public Multimedia(String titulo, double precio) {
+    /**
+     * Constructor
+     * @param codigo
+     * @param titulo
+     * @param precio
+     * @param genero
+     */
+    public Multimedia(Long codigo, String titulo, double precio, boolean plus, Genero genero) {
+        this.codigo = autoincremento++;
         this.titulo = titulo;
         this.precio = precio;
+        this.genero = genero;
         this.plus = isPlus();
-        this.autoincremento++;
+
     }
 
     /**

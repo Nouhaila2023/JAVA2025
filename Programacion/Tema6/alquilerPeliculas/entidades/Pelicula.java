@@ -1,5 +1,7 @@
 package Tema6.alquilerPeliculas.entidades;
 
+import Tema6.alquilerPeliculas.entidades.enum_.Genero;
+
 public class Pelicula extends Multimedia {
 
     /**
@@ -10,12 +12,11 @@ public class Pelicula extends Multimedia {
 
     /**
      * Constructor
-     * @param titulo
-     * @param precio
      */
-    public Pelicula(String titulo, double precio) {
-        super(titulo, precio);
-        this.duracion = 0;
+
+    public Pelicula(Long codigo, String titulo, double precio, boolean plus, Genero genero, int duracion) {
+        super(codigo, titulo, precio, plus, genero);
+        this.duracion = duracion;
     }
 
     /**
