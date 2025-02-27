@@ -1,37 +1,47 @@
-package Tema6.alquilerPeliculas.entidades;
+package Tema6.alquilarPelículas.entidades;
 
 import java.util.Objects;
 
 public abstract class Cliente {
 
     /**
-     * Atributes
+     * Atributos
      */
     protected String dni;
     protected String nombre;
     protected String email;
-    protected double precioMensual;
+    protected double precioMencual;
+
 
     /**
-     * Constructod por defecto
+     * Constructor por defecto
      */
     public Cliente() {
+        this.dni = "";
+        this.nombre = "";
+        this.email = "";
+        this.precioMencual = 0;
     }
 
     /**
-     * Constructores menos precioMensual
+     * Constructor con todos los parametros menos en precioMensual
      */
     public Cliente(String dni, String nombre, String email) {
         this.dni = dni;
         this.nombre = nombre;
         this.email = email;
-        this.precioMensual = 0;
     }
+
+    /**
+     * Métodos abstracto
+     */
+
+    public abstract boolean esPro();
+    public abstract double getPrecioMensual();
 
     /**
      * Getter and Setter
      */
-
     public String getDni() {
         return dni;
     }
@@ -59,8 +69,8 @@ public abstract class Cliente {
         return this;
     }
 
-    public Cliente setPrecioMensual(double precioMensual) {
-        this.precioMensual = precioMensual;
+    public Cliente setPrecioMencual(double precioMencual) {
+        this.precioMencual = precioMencual;
         return this;
     }
 
@@ -69,11 +79,11 @@ public abstract class Cliente {
      */
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Client{");
+        final StringBuffer sb = new StringBuffer("Cliente{");
         sb.append("dni='").append(dni).append('\'');
         sb.append(", nombre='").append(nombre).append('\'');
         sb.append(", email='").append(email).append('\'');
-        sb.append(", precioMensual=").append(precioMensual);
+        sb.append(", precioMencual=").append(precioMencual);
         sb.append('}');
         return sb.toString();
     }
@@ -81,24 +91,15 @@ public abstract class Cliente {
     /**
      * equals por dni
      */
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Cliente client = (Cliente) o;
-        return Objects.equals(dni, client.dni);
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(dni, cliente.dni);
     }
 
     @Override
     public int hashCode() {
         return Objects.hashCode(dni);
     }
-
-    /**
-     * Metodo abstracto
-     */
-
-    public abstract double getPrecioMensual();
-    public abstract boolean esPro();
-
 }

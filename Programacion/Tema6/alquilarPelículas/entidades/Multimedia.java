@@ -1,34 +1,40 @@
-package Tema6.alquilerPeliculas.entidades;
+package Tema6.alquilarPelículas.entidades;
 
-import Tema6.alquilerPeliculas.entidades.enum_.Genero;
+import Tema6.alquilarPelículas.entidades.enum_.Genero;
 
 import java.util.Objects;
 
 public class Multimedia {
-
     /**
      * Atributos
      */
-
     protected Long codigo;
     protected String titulo;
     protected boolean plus;
-    protected double precio;
+    protected double precio;//se aplica si no es cliente plus
     protected Genero genero;
-    protected static int autoincremento;
+    private Long autoincremento;
 
     /**
-     * Constructos por defecto
+     * Constructor por defecto
      */
     public Multimedia() {
+
     }
 
-    public Multimedia(String titulo, double precio) {
+    /**
+     * Constructor con el autoincremento del codigo
+     */
+    public Multimedia(Long codigo, String titulo, double precio, boolean plus,Genero genero) {
+        this.codigo = autoincremento++;
         this.titulo = titulo;
+        this.plus = plus;
         this.precio = precio;
-        this.plus = isPlus();
-        this.autoincremento++;
+        this.genero = genero;
     }
+
+
+
 
     /**
      * Getter and Setter
@@ -78,6 +84,29 @@ public class Multimedia {
         return this;
     }
 
+    public Long getAutoincremento() {
+        return autoincremento;
+    }
+
+    public Multimedia setAutoincremento(Long autoincremento) {
+        this.autoincremento = autoincremento;
+        return this;
+    }
+
+    /**
+     * equals por codigo
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Multimedia that = (Multimedia) o;
+        return Objects.equals(codigo, that.codigo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(codigo);
+    }
 
     /**
      * toString
@@ -90,24 +119,8 @@ public class Multimedia {
         sb.append(", plus=").append(plus);
         sb.append(", precio=").append(precio);
         sb.append(", genero=").append(genero);
+        sb.append(", autoincremento=").append(autoincremento);
         sb.append('}');
         return sb.toString();
     }
-
-    /**
-     * equals por codigo
-     */
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Multimedia that = (Multimedia) o;
-        return Objects.equals(codigo, that.codigo);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(codigo);
-    }
 }
-

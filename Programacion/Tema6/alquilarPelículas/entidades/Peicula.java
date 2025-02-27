@@ -1,20 +1,22 @@
-package Tema6.alquilerPeliculas.entidades;
+package Tema6.alquilarPelículas.entidades;
 
 import Tema6.alquilerPeliculas.entidades.enum_.Genero;
 
-public class Pelicula extends Multimedia {
-
-    /**
-     * Atributos
-     */
+public class Peicula extends  Multimedia{
 
     private int duracion;
 
     /**
      * Constructor
+     * @param codigo
+     * @param titulo
+     * @param precio
+     * @param plus
+     * @param genero
      */
 
-    public Pelicula(Long codigo, String titulo, double precio, boolean plus, Genero genero, int duracion) {
+
+    public Peicula(Long codigo, String titulo, double precio, boolean plus, Genero genero, int duracion) {
         super(codigo, titulo, precio, plus, genero);
         this.duracion = duracion;
     }
@@ -26,7 +28,7 @@ public class Pelicula extends Multimedia {
         return duracion;
     }
 
-    public Pelicula setDuracion(int duracion) {
+    public Peicula setDuracion(int duracion) {
         this.duracion = duracion;
         return this;
     }
@@ -36,7 +38,7 @@ public class Pelicula extends Multimedia {
      */
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Pelicula{");
+        final StringBuffer sb = new StringBuffer("Peícula{");
         sb.append("codigo=").append(codigo);
         sb.append(", titulo='").append(titulo).append('\'');
         sb.append(", plus=").append(plus);
@@ -47,3 +49,4 @@ public class Pelicula extends Multimedia {
         return sb.toString();
     }
 }
+

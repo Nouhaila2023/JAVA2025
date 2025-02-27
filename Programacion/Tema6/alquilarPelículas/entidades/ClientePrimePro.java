@@ -1,31 +1,26 @@
-package Tema6.alquilerPeliculas.entidades;
+package Tema6.alquilarPelículas.entidades;
 
 public class ClientePrimePro extends Cliente {
 
-    private double precioMensual;
-
     /**
-     * Constructor
+     *Constructor
      */
-
     public ClientePrimePro(String dni, String nombre, String email) {
         super(dni, nombre, email);
-        setPrecioMensual(5);
+        setPrecioMencual(5);
     }
 
     /**
-     * Metodos abstracta
+     * Implimente los metodos
      * @return
      */
-    @Override
-    public double getPrecioMensual() {
-        return 5;
-    }
-
     @Override
     public boolean esPro() {
         return true;
     }
 
-
+    @Override
+    public double getPrecioMensual() {
+        return 5;
+    }
 }
