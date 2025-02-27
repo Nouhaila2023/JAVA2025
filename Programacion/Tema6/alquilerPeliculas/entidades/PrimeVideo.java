@@ -23,12 +23,21 @@ public class PrimeVideo {
      */
 
     public void addSuscriptore(Cliente cliente) {
-
-            if (!suscriptore.contains(cliente)){
-                suscriptore.add(cliente);
+        for (Cliente c : suscriptore){
+            if (!(c.getDni().equals(cliente.dni))){
+                suscriptore.add(c);
             }else {
                 System.out.println("No pudemos añadir esta cliente -> {Ya lo tenemos}");
             }
+        }
+    }
+
+    public void buscar(String dni){
+        for (Cliente cliente : suscriptore) {
+            if (cliente.getDni().equals(dni)) {
+
+            }
+        }
 
     }
 
@@ -38,32 +47,10 @@ public class PrimeVideo {
 
     public void addMultimedia(Multimedia multimedia){
 
-        if(!catalogo.contains(multimedia)){
-            catalogo.add(multimedia);
-        }else {
-            System.out.println("No pudemos añadir la multimedia");
-        }
-
-    }
 
 
-    public void ver(Multimedia m, Cliente c){
-        if (c.esPro()){
-            this.genancias += m.getPrecio();
-        }
-    }
 
-    /**
-     *
-     */
 
-    public double getGenancias(){
-
-        for (Cliente c : suscriptore){
-            genancias += c.precioMensual * 12;
-        }
-
-        return genancias;
     }
 
 

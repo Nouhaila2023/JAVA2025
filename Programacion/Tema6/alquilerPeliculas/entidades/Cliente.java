@@ -25,6 +25,7 @@ public abstract class Cliente {
         this.dni = dni;
         this.nombre = nombre;
         this.email = email;
+        this.precioMensual = 0;
     }
 
     /**
