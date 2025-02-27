@@ -1,5 +1,4 @@
 package Tema6.alquilarPelículas.entidades;
-
 import java.util.Objects;
 
 public abstract class Cliente {
@@ -17,10 +16,6 @@ public abstract class Cliente {
      * Constructor por defecto
      */
     public Cliente() {
-        this.dni = "";
-        this.nombre = "";
-        this.email = "";
-        this.precioMencual = 0;
     }
 
     /**

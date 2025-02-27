@@ -1,8 +1,6 @@
 package Tema6.alquilarPelículas.add;
 
-import Tema6.alquilarPelículas.entidades.Multimedia;
-import Tema6.alquilarPelículas.entidades.Peicula;
-import Tema6.alquilarPelículas.entidades.PrimeVideo;
+import Tema6.alquilarPelículas.entidades.*;
 import Tema6.alquilarPelículas.entidades.enum_.Genero;
 
 public class Test {
@@ -33,8 +31,28 @@ public class Test {
         /**
          *  1.000.000 --> 100%
          *      X     --> 25%
-         *  X =
+         * 1.000.000 de clientes (25% son pro). Simula que cada cliente vea las 40 primeras películas y dime las ganancias.
          */
+
+
+        //Clientes por
+        for (int i = 0; i <25 ; i++) {
+            p.addSuscriptor(new ClientePrimePro("Y1234567", "Jose", "jose@gmail.com"));
+        }
+
+        for (int i = 0; i < 75; i++) {
+            p.addSuscriptor(new ClientePrime("A1234567", "Ana", "ana@gmail.com"));
+        }
+
+        /**
+         * Simula que cada cliente vea las 40 primeras películas y dime las ganancias.
+         */
+
+        for (int i = 0; i < 40; i++) {
+
+        }
+
+
 
     }
 }
