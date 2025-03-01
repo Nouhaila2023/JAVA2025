@@ -1,5 +1,7 @@
 package Tema6.alquilarPelículas.entidades1;
 
+import Tema6.alquilarPelículas.entidades.enum_.Genero;
+
 public class Episodio {
     /**
      * Atributos

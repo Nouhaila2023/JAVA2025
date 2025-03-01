@@ -27,7 +27,7 @@ public class Temporada {
      * getNumeroEpisodios()
      */
     public void getNumeroEpisodios() {
-
+        this.episodios.size();
     }
 
     /**

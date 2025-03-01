@@ -2,6 +2,7 @@ package Tema6.alquilarPelículas.add;
 
 import Tema6.alquilarPelículas.entidades.*;
 import Tema6.alquilarPelículas.entidades.enum_.Genero;
+import Tema6.alquilarPelículas.entidades1.Serie;
 
 public class Test {
 
@@ -51,6 +52,22 @@ public class Test {
         for (int i = 0; i < 40; i++) {
 
         }
+
+        /**
+         * Añader 10 series al catalogo.
+         * Simula que cada cliente vea 5 series
+         * calcuña ñas ganancias
+         */
+
+        Serie serie = new Serie(1L, "", 10, true ,Genero.COMEDIA);
+
+        for (int i = 0; i < 10; i++) {
+            p.addCatalogo(serie);
+
+
+        }
+
+
 
 
 

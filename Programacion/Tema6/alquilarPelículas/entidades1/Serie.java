@@ -46,11 +46,8 @@ public class Serie extends Multimedia {
 
 
     /**
-     * Getter and Setter
+     * Setter
      */
-    public ArrayList<Temporada> getTemporadas() {
-        return temporadas;
-    }
 
     public Serie setTemporadas(ArrayList<Temporada> temporadas) {
         this.temporadas = temporadas;
