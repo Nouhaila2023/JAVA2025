@@ -51,6 +51,7 @@ public class Test {
 
         for (int i = 0; i < 40; i++) {
 
+
         }
 
         /**
@@ -63,6 +64,7 @@ public class Test {
 
         for (int i = 0; i < 10; i++) {
             p.addCatalogo(serie);
+
 
 
         }
