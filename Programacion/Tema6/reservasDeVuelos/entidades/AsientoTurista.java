@@ -19,7 +19,7 @@ public class AsientoTurista extends Asiento {
     public AsientoTurista(Long id, double precioBase, Integer fila, String letra, boolean ventana) {
         super(id, precioBase, fila, letra);
         this.ventana = ventana;
-        this.setTipo(TipoAsiento.valueOf("Turista"));
+        this.setTipo(TipoAsiento.TURISTA);
     }
 
     /**

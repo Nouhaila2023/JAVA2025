@@ -19,7 +19,7 @@ public class AsientoBusiness extends Asiento{
     public AsientoBusiness(Long id, double precioBase, Integer fila, String letra, boolean ventana) {
         super(id, precioBase, fila, letra);
         this.ventana = ventana;
-        this.setTipo(TipoAsiento.valueOf("Business"));
+        this.setTipo(TipoAsiento.BUSINESS);
     }
 
     /**
@@ -29,10 +29,9 @@ public class AsientoBusiness extends Asiento{
      */
     @Override
     public double calcularPrecio() {
-        /*if (pasajero.setPreferenciasComida(){
-            return precioBase +30;
-        }*/
-        return 0;
+        double precioFinal = 0;
+
+        return precioFinal = (precioBase * 1.25) ;
     }
 
     /**
