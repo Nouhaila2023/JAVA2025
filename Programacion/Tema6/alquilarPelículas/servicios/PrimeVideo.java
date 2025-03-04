@@ -1,4 +1,6 @@
-package Tema6.alquilarPelículas.entidades;
+package Tema6.alquilarPelículas.servicios;
+import Tema6.alquilarPelículas.entidades.Cliente;
+import Tema6.alquilarPelículas.entidades.Multimedia;
 
 import java.util.ArrayList;
 
@@ -50,8 +52,10 @@ public class PrimeVideo {
      */
 
     public void ver(Multimedia m, Cliente c){
-        if (c.esPro()){
-            ganancia += m.precio;
+        if (m.isPlus()){
+            if (!c.esPro()){
+                ganancia += m.getPrecio();
+            }
         }
     }
 
@@ -68,8 +72,15 @@ public class PrimeVideo {
         return ganancia;
     }
 
+    /**
+     * Get
+     */
 
+    public ArrayList<Multimedia> getCatalogo() {
+        return catalogo;
+    }
 
-
-
+    public ArrayList<Cliente> getSuscriptores() {
+        return suscriptores;
+    }
 }

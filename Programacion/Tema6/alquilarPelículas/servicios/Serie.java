@@ -1,4 +1,4 @@
-package Tema6.alquilarPelículas.entidades1;
+package Tema6.alquilarPelículas.servicios;
 
 import Tema6.alquilarPelículas.entidades.Multimedia;
 import Tema6.alquilarPelículas.entidades.enum_.Genero;

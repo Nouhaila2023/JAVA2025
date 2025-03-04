@@ -1,6 +1,6 @@
-package Tema6.alquilarPelículas.entidades1;
+package Tema6.alquilarPelículas.entidades;
 
-import Tema6.alquilarPelículas.entidades.enum_.Genero;
+import Tema6.alquilarPelículas.servicios.Temporada;
 
 public class Episodio {
     /**

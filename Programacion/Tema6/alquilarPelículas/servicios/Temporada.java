@@ -1,4 +1,6 @@
-package Tema6.alquilarPelículas.entidades1;
+package Tema6.alquilarPelículas.servicios;
+import Tema6.alquilarPelículas.entidades.Episodio;
+
 import java.util.ArrayList;
 
 public class Temporada {
@@ -72,6 +74,10 @@ public class Temporada {
         return this;
     }
 
+    public ArrayList<Episodio> getEpisodios() {
+        return episodios;
+    }
+
     /**
      * toString
      */
@@ -79,7 +85,7 @@ public class Temporada {
     public String toString() {
         final StringBuffer sb = new StringBuffer("Temporada{");
         sb.append("numero=").append(numero);
-        sb.append(", serie=").append(serie);//titulo del serie??
+        sb.append(", serie=").append(serie.getTitulo());//titulo del serie??
         sb.append(", episodios=").append(episodios);
         sb.append('}');
         return sb.toString();

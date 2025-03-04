@@ -26,7 +26,8 @@ public class Multimedia {
      * Constructor con el autoincremento del codigo
      */
     public Multimedia(Long codigo, String titulo, double precio, boolean plus,Genero genero) {
-        this.codigo = autoincremento++;
+        this.autoincremento++;
+        this.codigo = autoincremento;
         this.titulo = titulo;
         this.plus = plus;
         this.precio = precio;

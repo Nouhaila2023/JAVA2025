@@ -2,7 +2,9 @@ package Tema6.alquilarPelículas.add;
 
 import Tema6.alquilarPelículas.entidades.*;
 import Tema6.alquilarPelículas.entidades.enum_.Genero;
-import Tema6.alquilarPelículas.entidades1.Serie;
+import Tema6.alquilarPelículas.servicios.PrimeVideo;
+import Tema6.alquilarPelículas.servicios.Serie;
+import Tema6.alquilarPelículas.servicios.Temporada;
 
 public class Test {
 
@@ -49,9 +51,10 @@ public class Test {
          * Simula que cada cliente vea las 40 primeras películas y dime las ganancias.
          */
 
-        for (int i = 0; i < 40; i++) {
-
-
+        for (Cliente cliente : p.getSuscriptores()){
+            for (int i = 0; i < 40; i++) {
+                p.ver(p.getCatalogo().get(i), cliente);
+            }
         }
 
         /**
@@ -63,11 +66,24 @@ public class Test {
         Serie serie = new Serie(1L, "", 10, true ,Genero.COMEDIA);
 
         for (int i = 0; i < 10; i++) {
+            Temporada temporada = new Temporada(i);
+            for (int j = 0; j < 10; j++) {
+                temporada.addEpisodio(new Episodio("E", "120"));
+            }
+            serie.addTemporada(temporada);
             p.addCatalogo(serie);
-
-
-
         }
+
+        for (Multimedia multimedia : p.getCatalogo()){
+            if (multimedia instanceof  Serie){
+                for (Cliente cliente : p.getSuscriptores()) {
+                    p.ver(multimedia, cliente);
+                }
+
+            }
+        }
+
+
 
 
 

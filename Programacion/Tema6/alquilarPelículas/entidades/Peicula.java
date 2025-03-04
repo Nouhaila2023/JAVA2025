@@ -1,6 +1,6 @@
 package Tema6.alquilarPelículas.entidades;
 
-import Tema6.alquilerPeliculas.entidades.enum_.Genero;
+import Tema6.alquilarPelículas.entidades.enum_.Genero;
 
 public class Peicula extends  Multimedia{
 
