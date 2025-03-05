@@ -13,20 +13,23 @@ public class Multimedia {
     protected boolean plus;
     protected double precio;//se aplica si no es cliente plus
     protected Genero genero;
-    private Long autoincremento;
+    private static Long autoincremento = 1L;
 
     /**
      * Constructor por defecto
      */
     public Multimedia() {
-
+        this.codigo = autoincremento++;
+        this.titulo = "";
+        this.plus = false;
+        this.precio = 0.0;
+        this.genero = Genero.valueOf("");
     }
 
     /**
      * Constructor con el autoincremento del codigo
      */
     public Multimedia(Long codigo, String titulo, double precio, boolean plus,Genero genero) {
-        this.autoincremento++;
         this.codigo = autoincremento;
         this.titulo = titulo;
         this.plus = plus;

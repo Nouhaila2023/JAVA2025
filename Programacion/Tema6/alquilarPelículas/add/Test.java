@@ -8,6 +8,7 @@ import Tema6.alquilarPelículas.servicios.Temporada;
 
 public class Test {
 
+
     /**
      * En una clase Test calcula las ganancias anuales de la empresa si tiene 200 pelis (30 son plus a 10€ cada una) y
      * 1.000.000 de clientes (25% son pro). Simula que cada cliente vea las 40 primeras películas y dime las ganancias.

@@ -1,7 +1,6 @@
 package Tema6.alquilarPelículas.servicios;
 import Tema6.alquilarPelículas.entidades.Cliente;
 import Tema6.alquilarPelículas.entidades.Multimedia;
-
 import java.util.ArrayList;
 
 public class PrimeVideo {
@@ -16,14 +15,12 @@ public class PrimeVideo {
     /**
      * Constructor
      */
-    public PrimeVideo(double ganancia) {
+    public PrimeVideo() {
         this.catalogo = new ArrayList<>();
         this.suscriptores = new ArrayList<>();
         this.ganancia = 0.0;
     }
 
-    public PrimeVideo() {
-    }
 
     /**
      * Añadir una suscriptor, si no estaba ya
@@ -43,7 +40,7 @@ public class PrimeVideo {
         if (!catalogo.contains(multimedia)) {
             catalogo.add(multimedia);
         }else {
-            System.out.println("Ya existe suscriptor");
+            System.out.println("Ya existe catalogo");
         }
     }
 
