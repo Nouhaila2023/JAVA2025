@@ -19,7 +19,7 @@ public class AsientoTurista extends Asiento {
     public AsientoTurista(Long id, double precioBase, Integer fila, String letra, boolean ventana) {
         super(id, precioBase, fila, letra);
         this.ventana = ventana;
-        this.setTipo(TipoAsiento.TURISTA);
+        this.tipo = TipoAsiento.TURISTA;
     }
 
     /**
@@ -57,8 +57,9 @@ public class AsientoTurista extends Asiento {
         final StringBuffer sb = new StringBuffer("AsientoTurista{");
         sb.append("id=").append(id);
         sb.append(", precioBase=").append(precioBase);
+        sb.append(", tipo=").append(tipo);
         sb.append(", ventana=").append(ventana);
-        sb.append(", pasajero=").append(pasajero);
+        sb.append(", pasajero=").append(pasajero.getDniPasaporte());
         sb.append('}');
         return sb.toString();
     }

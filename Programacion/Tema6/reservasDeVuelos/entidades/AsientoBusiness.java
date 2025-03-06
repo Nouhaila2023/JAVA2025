@@ -6,7 +6,7 @@ public class AsientoBusiness extends Asiento{
     /**
      * Atributos
      */
-    private boolean ventana;
+    private boolean comida;
 
     /**
      * Constructor sin pasajero ni tipo asiento
@@ -18,7 +18,7 @@ public class AsientoBusiness extends Asiento{
      */
     public AsientoBusiness(Long id, double precioBase, Integer fila, String letra, boolean ventana) {
         super(id, precioBase, fila, letra);
-        this.ventana = ventana;
+        this.comida = ventana;
         this.setTipo(TipoAsiento.BUSINESS);
     }
 
@@ -30,7 +30,9 @@ public class AsientoBusiness extends Asiento{
     @Override
     public double calcularPrecio() {
         double precioFinal = 0;
-
+        if (comida){
+           return precioBase += 30;
+        }
         return precioFinal = (precioBase * 1.25) ;
     }
 
@@ -38,11 +40,11 @@ public class AsientoBusiness extends Asiento{
      * Getter Setter
      */
     public boolean isVentana() {
-        return ventana;
+        return comida;
     }
 
     public AsientoBusiness setVentana(boolean ventana) {
-        this.ventana = ventana;
+        this.comida = ventana;
         return this;
     }
 
@@ -56,7 +58,7 @@ public class AsientoBusiness extends Asiento{
         sb.append(", precioBase=").append(precioBase);
         sb.append(", tipo=").append(tipo);
         sb.append(", pasajero=").append(pasajero);
-        sb.append(", ventana=").append(ventana);
+        sb.append(", ventana=").append(comida);
         sb.append('}');
         return sb.toString();
     }

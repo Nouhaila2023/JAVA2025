@@ -1,16 +1,19 @@
 package Tema6.monopoly.entidades;
 
-public abstract class Casilla {
+public  class Casilla {
 
     /**
      * Atributos:
      */
     protected String nombre;
+    protected Integer posicion;
+
 
     /**
      * Constructor
      */
-    public Casilla(String nombre) {
+    public Casilla(String nombre, Integer posicion) {
+        this.posicion = posicion;
         this.nombre = nombre;
     }
 
@@ -21,9 +24,16 @@ public abstract class Casilla {
         return nombre;
     }
 
-    public Casilla setNombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
-        return this;
+    }
+
+    public Integer getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(Integer posicion) {
+        this.posicion = posicion;
     }
 
     /**
@@ -33,6 +43,7 @@ public abstract class Casilla {
     public String toString() {
         final StringBuffer sb = new StringBuffer("Casilla{");
         sb.append("nombre='").append(nombre).append('\'');
+        sb.append(", posicion=").append(posicion);
         sb.append('}');
         return sb.toString();
     }

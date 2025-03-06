@@ -1,7 +1,5 @@
 package Tema6.monopoly.entidades;
 
-import Tema6.monopoly.entidades.enum_.Token;
-
 import java.util.ArrayList;
 
 public class Jugador {
@@ -9,27 +7,29 @@ public class Jugador {
     /**
      * Atributos:
      */
-    private Token token;
-    private double cantidadDinero;
+    private String nombre;
+    private Casilla token;
+    private Double cantidadDinero;
     private ArrayList<Propiedad> propiedades;
 
     /**
      * Constructor
      */
-    public Jugador(Token token, double cantidadDinero) {
+    public Jugador(String nombre,Casilla token, Double cantidadDinero) {
         this.token = token;
         this.cantidadDinero = cantidadDinero;
         this.propiedades = new ArrayList<>();
+        this.nombre = nombre;
     }
 
     /**
      * Getter Setter
      */
-    public Token getToken() {
+    public Casilla getToken() {
         return token;
     }
 
-    public Jugador setToken(Token token) {
+    public Jugador setToken(Casilla token) {
         this.token = token;
         return this;
     }
@@ -47,13 +47,22 @@ public class Jugador {
         return propiedades;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     /**
      * toString
      */
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Jugador{");
-        sb.append("token=").append(token);
+        sb.append("nomre=").append(nombre);
+        sb.append(", token=").append(token);
         sb.append(", cantidadDinero=").append(cantidadDinero);
         sb.append(", propiedades=").append(propiedades);
         sb.append('}');

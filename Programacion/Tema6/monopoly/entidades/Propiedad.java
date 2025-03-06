@@ -6,14 +6,17 @@ public class Propiedad extends Casilla{
      */
     private double precioCompra;
     private double precioPagar;//si alguien cae
+    private Boolean con;
+
 
     /***
      * Constructor
      */
-    public Propiedad(String nombre, double precioCompra, double precioPagar) {
-        super(nombre);
+    public Propiedad(String nombre,Integer posicion,double precioCompra, double precioPagar,Boolean con) {
+        super(nombre, posicion);
         this.precioCompra = precioCompra;
         this.precioPagar = precioPagar;
+        this.con =con;
     }
 
     /**
@@ -37,6 +40,14 @@ public class Propiedad extends Casilla{
         return this;
     }
 
+    public Boolean getCon() {
+        return con;
+    }
+
+    public void setCon(Boolean con) {
+        this.con = con;
+    }
+
     /**
      * toString
      */
@@ -44,8 +55,10 @@ public class Propiedad extends Casilla{
     public String toString() {
         final StringBuffer sb = new StringBuffer("Propiedad{");
         sb.append("nombre='").append(nombre).append('\'');
-        sb.append(", precioPagar=").append(precioPagar);
+        sb.append(", posicion=").append(posicion);
         sb.append(", precioCompra=").append(precioCompra);
+        sb.append(", precioPagar=").append(precioPagar);
+        sb.append(", con").append(con);
         sb.append('}');
         return sb.toString();
     }

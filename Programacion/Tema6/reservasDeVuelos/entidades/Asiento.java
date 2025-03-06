@@ -32,7 +32,7 @@ public abstract class Asiento {
      * Metodos Extra
      */
     public String getCodigo(){
-        return fila.toString() + letra.toString();
+        return fila + letra;
     }
 
     public abstract double calcularPrecio();
