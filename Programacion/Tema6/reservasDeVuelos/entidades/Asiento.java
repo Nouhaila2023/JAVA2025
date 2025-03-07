@@ -49,6 +49,7 @@ public abstract class Asiento {
         return this;
     }
 
+
     public Pasajero getPasajero() {
         return pasajero;
     }
@@ -124,4 +125,6 @@ public abstract class Asiento {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
+
 }

@@ -1,5 +1,6 @@
 package Tema6.reservasDeVuelos.servicios;
 
+import Tema6.reservasDeVuelos.entidades.Asiento;
 import Tema6.reservasDeVuelos.entidades.Pasajero;
 import Tema6.reservasDeVuelos.entidades.enums.TipoAsiento;
 import Tema6.reservasDeVuelos.entidades.enums.TipoTarifa;
@@ -26,6 +27,48 @@ public class ReservaVuelo {
         this.tipoAsiento = tipoAsiento;
         this.pasajeros = new ArrayList<>();
     }
+
+    /**
+     * Metodos
+     */
+
+    //addPasajero
+    public void addPasajero(Pasajero pasajero) {
+        for (Pasajero p : pasajeros) {
+            if (p.equals(pasajero)) {
+                System.out.println("El pasajero existe");
+            }
+            this.pasajeros.add(pasajero);
+        }
+    }
+
+    //removePasajero
+    public void removePasajero(Pasajero pasajero) {
+        for (Pasajero p : pasajeros) {
+            if (p.equals(pasajero)) {
+                pasajeros.remove(pasajero);
+            }
+            System.out.println("Este pasajero no existe");
+        }
+    }
+
+    //devuelva los asignados a pasajeros
+    public ArrayList<Asiento> asientos(){
+        ArrayList<Asiento> asientos = new ArrayList<>();
+        for (Pasajero p : pasajeros) {
+            System.out.println(p.getAsiento().getId());
+            System.out.println(p.getAsiento().getLetra());
+            System.out.println(p.getAsiento().getFila());
+        }
+
+        return asientos;
+    }
+
+
+
+
+
+
 
     /**
      * Gettter Setter
@@ -74,8 +117,7 @@ public class ReservaVuelo {
         final StringBuffer sb = new StringBuffer("ReservaVuelo{");
         sb.append("id=").append(id);
         sb.append(", vuelo=").append(vuelo.getCodigo());
-        sb.append(", tipoTarifa=").append(tipoTarifa);
-        sb.append(", tipoAsiento=").append(tipoAsiento);
+        sb.append(", dias que falta para el vuelo=").append(vuelo.diasFaltanVuelo());
         sb.append('}');
         return sb.toString();
     }

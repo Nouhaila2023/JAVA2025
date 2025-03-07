@@ -3,10 +3,12 @@ package Tema6.reservasDeVuelos.servicios;
 import Tema6.reservasDeVuelos.entidades.Asiento;
 import Tema6.reservasDeVuelos.entidades.AsientoBusiness;
 import Tema6.reservasDeVuelos.entidades.AsientoTurista;
+import Tema6.reservasDeVuelos.entidades.Pasajero;
 import Tema6.reservasDeVuelos.entidades.enums.TipoAsiento;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -53,7 +55,9 @@ public class Vuelo {
      */
 
 
-    //
+    //devuelve el numero de asientos disponible del tipo
+    //indicado y que no tiene Pasajero asignado
+    //Usamos el getTipo()
     public int verificarDisponiblilidad(TipoAsiento tipoAsiento){
         int cont = 0;
 
@@ -65,10 +69,61 @@ public class Vuelo {
         return cont;
     }
 
+    //devuelve el primer asiento libre enel vuelo del tipo indicado
+    //Usamos el metodo getTipo()
+    public Asiento buscarAsintosDisponible(TipoAsiento tipoAsiento){
+        for (Asiento asiento: asientos){
+            if (asiento.getTipo().equals(tipoAsiento) && asiento.getPasajero() == null){
+                return asiento;
+            }
+        }
+        return null;
+    }
 
+    //Si ese asiento esta desponible, se pone que el Pasajero tiene
+    //Asinto, y que el Asinto es ocupado por el Pasajero
+    public boolean ocupadoAsinto(Asiento asiento, Pasajero pasajero){
 
+        for (Asiento asientos : asientos){
+            if (asientos.getPasajero().equals(pasajero) && asientos.getPasajero() != null){
+                System.out.println("El asiento es ocupado");
+                return false;
+            }
+        }
+        asiento.setPasajero(pasajero);
+        System.out.println("El pasajero " + pasajero.getNombre() + " se ha ocupado el asiento");
+        return true;
+    }
 
+    //se quita el Pasajero del Asinto, y del Pasajero su Asinto queda null
+    //si el asiento tiene pasajero previamente
+    public void liblarAsinto(Asiento asiento){
 
+        if (asiento.getPasajero() == null){
+            System.out.println("El asiento no puede estar vacio");
+        }
+
+        asiento.getPasajero().setAsiento(null);
+        asiento.setPasajero(null);
+        System.out.println("El asiento es ocupado");
+    }
+
+    //devuelve los dias que falta para el vuelo
+    public long diasFaltanVuelo() {
+        return ChronoUnit.DAYS.between(LocalDate.now(), fecha);
+    }
+
+    //devuelve la lista de pasajerod del vuelo
+    public ArrayList<Pasajero> getPasajeros() {
+        ArrayList<Pasajero> pasajeros = new ArrayList<>();
+        for (Asiento asiento : asientos) {
+            if (asiento.getPasajero() != null) {
+                pasajeros.add(asiento.getPasajero()); // Agregar el pasajero correctamente
+                System.out.println("El asiento es ocupado por: " + asiento.getPasajero().getNombre());
+            }
+        }
+        return pasajeros;
+    }
 
     /**
      * Getter Setter
