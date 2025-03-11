@@ -34,37 +34,80 @@ public class ReservaVuelo {
 
     //addPasajero
     public void addPasajero(Pasajero pasajero) {
-        for (Pasajero p : pasajeros) {
-            if (p.equals(pasajero)) {
-                System.out.println("El pasajero existe");
-            }
-            this.pasajeros.add(pasajero);
+
+        if (pasajeros.contains(pasajero)) {
+            System.out.println("El pasajero existe");
+            return;
         }
+        this.pasajeros.add(pasajero);
+
     }
 
     //removePasajero
     public void removePasajero(Pasajero pasajero) {
-        for (Pasajero p : pasajeros) {
-            if (p.equals(pasajero)) {
-                pasajeros.remove(pasajero);
-            }
-            System.out.println("Este pasajero no existe");
-        }
+
+       if (pasajeros.contains(pasajero)) {
+           pasajeros.remove(pasajero);
+       }
+       System.out.println("Este pasajero no existe");
+
     }
 
     //devuelva los asignados a pasajeros
     public ArrayList<Asiento> asientos(){
         ArrayList<Asiento> asientos = new ArrayList<>();
         for (Pasajero p : pasajeros) {
-            System.out.println(p.getAsiento().getId());
-            System.out.println(p.getAsiento().getLetra());
-            System.out.println(p.getAsiento().getFila());
+            if(p.getAsiento() != null) {
+                asientos.add(p.getAsiento());
+            }
         }
 
         return asientos;
     }
 
+    //reservaAsiento
+    public void reservaAsinto(Pasajero pasajero){
+        if (vuelo.verificarDisponiblilidad(tipoAsiento) <= 0) {
+            Asiento asiento = vuelo.buscarAsintosDisponible(tipoAsiento);
+            if (asiento != null) {
+                Pasajero pasajero1 = new Pasajero(pasajero);
+                vuelo.ocupadoAsinto(asiento, pasajero1);
+                pasajeros.add(pasajero1);
+                System.out.println("Reserva correctamente:");
+                System.out.println("Nombre: " + pasajero1.getNombre());
+                System.out.println("Asinto:" + pasajero1.getAsiento());
+            }
+        }else {
+            System.out.println("No hay asientos disponibles en esta tipo");
+        }
 
+
+    }
+    public void reservaAsiento(Pasajero pasajero) {
+        // Verificar si hay disponibilidad de asientos del tipo indicado
+        if (vuelo.verificarDisponiblilidad(tipoAsiento) > 0) {
+            // Buscar un asiento libre del tipo solicitado
+            Asiento asientoDisponible = vuelo.buscarAsintosDisponible(tipoAsiento);
+
+            if (asientoDisponible != null) {
+                // Clonar el pasajero usando su constructor copia
+                Pasajero pasajeroClonado = new Pasajero(pasajero);
+
+                // Ocupar el asiento con el pasajero clonado
+                vuelo.ocupadoAsinto(asientoDisponible, pasajeroClonado);
+
+                // Agregar el pasajero clonado a la lista de la reserva
+                pasajeros.add(pasajeroClonado);
+
+                System.out.println("Reserva realizada con éxito. Pasajero: " + pasajeroClonado.getNombre() +
+                        ", Asiento: " + asientoDisponible.getCodigo());
+            } else {
+                System.out.println("No hay asientos disponibles del tipo solicitado.");
+            }
+        } else {
+            System.out.println("No hay disponibilidad de asientos del tipo " + tipoAsiento);
+        }
+    }
 
 
 
