@@ -26,7 +26,8 @@ public abstract class Persona {
     /**
      * Constructor con todos los parametros
      */
-    public Persona(Long id, String nombre, String apellido, String dniPasaporte, String email, String direccion, String ciudad, String pais, String telefono) {
+    public Persona(Long id, String nombre, String apellido, String dniPasaporte, String email,
+                   String direccion, String ciudad, String pais, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

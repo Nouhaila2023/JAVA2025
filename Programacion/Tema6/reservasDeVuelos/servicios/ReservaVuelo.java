@@ -6,6 +6,7 @@ import Tema6.reservasDeVuelos.entidades.enums.TipoAsiento;
 import Tema6.reservasDeVuelos.entidades.enums.TipoTarifa;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ReservaVuelo {
     /**
@@ -20,8 +21,8 @@ public class ReservaVuelo {
     /**
      * Constructor
      */
-    public ReservaVuelo(Long id, Vuelo vuelo, TipoTarifa tipoTarifa, TipoAsiento tipoAsiento) {
-        this.id = id;
+    public ReservaVuelo( Vuelo vuelo, TipoTarifa tipoTarifa, TipoAsiento tipoAsiento) {
+        this.id = Long.valueOf(UUID.randomUUID().toString());
         this.vuelo = vuelo;
         this.tipoTarifa = tipoTarifa;
         this.tipoAsiento = tipoAsiento;
@@ -66,51 +67,50 @@ public class ReservaVuelo {
     }
 
     //reservaAsiento
-    public void reservaAsinto(Pasajero pasajero){
-        if (vuelo.verificarDisponiblilidad(tipoAsiento) <= 0) {
+    public boolean reservaAsinto(Pasajero pasajero){
+        if (vuelo.verificarDisponiblilidad(tipoAsiento) >= 0) {
             Asiento asiento = vuelo.buscarAsintosDisponible(tipoAsiento);
-            if (asiento != null) {
-                Pasajero pasajero1 = new Pasajero(pasajero);
-                vuelo.ocupadoAsinto(asiento, pasajero1);
-                pasajeros.add(pasajero1);
-                System.out.println("Reserva correctamente:");
-                System.out.println("Nombre: " + pasajero1.getNombre());
-                System.out.println("Asinto:" + pasajero1.getAsiento());
-            }
+
+            Pasajero pasajero1 = new Pasajero(pasajero);
+            vuelo.ocupadoAsinto(asiento, pasajero1);
+            pasajeros.add(pasajero1);
+            System.out.println("Reserva correctamente:");
+            System.out.println("Nombre: " + pasajero1.getNombre());
+            System.out.println("Asinto:" + pasajero1.getAsiento());
+            return true;
+
         }else {
             System.out.println("No hay asientos disponibles en esta tipo");
+            return false;
         }
-
 
     }
-    public void reservaAsiento(Pasajero pasajero) {
-        // Verificar si hay disponibilidad de asientos del tipo indicado
-        if (vuelo.verificarDisponiblilidad(tipoAsiento) > 0) {
-            // Buscar un asiento libre del tipo solicitado
-            Asiento asientoDisponible = vuelo.buscarAsintosDisponible(tipoAsiento);
 
-            if (asientoDisponible != null) {
-                // Clonar el pasajero usando su constructor copia
-                Pasajero pasajeroClonado = new Pasajero(pasajero);
 
-                // Ocupar el asiento con el pasajero clonado
-                vuelo.ocupadoAsinto(asientoDisponible, pasajeroClonado);
+    public double calcularPrecioTotal(){
+        Double precio = 0d;
+        for (Asiento asiento : this.asientos()){
 
-                // Agregar el pasajero clonado a la lista de la reserva
-                pasajeros.add(pasajeroClonado);
 
-                System.out.println("Reserva realizada con éxito. Pasajero: " + pasajeroClonado.getNombre() +
-                        ", Asiento: " + asientoDisponible.getCodigo());
-            } else {
-                System.out.println("No hay asientos disponibles del tipo solicitado.");
-            }
-        } else {
-            System.out.println("No hay disponibilidad de asientos del tipo " + tipoAsiento);
         }
+
+        return 0;
     }
 
 
 
+    public String imprimirBillite(){
+        StringBuffer sb = new StringBuffer();
+        for (Pasajero p : pasajeros){
+            sb.append(p.getDniPasaporte());
+            sb.append("-->");
+            sb.append(p.getAsiento().getCodigo());
+            sb.append("\n");
+        }
+        sb.append("Le total del reservas ").append(this.calcularPrecioTotal());
+
+        return sb.toString();
+    }
 
 
     /**
@@ -161,6 +161,7 @@ public class ReservaVuelo {
         sb.append("id=").append(id);
         sb.append(", vuelo=").append(vuelo.getCodigo());
         sb.append(", dias que falta para el vuelo=").append(vuelo.diasFaltanVuelo());
+        sb.append("billeter=").append(this.imprimirBillite());
         sb.append('}');
         return sb.toString();
     }

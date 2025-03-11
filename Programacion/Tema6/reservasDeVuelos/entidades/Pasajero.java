@@ -23,6 +23,15 @@ public class Pasajero extends Persona {
      * Constructor copia
      */
     public Pasajero(Pasajero otro) {
+        this.id = otro.id;
+        this.nombre = otro.nombre;
+        this.apellido = otro.apellido;
+        this.dniPasaporte = otro.dniPasaporte;
+        this.email = otro.email;
+        this.direccion = otro.direccion;
+        this.ciudad = otro.ciudad;
+        this.pais = otro.pais;
+        this.telefono = otro.telefono;
         this.preferenciasComida = otro.preferenciasComida;
         this.restriccionesMedicas = otro.restriccionesMedicas;
         this.asiento = otro.asiento;

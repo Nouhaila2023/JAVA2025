@@ -28,7 +28,8 @@ public class Vuelo {
     /**
      * Constructor
      */
-    public Vuelo(String codigo, String origen, String destino, LocalDate fecha, LocalTime hora, Double precioBase, Integer asientosDisponibles) {
+    public Vuelo(String codigo, String origen, String destino, LocalDate fecha,
+                 LocalTime hora, Double precioBase, Integer asientosDisponibles) {
         this.codigo = codigo;
         this.origen = origen;
         this.destino = destino;
@@ -43,8 +44,8 @@ public class Vuelo {
             Asiento asiento = new AsientoBusiness(1L+i, this.precioBase, 1, "A", true);
             asientos.add(asiento);
         }
-        for (int i = 0; i < (asientosDisponibles - asintosBusiness); i++) {
-            Asiento asiento = new AsientoTurista(11L+i, this.precioBase, 2,"Z", false);
+        for (int i = (int) asintosBusiness; i < (asientosDisponibles - asintosBusiness); i++) {
+            Asiento asiento = new AsientoTurista(11L+i, this.precioBase, 2,"B", false);
             asientos.add(asiento);
         }
 
@@ -90,6 +91,7 @@ public class Vuelo {
                 return false;
             }
         }
+        pasajero.setAsiento(asiento);
         asiento.setPasajero(pasajero);
         System.out.println("El pasajero " + pasajero.getNombre() + " se ha ocupado el asiento");
         return true;
@@ -110,7 +112,7 @@ public class Vuelo {
 
     //devuelve los dias que falta para el vuelo
     public long diasFaltanVuelo() {
-        return ChronoUnit.DAYS.between(LocalDate.now(), fecha);
+        return ChronoUnit.DAYS.between(LocalDate.now(), this.getFecha());
     }
 
     //devuelve la lista de pasajerod del vuelo

@@ -24,15 +24,13 @@ public abstract class Asiento {
         this.precioBase = precioBase;
         this.fila = fila;
         this.letra = letra;
-        this.pasajero = null;
-        this.tipo = null;
     }
 
     /**
      * Metodos Extra
      */
     public String getCodigo(){
-        return fila + letra;
+        return this.fila + " " + this.letra;
     }
 
     public abstract double calcularPrecio();
@@ -102,7 +100,7 @@ public abstract class Asiento {
     public String toString() {
         final StringBuffer sb = new StringBuffer("Asiento{");
         sb.append("id=").append(id);
-        sb.append(", pasajero=").append(pasajero);//
+        sb.append(", pasajero=").append(pasajero.getDniPasaporte());//
         sb.append(", precioBase=").append(precioBase);
         sb.append(", fila=").append(fila);
         sb.append(", letra='").append(letra).append('\'');

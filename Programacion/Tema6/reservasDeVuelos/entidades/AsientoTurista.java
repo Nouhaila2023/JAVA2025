@@ -55,11 +55,11 @@ public class AsientoTurista extends Asiento {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("AsientoTurista{");
-        sb.append("id=").append(id);
-        sb.append(", precioBase=").append(precioBase);
+        sb.append("codigo=").append(this.getCodigo());
+        sb.append(", precioBase=").append(this.calcularPrecio());
         sb.append(", tipo=").append(tipo);
         sb.append(", ventana=").append(ventana);
-        sb.append(", pasajero=").append(pasajero.getDniPasaporte());
+        sb.append(", pasajero=").append(this.getPasajero().getDniPasaporte());
         sb.append('}');
         return sb.toString();
     }

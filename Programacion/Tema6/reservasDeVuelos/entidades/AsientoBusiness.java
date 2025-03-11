@@ -31,7 +31,7 @@ public class AsientoBusiness extends Asiento{
     public double calcularPrecio() {
         double precioFinal = 0;
         if (comida){
-           return precioBase += 30;
+           return precioBase*1.25 +30;
         }
         return precioFinal = (precioBase * 1.25) ;
     }
@@ -39,13 +39,12 @@ public class AsientoBusiness extends Asiento{
     /**
      * Getter Setter
      */
-    public boolean isVentana() {
+    public boolean isComida() {
         return comida;
     }
 
-    public AsientoBusiness setVentana(boolean ventana) {
-        this.comida = ventana;
-        return this;
+    public void setComida(boolean comida) {
+        this.comida = comida;
     }
 
     /**
@@ -54,10 +53,10 @@ public class AsientoBusiness extends Asiento{
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("AsientoBusiness{");
-        sb.append("id=").append(id);
-        sb.append(", precioBase=").append(precioBase);
+        sb.append("codigo=").append(this.getCodigo());
+        sb.append(", precioBase=").append(this.calcularPrecio());
         sb.append(", tipo=").append(tipo);
-        sb.append(", pasajero=").append(pasajero);
+        sb.append(", pasajero=").append(this.getPasajero());
         sb.append(", ventana=").append(comida);
         sb.append('}');
         return sb.toString();
