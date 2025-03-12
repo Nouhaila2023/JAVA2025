@@ -55,12 +55,10 @@ public class ReservaVuelo {
     }
 
     //devuelva los asignados a pasajeros
-    public ArrayList<Asiento> asientos(){
+    public ArrayList<Asiento> getAsientos(){
         ArrayList<Asiento> asientos = new ArrayList<>();
         for (Pasajero p : pasajeros) {
-            if(p.getAsiento() != null) {
-                asientos.add(p.getAsiento());
-            }
+            asientos.add(p.getAsiento());
         }
 
         return asientos;
@@ -68,15 +66,13 @@ public class ReservaVuelo {
 
     //reservaAsiento
     public boolean reservaAsinto(Pasajero pasajero){
-        if (vuelo.verificarDisponiblilidad(tipoAsiento) >= 0) {
-            Asiento asiento = vuelo.buscarAsintosDisponible(tipoAsiento);
+        if (this.getVuelo().verificarDisponiblilidad(this.tipoAsiento) >= 0) {
+            Asiento asiento = this.vuelo.buscarAsintosDisponible(this.tipoAsiento);
 
-            Pasajero pasajero1 = new Pasajero(pasajero);
-            vuelo.ocupadoAsinto(asiento, pasajero1);
-            pasajeros.add(pasajero1);
-            System.out.println("Reserva correctamente:");
-            System.out.println("Nombre: " + pasajero1.getNombre());
-            System.out.println("Asinto:" + pasajero1.getAsiento());
+            Pasajero nuevo = new Pasajero(pasajero);
+            this.getVuelo().ocupadoAsinto(asiento, nuevo);
+            this.addPasajero(nuevo);
+
             return true;
 
         }else {
@@ -88,26 +84,35 @@ public class ReservaVuelo {
 
 
     public double calcularPrecioTotal(){
-        Double precio = 0d;
-        for (Asiento asiento : this.asientos()){
+        Double precioTotal = 0d;
+        for (Asiento asiento : this.getAsientos()){
+            if (this.tipoTarifa.equals(TipoTarifa.CONFORT)){
+                precioTotal += 1.15 * asiento.calcularPrecio();
+            }
 
+            if (this.tipoTarifa.equals(TipoTarifa.OPTIMA)){
+                precioTotal += 1.1 * asiento.calcularPrecio();
+            }
 
+            if (this.tipoTarifa.equals(TipoTarifa.FLEXIBLE)){
+                precioTotal += 1.30 * asiento.calcularPrecio();
+            }
         }
-
-        return 0;
+        return precioTotal;
     }
 
 
-
-    public String imprimirBillite(){
+    public String imprimirBilletes(){
         StringBuffer sb = new StringBuffer();
-        for (Pasajero p : pasajeros){
-            sb.append(p.getDniPasaporte());
-            sb.append("-->");
-            sb.append(p.getAsiento().getCodigo());
+        for (Pasajero pasajero :this.getPasajeros()){
+            sb.append(pasajero.getDireccion());
+            sb.append(" -> ");
+            sb.append(pasajero.getAsiento().getCodigo());
             sb.append("\n");
         }
-        sb.append("Le total del reservas ").append(this.calcularPrecioTotal());
+
+        sb.append("Precio total = ");
+        sb.append(this.calcularPrecioTotal());
 
         return sb.toString();
     }
@@ -161,7 +166,7 @@ public class ReservaVuelo {
         sb.append("id=").append(id);
         sb.append(", vuelo=").append(vuelo.getCodigo());
         sb.append(", dias que falta para el vuelo=").append(vuelo.diasFaltanVuelo());
-        sb.append("billeter=").append(this.imprimirBillite());
+        sb.append("billeter=").append(this.imprimirBilletes());
         sb.append('}');
         return sb.toString();
     }

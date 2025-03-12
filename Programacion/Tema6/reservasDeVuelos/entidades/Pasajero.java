@@ -37,6 +37,10 @@ public class Pasajero extends Persona {
         this.asiento = otro.asiento;
     }
 
+    public Pasajero() {
+
+    }
+
     /**
      * Getter Setter
      */
