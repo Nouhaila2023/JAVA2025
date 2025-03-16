@@ -15,12 +15,21 @@ public class Jugador {
     /**
      * Constructor
      */
-    public Jugador(String nombre,Casilla token, Double cantidadDinero) {
+    public Jugador(String nombre,Casilla token) {
         this.token = token;
-        this.cantidadDinero = cantidadDinero;
+        this.cantidadDinero = 100.0;
         this.propiedades = new ArrayList<>();
         this.nombre = nombre;
     }
+    
+    public void comprar(Propiedad propiedade) {
+        this.propiedades.add(propiedade);
+        this.cantidadDinero -= propiedade.getPrecioCompra();
+        propiedade.setConprada(true);
+        
+    }
+
+
 
     /**
      * Getter Setter

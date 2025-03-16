@@ -17,27 +17,41 @@ public class Tablero {
     }
 
     /**
+     * Tablero: Esta clase representa el tablero de juego. Debe tener una lista de
+     * casillas y métodos para mover los tokens de los jugadores
+     */
+    /**
      * Atributos
      */
     private ArrayList<Casilla> casillas;
 
-    public void moverToken(){
+    /*public void moverToken(){
         int tirada = numero_aleatorio(1,6);
 
         for (Casilla c : casillas){
             int mover = c.getPosicion()+tirada;
-            if (mover<=15){
+
+            /*if (mover<=casillas.size()){
                 c.setPosicion(mover);
-            }else if (mover>15){
+            }else if (mover>casillas.size()){
                 c.setPosicion(1);
-            }
+           }
+       }
+    }*/
+
+    public void mover(Propiedad p){
+        int tirada = numero_aleatorio(1,6);
+        if (!p.getComprada()){
+
         }
 
     }
 
 
-
-
-
-
+    /**
+     * Constructor
+     */
+    public Tablero() {
+        casillas = new ArrayList<>(15);
+    }
 }
