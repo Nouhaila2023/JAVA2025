@@ -19,7 +19,23 @@ public class Tablero {
     /**
      * Atributos
      */
+
     private ArrayList<Casilla> casillas;
+
+
+    public void addCasilla(Casilla casilla) {
+        this.casillas.add(casilla);
+    }
+
+
+
+    public Casilla buscarCasilla(Integer numeroCasilla){
+        for (Casilla c: this.casillas) {
+            if (c.getPosicion().equals(numeroCasilla))
+                return c;
+        }
+        return null;
+    }
 
     /*public void moverToken(){
         int tirada = numero_aleatorio(1,6);
