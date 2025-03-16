@@ -23,9 +23,12 @@ public class Jugador {
     }
     
     public void comprar(Propiedad propiedade) {
-        this.propiedades.add(propiedade);
-        this.cantidadDinero -= propiedade.getPrecioCompra();
-        propiedade.setConprada(true);
+        if(cantidadDinero >= propiedade.getPrecioCompra()){
+            this.propiedades.add(propiedade);
+            this.cantidadDinero -= propiedade.getPrecioCompra();
+            propiedade.setConprada(true);
+            System.out.println(nombre + " compró " + propiedade.getNombre());
+        }
         
     }
 

@@ -69,11 +69,7 @@ public class Juego {
 
 
     }
-    public void mover(Propiedad p){
-        if (!p.getComprada()){
-            //j1.getCantidadDinero() += p.getPrecioPagar();
-        }
-    }
+
     /**
      * metodo para generar numero aleatorio
      * @param min

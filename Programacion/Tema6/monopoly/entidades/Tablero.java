@@ -17,10 +17,6 @@ public class Tablero {
     }
 
     /**
-     * Tablero: Esta clase representa el tablero de juego. Debe tener una lista de
-     * casillas y métodos para mover los tokens de los jugadores
-     */
-    /**
      * Atributos
      */
     private ArrayList<Casilla> casillas;
