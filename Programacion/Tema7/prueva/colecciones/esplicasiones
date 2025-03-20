@@ -1,0 +1,28 @@
+¿Qué son las colecciones en Java?
+En Java, una colección es una estructura de datos que agrupa y gestiona un conjunto de elementos
+(objetos). En vez de trabajar con variables sueltas, las colecciones te permiten almacenar y manipular
+grupos de datos de manera eficiente.
+
+|-----------------------------------------------------------------------------------------|
+|Tipo	|   Descripción rápida                                                            |
+|-----------------------------------------------------------------------------------------|
+|List	|   Lista ordenada que permite duplicados. (ArrayList, LinkedList)                |
+|Set	|   Conjunto que NO permite duplicados. (HashSet, TreeSet)                        |
+|Map	|   Estructura tipo clave/valor (key/value). (HashMap, TreeMap)                   |
+|Queue	|   Cola (FIFO: primero en entrar, primero en salir). (LinkedList, PriorityQueue) |
+------------------------------------------------------------------------------------------
+
+
+تخزين وتجميع عدة عناصر داخل بنية واحدة.
+تسهّل عليك التعامل مع البيانات مثل:
+➡️ الإضافة
+➡️ الحذف
+➡️ البحث
+➡️ الترتيب
+➡️ التكرار عبر for-each أو iterato
+
+
+
+Set (مجموعة)	مجموعة بدون تكرار للعناصر (مثل HashSet, TreeSet).
+Map (خريطة)	خريطة تربط مفتاح مع قيمة (key/value) (مثل HashMap, TreeMap).
+Queue (طابور)	طابور (أول داخل = أول خارج FIFO) (مثل LinkedList, PriorityQueu
