@@ -1,0 +1,139 @@
+Claro, te explico cada uno de los métodos de la **interfaz `Collection`** de Java de manera clara y con ejemplos sencillos.
+
+### 1. `int size()`
+- **¿Qué hace?**
+  Devuelve la cantidad de elementos que hay actualmente en la colección.
+
+- **Ejemplo:**
+  ```java
+  Collection<String> frutas = new ArrayList<>();
+  frutas.add("Manzana");
+  frutas.add("Banana");
+  System.out.println(frutas.size()); // Salida: 2
+  ```
+
+---
+
+### 2. `boolean isEmpty()`
+- **¿Qué hace?**
+  Retorna `true` si la colección está vacía, es decir, no tiene elementos. Devuelve `false` si tiene al menos uno.
+
+- **Ejemplo:**
+  ```java
+  Collection<String> frutas = new ArrayList<>();
+  System.out.println(frutas.isEmpty()); // Salida: true
+
+  frutas.add("Uva");
+  System.out.println(frutas.isEmpty()); // Salida: false
+  ```
+
+---
+
+### 3. `boolean contains(Object element)`
+- **¿Qué hace?**
+  Devuelve `true` si la colección contiene el elemento que le pasas como parámetro, sino devuelve `false`.
+
+- **Ejemplo:**
+  ```java
+  Collection<String> frutas = new ArrayList<>();
+  frutas.add("Mango");
+  frutas.add("Piña");
+
+  System.out.println(frutas.contains("Mango")); // Salida: true
+  System.out.println(frutas.contains("Fresa")); // Salida: false
+  ```
+
+---
+
+### 4. `boolean add(E element)`
+- **¿Qué hace?**
+  Añade un elemento a la colección y devuelve `true` si se agregó correctamente.
+
+- **Ejemplo:**
+  ```java
+  Collection<String> frutas = new ArrayList<>();
+  frutas.add("Melón"); // Se agrega "Melón"
+  frutas.add("Sandía"); // Se agrega "Sandía"
+
+  System.out.println(frutas); // Salida: [Melón, Sandía]
+  ```
+
+---
+
+### 5. `boolean remove(Object element)`
+- **¿Qué hace?**
+  Elimina de la colección el elemento que le pases como parámetro. Si lo encuentra y lo elimina, devuelve `true`. Si no lo encuentra, devuelve `false`.
+
+- **Ejemplo:**
+  ```java
+  Collection<String> frutas = new ArrayList<>();
+  frutas.add("Papaya");
+  frutas.add("Kiwi");
+
+  frutas.remove("Papaya"); // Devuelve true y elimina "Papaya"
+  System.out.println(frutas); // Salida: [Kiwi]
+
+  boolean resultado = frutas.remove("Naranja"); // Devuelve false
+  System.out.println(resultado); // Salida: false
+  ```
+
+---
+
+### 6. `Iterator<E> iterator()`
+- **¿Qué hace?**
+  Crea un **iterador**, que es un objeto que permite recorrer la colección uno por uno.
+
+- **Ejemplo:**
+  ```java
+  Collection<String> frutas = new ArrayList<>();
+  frutas.add("Lima");
+  frutas.add("Pera");
+  frutas.add("Mandarina");
+
+  Iterator<String> it = frutas.iterator();
+  while (it.hasNext()) {
+      String fruta = it.next();
+      System.out.println(fruta);
+  }
+  // Salida:
+  // Lima
+  // Pera
+  // Mandarina
+  ```
+
+---
+
+### 7. `Object[] toArray()`
+- **¿Qué hace?**
+  Convierte la colección a un array de tipo `Object[]`. Luego puedes tratarlo como un arreglo normal.
+
+- **Ejemplo:**
+  ```java
+  Collection<String> frutas = new ArrayList<>();
+  frutas.add("Cereza");
+  frutas.add("Granada");
+
+  Object[] arrayFrutas = frutas.toArray();
+  for (Object obj : arrayFrutas) {
+      System.out.println(obj);
+  }
+  // Salida:
+  // Cereza
+  // Granada
+  ```
+
+---
+
+### 📝 **Resumen rápido**
+
+| Método                  | ¿Qué hace?                                                      |
+|-------------------------|-----------------------------------------------------------------|
+| `size()`                | Devuelve cuántos elementos hay en la colección                  |
+| `isEmpty()`             | Dice si la colección está vacía o no                            |
+| `contains(element)`     | Verifica si un elemento existe dentro de la colección           |
+| `add(element)`          | Añade un elemento a la colección                                |
+| `remove(element)`       | Elimina un elemento si está presente                            |
+| `iterator()`            | Te da un iterador para recorrer uno a uno los elementos         |
+| `toArray()`             | Convierte la colección en un arreglo (`Object[]`)               |
+
+¿Te gustaría que también te muestre cómo sería esto con otras implementaciones de `Collection` como `HashSet` o `LinkedList`?
