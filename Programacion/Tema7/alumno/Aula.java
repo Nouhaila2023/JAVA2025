@@ -7,22 +7,18 @@ public class Aula {
     /**
      * Atributos
      */
-    protected ArrayList<Alumno> alumnos;
-    protected String nombre;
-    protected String ubicacion;
-    protected String ambas;
+    private ArrayList<Alumno> alumnos;
+    private String nombre;
+    private String ubicacion;
+
 
 
     /**
      * Constructor
-     * @param nombre
-     * @param ubicacion
-     * @param ambas
      */
-    public Aula(String nombre, String ubicacion, String ambas) {
+    public Aula(String nombre, String ubicacio) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
-        this.ambas = ambas;
         this.alumnos = new ArrayList<>();
     }
 
@@ -81,14 +77,6 @@ public class Aula {
         this.ubicacion = ubicacion;
     }
 
-    public String getAmbas() {
-        return ambas;
-    }
-
-    public void setAmbas(String ambas) {
-        this.ambas = ambas;
-    }
-
     /**
      * toString
      */
@@ -98,7 +86,6 @@ public class Aula {
         sb.append("alumnos=").append(alumnos);
         sb.append(", nombre='").append(nombre).append('\'');
         sb.append(", ubicacion='").append(ubicacion).append('\'');
-        sb.append(", ambas='").append(ambas).append('\'');
         sb.append('}');
         return sb.toString();
     }
