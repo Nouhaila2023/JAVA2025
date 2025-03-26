@@ -47,8 +47,7 @@ public class CitaConsulta {
      */
 
     public void listarCitasPorNombre(){
-        citas.sort(Comparator.comparing(Cita::getPacienta).reversed());
-        pintarElementos(citas);
+
 
     }
 
@@ -58,8 +57,7 @@ public class CitaConsulta {
      */
 
     public void listarCitasPorApellido(){
-        citas.sort(Comparator.comparing(Cita::getPacienta).reversed());
-        pintarElementos(citas);
+
     }
 
     /**
@@ -67,25 +65,7 @@ public class CitaConsulta {
      */
 
     public void listarCitaFA(){
-        citas.sort(new Comparator<Cita>() {
-            @Override
-            public int compare(Cita o1, Cita o2) {
-                if (o2.getFecha().compareTo(o1.getPacienta().getApellidos()) == 0) {
 
-
-                    return o1.getPacienta().getApellidos().compareTo(o2.getPacienta().getApellidos());
-
-
-                } else {
-
-
-                    return o2.getFecha().compareTo(o1.getFecha());
-
-
-                }
-            }
-        });
-        pintarElementos(citas);
     }
 
 
@@ -93,10 +73,10 @@ public class CitaConsulta {
      * toString
      */
 
-        public String pintarElementos(ArrayList<Cita> cita) {
-            final StringBuffer sb = new StringBuffer("CitaConsulta{");
-            sb.append("citas=").append(citas);
-            sb.append('}');
-            return sb.toString();
-        }
+    public String pintarElementos(ArrayList<Cita> cita) {
+        final StringBuffer sb = new StringBuffer("CitaConsulta{");
+        sb.append("citas=").append(citas);
+        sb.append('}');
+        return sb.toString();
     }
+}
