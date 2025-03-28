@@ -1,0 +1,11 @@
+Característica	        List.of()	           Arrays.asList()
+
+Mutabilidad	            Inmutable           	Mutable (limitada: no se puede cambiar el tamaño)
+
+Nulos	                Sin permite	            Permita
+
+Respaldo del array	    Crea una copia	        Respalda el array original
+
+Modificación de tamaño	No se puede modificar	No se puede modificar
+
+Lanzamiento	            Java 9	                Versiones más antiguas
