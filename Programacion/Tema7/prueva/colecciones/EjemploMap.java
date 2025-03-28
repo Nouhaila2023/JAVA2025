@@ -13,7 +13,6 @@ public class EjemploMap {
         map.put("B", 2);
         map.put("C", 3);
 
-
         // طباعة الخريط
         System.out.println("Continido del mapa: " + map);
 
