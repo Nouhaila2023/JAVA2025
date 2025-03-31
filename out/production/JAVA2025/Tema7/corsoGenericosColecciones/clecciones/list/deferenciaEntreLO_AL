@@ -9,3 +9,13 @@ Respaldo del array	    Crea una copia	        Respalda el array original
 Modificación de tamaño	No se puede modificar	No se puede modificar
 
 Lanzamiento	            Java 9	                Versiones más antiguas
+
+**¿Cuándo usar iterator()?
+El método iterator() se usa cuando necesitas recorrer una colección usando un iterador en lugar de un bucle for tradicional.
+
+**¿Cuándo usar hasNext()?
+El método hasNext() se usa para verificar si quedan más elementos en la colección antes de intentar acceder al siguiente.
+
+**¿Cuándo usar next()?
+El método next() se usa para obtener el siguiente elemento de la colección.
+Debe llamarse solo si hasNext() devuelve true, porque si no hay más elementos, lanza una NoSuchElementException.
