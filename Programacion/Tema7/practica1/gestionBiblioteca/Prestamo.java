@@ -23,8 +23,30 @@ public class Prestamo {
     }
 
     /**
-     *
+     *devolverLibro: que actualiza la fecha de devolucion
+     * con la decha actual
      */
+
+    public void devolverLibro() {
+         if (fechaDeDevolucion != null) {
+             System.out.println("Devolver libro el dia: " + fechaDeDevolucion);
+         }else {
+             fechaDeDevolucion = LocalDate.now();
+         }
+    }
+
+    /**
+     * estaActivo: quw devuelva true si el libre aun no ha si dodevuelto
+     * fechaDevolucion == null
+     */
+
+    public boolean estaActivo(){
+        if (fechaDeDevolucion == null) {
+            return true;
+        }
+        return false;
+    }
+
 
     /**
      * Getter Setter
