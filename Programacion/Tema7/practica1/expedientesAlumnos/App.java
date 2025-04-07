@@ -33,11 +33,14 @@ public class App {
         ex2.addNotas(n2);
 
 
-        /*CentroEducativo centro = new CentroEducativo( , "Centro1", "Madrid",
+        CentroEducativo centro = new CentroEducativo("Centro1", "Madrid",
                 "Calle Mayor", "98765432", "centro1@gmail.com");
 
-        centro.addExpediente(ex1);*/
+        centro.addExpediente(ex1);
+        ///System.out.println(centro.buscarExpediente("Y123456"));
+           centro.buscarExpediente("Y123456");
 
+        centro.buscarExpediente("Y123410");
 
 
 

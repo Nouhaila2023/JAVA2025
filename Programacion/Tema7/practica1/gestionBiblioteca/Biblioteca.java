@@ -1,10 +1,7 @@
 package Tema7.practica1.gestionBiblioteca;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Biblioteca {
     /**
@@ -32,7 +29,7 @@ public class Biblioteca {
         this.email = email;
         catalogo = new HashMap<>();
         usuarios = new HashMap<>();
-        prestamos = new TreeMap<>();
+        prestamos = new TreeMap<>(Comparator.comparing(Usuario::getDNI));
     }
 
     /**
@@ -82,13 +79,16 @@ public class Biblioteca {
     public void prestarLibro(String dni, String isbn) {
         if (!catalogo.containsKey(isbn)){
             System.out.println("No esta desponible el libro");
+            return;
         }
         if (!usuarios.containsKey(dni)){
             System.out.println("No esta desponible el usuario");
+            return;
         }
 
         if(!esLibroDisponible(isbn)){
             System.out.println("El libro no se puede esta presado");
+            return;
         }
 
         Libro libro = catalogo.get(isbn);
@@ -116,9 +116,11 @@ public class Biblioteca {
 
         if (!catalogo.containsKey(isbn)){
             System.out.println("No esta desponible el libro");
+            return;
         }
         if (!usuarios.containsKey(dni)){
             System.out.println("No esta desponible el usuario");
+            return;
         }
 
         Usuario usuario = usuarios.get(dni);
@@ -146,10 +148,12 @@ public class Biblioteca {
 
         if (!catalogo.containsKey(dni)){
             System.out.println("No encuntra este usuario");
+            return;
         }
 
         if (!prestamos.containsKey(usuarios.get(dni))){
             System.out.println("El usuario no tiene prestamos:");
+            return;
         }
 
         System.out.println("Prestamos del usuario:");
@@ -169,7 +173,6 @@ public class Biblioteca {
                 System.out.println(l);
             }
         }
-
 
     }
 

@@ -37,8 +37,9 @@ public class NotasCurso {
     public void addNotas(String asignatura, Double nota){
         if (nota <= 10 && nota >= 0){
             notas.put(asignatura, nota);
+        }else {
+            System.out.println("La nota debe estar entre 10 y 0");
         }
-        System.out.println("La nota debe estar entre 10 y 0");
     }
 
     /**

@@ -1,5 +1,6 @@
 package Tema7.practica1.expedientesAlumnos;
 
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.TreeSet;
 
@@ -17,8 +18,16 @@ public class CentroEducativo {
     /**
      * Constructor
      */
-    public CentroEducativo(TreeSet<Expediente> expediente, String nombreCentro, String direccion, String localidad, String telefono, String email) {
-        this.expediente = expediente;
+    public CentroEducativo(String nombreCentro, String direccion, String localidad, String telefono, String email) {
+        this.expediente = new TreeSet<>(
+                new Comparator<Expediente>() {
+                    @Override
+                    public int compare(Expediente o1, Expediente o2) {
+                        return o1.getEstudiante().getDni().compareTo(o2.getEstudiante().getDni());
+                    }
+                }
+
+        );
         this.nombreCentro = nombreCentro;
         this.direccion = direccion;
         this.localidad = localidad;

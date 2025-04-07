@@ -2,7 +2,7 @@ package Tema7.practica1.gestionBiblioteca;
 
 import java.util.Objects;
 
-public class Usuario implements Comparable<Usuario>{
+public class Usuario {
     /**
      * Atributos
      */
@@ -101,8 +101,5 @@ public class Usuario implements Comparable<Usuario>{
         return Objects.hashCode(DNI);
     }
 
-    @Override
-    public int compareTo(Usuario o) {
-        return this.DNI.compareTo(o.getDNI());
-    }
+
 }
