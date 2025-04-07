@@ -39,7 +39,7 @@ public class Biblioteca {
      * addLibro: para añadir libre al cataligo.
      * @param libro
      */
-    private void addLibre(Libro libro) {
+    public void addLibro(Libro libro) {
         if (!catalogo.containsKey(libro.getISBN())){
             catalogo.put(libro.getISBN() , libro);
         }
@@ -80,16 +80,97 @@ public class Biblioteca {
      */
 
     public void prestarLibro(String dni, String isbn) {
-        /*Libro libro = esLibroDisponible(isbn);
+        if (!catalogo.containsKey(isbn)){
+            System.out.println("No esta desponible el libro");
+        }
+        if (!usuarios.containsKey(dni)){
+            System.out.println("No esta desponible el usuario");
+        }
 
+        if(!esLibroDisponible(isbn)){
+            System.out.println("El libro no se puede esta presado");
+        }
 
-        if (libro == null){
-            if (usuarios.containsKey(dni)){
-                Prestamo prestamo = new Prestamo(usuario, libro, LocalDate.now());
-            }
+        Libro libro = catalogo.get(isbn);
+        Usuario usuario = usuarios.get(dni);
+
+        Prestamo prestamo = new Prestamo(usuario, libro, LocalDate.now());
+
+        if (!prestamos.containsKey(usuario)){
+            HashSet<Prestamo> nuevo = new HashSet<>();
+            nuevo.add(prestamo);
+            prestamos.put(usuario, nuevo);
         }else {
-            System.out.println("El libro no es de disponible");
-        }*/
+            HashSet<Prestamo> nuevo = prestamos.get(usuario);
+            nuevo.add(prestamo);
+        }
+
+    }
+
+    /**
+     * devolverLibro(String dni, String isbn), que marca el libro como devuelto si existe
+     * un préstamo activo
+     */
+
+    public void devolverLibro(String isbn, String dni) {
+
+        if (!catalogo.containsKey(isbn)){
+            System.out.println("No esta desponible el libro");
+        }
+        if (!usuarios.containsKey(dni)){
+            System.out.println("No esta desponible el usuario");
+        }
+
+        Usuario usuario = usuarios.get(dni);
+        Libro libro = catalogo.get(isbn);
+
+        for (Prestamo p : prestamos.get(usuario)){
+            if (p.getLibro().equals(libro) && p.estaActivo()){
+                p.devolverLibro();
+                System.out.println("Devolver libro");
+                return;
+            }
+        }
+
+        System.out.println("No se encontrodo");
+    }
+
+
+
+    /**
+     * buscarPrestamosUsuario: que devuelve todos los libros
+     * que ha pedido prestados un usuario
+     */
+
+    public void buscarPrestamosUsuario(String dni){
+
+        if (!catalogo.containsKey(dni)){
+            System.out.println("No encuntra este usuario");
+        }
+
+        if (!prestamos.containsKey(usuarios.get(dni))){
+            System.out.println("El usuario no tiene prestamos:");
+        }
+
+        System.out.println("Prestamos del usuario:");
+        for (Prestamo p : prestamos.get(usuarios.get(dni))){
+            System.out.println(p);
+        }
+
+    }
+
+    /**
+     * listarLibrosDisponibles(), que muestra todos los libros no prestados.
+     */
+    public void listarLibrosDisponible(){
+
+        for (Libro l : catalogo.values()){
+            if (esLibroDisponible(l.getISBN())){
+                System.out.println(l);
+            }
+        }
+
+
     }
 
 
