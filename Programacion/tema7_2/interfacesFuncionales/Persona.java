@@ -1,4 +1,4 @@
-package tema7_2;
+package tema7_2.interfacesFuncionales;
 
 public class Persona {
 

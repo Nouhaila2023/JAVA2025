@@ -1,6 +1,4 @@
-package tema7_2;
-
-import Tema5.ArraysList.ArrayList1;
+package tema7_2.interfacesFuncionales;
 
 import java.util.ArrayList;
 import java.util.Comparator;
