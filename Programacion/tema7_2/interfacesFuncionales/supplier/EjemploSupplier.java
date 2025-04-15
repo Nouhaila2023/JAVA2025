@@ -4,6 +4,7 @@ import tema7_2.interfacesFuncionales.Persona;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,9 +24,17 @@ public class EjemploSupplier {
                 .peek(System.out::println)
                 .collect(Collectors.toSet());
 
-        Set<Double> numbers = Stream.generate(Math::random)
-                .limit(10)
-                .peek(System.out::println)
-                .collect(Collectors.toSet());
+        System.out.println("**********************************+");
+
+        Stream.generate(() -> new Persona(UUID.randomUUID().toString(), "email@gmail.com"))
+                .limit(5)
+                .forEach(System.out::println);
+
+        System.out.println("**********************************+");
+
+        number.forEach(System.out::println);
+
+
+
     }
 }
