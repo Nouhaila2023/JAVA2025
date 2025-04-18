@@ -1,6 +1,5 @@
-package tema7_2.stremas.canciones;
+package tema7_2.ejercicioClaseStreams.canciones;
 
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -84,8 +83,7 @@ public class App {
 
         canciones.stream()
                         .filter( c -> c.getDuracionSegs() >= 90.0)
-                                .findAny()
-                                        .orElseThrow();
+                        .forEach(System.out::println);
 
 
 
@@ -102,9 +100,56 @@ public class App {
 
         System.out.println("--------------------------------------------------");
 
+        //9. Genera una lista: titulo – artista, de todas las canciones ordenada
+
+        List<String> listar = canciones.stream()
+                .map(c -> c.getTitulo() + "-" + c.getArtista().getNombre())
+                .toList();
+
+        listar.forEach(System.out::println);
 
 
         System.out.println("--------------------------------------------------");
+
+        //10. Muestra la duración media de las canciones
+
+        Integer sumDuracion = canciones.stream().mapToInt(Cancion::getDuracionSegs).sum();
+        Long cont = (long) canciones.size();
+
+        System.out.println(sumDuracion / cont);
+
+        Double mediaDuracion = canciones.stream()
+                .mapToInt(Cancion::getDuracionSegs)
+                .average()
+                .orElseThrow();
+        System.out.println(mediaDuracion);
+
+
+        System.out.println("--------------------------------------------------");
+
+        //11. Muestra las estadísticas de popularidad (summarizingDouble)
+
+        Double mediaPopularidad = canciones.stream()
+                .collect(Collectors.summarizingDouble(Cancion::getPopularidad))
+                .getAverage();
+
+        System.out.println(mediaPopularidad);
+
+
+        System.out.println("--------------------------------------------------");
+
+        //12. Muestra el promedio de popularidad por género.
+
+        Map<Genero, Double> promedioPopularidadPorGenero = canciones.stream()
+                .collect(Collectors.groupingBy(
+                        Cancion::getGenero,
+                        Collectors.averagingDouble(Cancion::getPopularidad)
+                ));
+
+        promedioPopularidadPorGenero.forEach((genero, promedio) ->
+                System.out.println(genero + ": " + promedio));
+
+
 
 
 

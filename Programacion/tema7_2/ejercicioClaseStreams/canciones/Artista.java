@@ -1,4 +1,4 @@
-package tema7_2.stremas.canciones;
+package tema7_2.ejercicioClaseStreams.canciones;
 
 public class Artista {
 
