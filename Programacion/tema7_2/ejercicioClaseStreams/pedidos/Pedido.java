@@ -12,7 +12,7 @@ public class Pedido {
     private Cliente cliente;
     private Set<Producto> productos;
 
-    public Pedido(Long id, LocalDate fechaPedido, LocalDate fechaEnvio, Estado estado, Cliente cliente) {
+    public Pedido(Long id,  Cliente cliente,  Estado estado, LocalDate fechaPedido, LocalDate fechaEnvio) {
         this.id = id;
         this.fechaPedido = fechaPedido;
         this.fechaEnvio = fechaEnvio;
