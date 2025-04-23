@@ -148,10 +148,9 @@ public class Test {
         System.out.println("*************************************************************************");
 
         registros.stream()
-                .mapToDouble(Registro::getTemperatura)  // نحولها لـ DoubleStream
+                .mapToDouble(Registro::getTemperatura)
                 .average()
-                .ifPresent(System.out::println);
-
+                .orElseThrow();
 
     }
 }
