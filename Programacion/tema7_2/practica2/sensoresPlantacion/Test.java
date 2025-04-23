@@ -150,8 +150,7 @@ public class Test {
         registros.stream()
                 .mapToDouble(Registro::getTemperatura)
                 .average()
-                .ifPresent(System.out::println);
-
+                .orElseThrow();
 
     }
 }

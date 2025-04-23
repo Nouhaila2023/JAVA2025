@@ -2,6 +2,7 @@ package tema7_2.ejercicioClaseStreams.pedidos;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class Test {
@@ -64,6 +65,11 @@ public class Test {
                 .forEach(System.out::println);
 
 
+        pedidos.stream()
+                .filter( p -> p.getProductos().stream()
+                        .anyMatch( pr -> pr.getCategoria().equals(Categoria.JUEGOS))) //devuelva un booleano
+                        .forEach( f -> System.out.println(f.getId()));
+
 
          /*3. Genera una lista con todos los Productos, pero cambia su precio para que lleven un 10%
                 de descuento*/
@@ -81,6 +87,11 @@ public class Test {
 
         productos.forEach(System.out::println);
 
+        List<Producto> prodo = Stream.of(prod1,prod2,prod3,prod4,prod5,prod6,prod7,prod8,prod9,prod10,prod11
+                                        ,prod12,prod13,prod14,prod15)
+                .peek( p -> p.setPrecio(p.getPrecio() * 0.9))
+                        .toList();
+        prodo.forEach(System.out::println);
 
         /*4. Saca los productos que aparecen en los pedidos de clientes de nivel 2, realizados entre
         el 01-04-2025 y el 01-05-2025. Hay que usar flatmap para unir todos los productos de
@@ -103,6 +114,12 @@ public class Test {
         productosClientesNivel2.forEach(System.out::println);
 
 
+
+
+
+
+
+
         /*5. Muestra el producto más caro de la categoría Juegos*/
         System.out.println("*************************************************************************************************************************************");
 
@@ -117,7 +134,7 @@ public class Test {
         System.out.println("*************************************************************************************************************************************");
 
         pedidos.stream()
-                .sorted(Comparator.comparing(Pedido::getFechaPedido).reversed())  // ترتيب الطلبات حسب التاريخ من الأحدث
+                .sorted(Comparator.comparing(Pedido::getFechaPedido).reversed())
                 .limit(2)
                 .forEach(System.out::println);
 
@@ -155,6 +172,48 @@ public class Test {
         System.out.println(totalAbril );
 
 
+        /*9. Obtén una colección de estadísticas de los Juegos: número, media, máximo, mínimo,
+        total. Hay que usar el método de Streams summaryStatistics() que devuelve un
+        DoubleSummaryStatistics.*/
+        System.out.println("*************************************************************************************************************************************");
+
+        DoubleSummaryStatistics dss = Stream.of(prod1,prod2,prod3,prod4,prod5,prod6,prod7,prod8,prod9,prod10,
+                prod11,prod12,prod13,prod14,prod15)
+                .filter( p -> p.getCategoria().equals(Categoria.JUEGOS))
+                        .collect(Collectors.summarizingDouble((Producto::getPrecio)));
+        System.out.println(dss.getMax());
+        System.out.println(dss.getMin());
+        System.out.println(dss.getAverage());
+        System.out.println(dss.getSum());
+        System.out.println(dss.getCount());
+
+        /*10. Genera un Map<Long, Integer> donde como clave aparezca el id de pedido y como
+        valor el número de productos en el pedido. Collectors.toMap, que el primer parámetro
+        será función lambda para quedarnos con el id, y el segundo parámetro una función
+        lambda para el tamaño del Set de productos.*/
+        System.out.println("*************************************************************************************************************************************");
+
+        Map<Long, Integer> pedidoClaveValor = pedidos.stream()
+                .collect(Collectors.toMap(Pedido::getId, p -> p.getProductos().size()));
+        pedidoClaveValor.forEach((c,v) ->
+                        System.out.println( c + " -> " + v ));
+
+        /*11. Genera un Map<Pedido, Double> donde la clave sea cada pedido y el valor sea el total
+        del pedido. Hay que usar Collectors.toMap pero al poner la clave es el propio pedido,
+        se pone Function.identity() en el primer parámetro de Collectors.toMap.*/
+        System.out.println("*************************************************************************************************************************************");
+
+
+
+       /*12. Genera un Map<String, List<Producto>> con la clave la categoría, y el valor los
+        productos de esa categoría. Usar Collectors.groupingBy*/
+        System.out.println("*************************************************************************************************************************************");
+
+
+
+
+        /*13. Saca el producto más caro de cada categoría. Genera un Map<String,
+                Optional<Producto>>. Usar Collectors.groupingBy y Collectors.maxBy*/
 
 
 

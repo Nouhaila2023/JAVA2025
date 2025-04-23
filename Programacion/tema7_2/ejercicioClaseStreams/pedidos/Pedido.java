@@ -24,10 +24,7 @@ public class Pedido {
     //addProducto
 
     private void addProducto(Producto producto) {
-        if (!productos.contains(producto)) {
-            productos.add(producto);
-        }
-
+        productos.add(producto);
     }
 
     @Override
