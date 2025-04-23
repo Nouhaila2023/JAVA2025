@@ -4,12 +4,25 @@ import java.time.LocalDate;
 
 public class Transaccion {
 
+    /**
+     * Atributos
+     */
+
     private Long id;
     private Cuenta cuenta;
     private double importe;
     private LocalDate fecha;
     private TipoTransaccion tipoTransaccion;
     private String descripcion;
+
+    /**
+     * Constructor
+     * @param cuenta
+     * @param importe
+     * @param fecha
+     * @param tipoTransaccion
+     * @param descripcion
+     */
 
     public Transaccion(Cuenta cuenta, double importe, LocalDate fecha, TipoTransaccion tipoTransaccion, String descripcion) {
         this.cuenta = cuenta;
@@ -18,6 +31,11 @@ public class Transaccion {
         this.tipoTransaccion = tipoTransaccion;
         this.descripcion = descripcion;
     }
+
+    /**
+     * Getter And Setter
+     * @return
+     */
 
     public Long getId() {
         return id;
@@ -73,14 +91,18 @@ public class Transaccion {
         return this;
     }
 
+    /**
+     * toString
+     * @return
+     */
 
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Transaccion{");
         sb.append("id=").append(id);
         sb.append(", cuenta=").append(cuenta);
-        sb.append(", fecha=").append(fecha);
         sb.append(", tipoTransaccion=").append(tipoTransaccion);
+        sb.append(", fecha=").append(fecha);
         sb.append(", descripcion='").append(descripcion).append('\'');
         sb.append('}');
         return sb.toString();
