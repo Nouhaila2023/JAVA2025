@@ -16,14 +16,13 @@ public class Cuenta {
 
     /**
      * Constructor
-     * @param id
      * @param propietario
      */
-    public Cuenta(UUID id, Cliente propietario) {
-        this.id = id;
+    public Cuenta(Cliente propietario) {
+        this.id = UUID.randomUUID();
         this.propietario = propietario;
         this.saldo = 0.0;
-        this.transacciones = null;
+        this.transacciones = new ArrayList<>();
     }
 
     /**
@@ -35,7 +34,7 @@ public class Cuenta {
         transacciones.add(transaccion);
 
         if (transaccion.getTipoTransaccion().equals(TipoTransaccion.GASTO)) {
-            this.saldo += transaccion.getImporte();
+            this.saldo -= transaccion.getImporte();
         } else if (transaccion.getTipoTransaccion().equals(TipoTransaccion.INGRESO)){
             this.saldo += transaccion.getImporte();
         }else {
@@ -51,29 +50,33 @@ public class Cuenta {
         return id;
     }
 
-    public void setId(UUID id) {
+    public Cuenta setId(UUID id) {
         this.id = id;
+        return this;
     }
 
     public Cliente getPropietario() {
         return propietario;
     }
 
-    public void setPropietario(Cliente propietario) {
+    public Cuenta setPropietario(Cliente propietario) {
         this.propietario = propietario;
+        return this;
     }
 
     public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
+    public Cuenta setSaldo(double saldo) {
         this.saldo = saldo;
+        return this;
     }
 
     public List<Transaccion> getTransacciones() {
         return transacciones;
     }
+
 
 
     /**

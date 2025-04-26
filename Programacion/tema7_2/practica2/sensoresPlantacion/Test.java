@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 public class Test {
 
     public static double numero_aleatorio(double min, double max){
-        return Math.random() * (max - min) + min; // تصحيح هنا
+        return Math.random() * (max - min) + min;
     }
 
     public static void main(String[] args) {

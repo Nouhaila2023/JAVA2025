@@ -1,10 +1,10 @@
 package tema7_2.practica2.bancosMart;
 
-import java.awt.image.ImageProducer;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.lang.Double.sum;
+
 
 public class Banco {
 
@@ -120,7 +120,7 @@ public class Banco {
 
     public  void getCuentasPorSaldo(){
         cuentas.stream()
-                .sorted(Comparator.comparing(Cuenta::getSaldo));
+                .sorted(Comparator.comparing(tema7_2.practica2.bancosMart.Cuenta::getSaldo));
     }
 
 

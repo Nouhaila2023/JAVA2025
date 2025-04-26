@@ -24,7 +24,10 @@ public class Transaccion {
      * @param descripcion
      */
 
+    private static  long contadorID = 1;
+
     public Transaccion(Cuenta cuenta, double importe, LocalDate fecha, TipoTransaccion tipoTransaccion, String descripcion) {
+        this.id = contadorID++;
         this.cuenta = cuenta;
         this.importe = importe;
         this.fecha = fecha;
