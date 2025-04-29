@@ -1,6 +1,7 @@
 package tema7_2.practica2.bancosMart;
 
 
+import java.time.LocalDate;
 import java.time.Month;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -11,12 +12,13 @@ public class Banc {
      * Atributos
      */
 
-    private List<Cuenta> cuetas;
+    private List<Cuenta> cuentas = new ArrayList<>();
 
     /**
      * Constructor vacio
      */
     public Banc() {
+        this.cuentas = new ArrayList<>();
     }
 
     /**
@@ -24,50 +26,56 @@ public class Banc {
      */
 
     public void addCuenta(Cuenta cuenta) {
-        cuetas.add(cuenta);
+        cuentas.add(cuenta);
     }
 
     /**
      * getCuentaPorld -> id
      */
 
-    public void getCuentaPorld(UUID id){
-        if (cuetas.contains(id)){
-            System.out.println("El cuenta ya existe");
-        }
+    public Cuenta getCuentaPorId(UUID id) {
+        return cuentas.stream()
+                .filter(c -> c.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
+
 
     /**
      * getTodasTransacciones ->
      * devuelve todas las transacciones del banco
      */
 
-    public void getTodasTransacciones(){
-        for (Cuenta cuenta : cuetas) {
-            for (Transaccion transaccion : cuenta.getTransacciones()) {
-                System.out.println(transaccion);
-            }
-        }
+    public List<Transaccion> getTodasTransacciones() {
+        return cuentas.stream()
+                .flatMap(c -> c.getTransacciones().stream())
+                .collect(Collectors.toList());
     }
 
-            /******************************* Métodos Streams:*****************************************/
 
-        /**1. getTransaccionesImporteMinimo(double valor): mostrar todas las transacciones con importe
-            superior a un valor dado (por ejemplo, 500€), ordenadas cronológicamente. Filter y sorted**/
+    /******************************* Métodos Streams:*****************************************/
+
+        /**
+         * 1. getTransaccionesImporteMinimo(double valor): mostrar todas las transacciones con importe
+         * superior a un valor dado (por ejemplo, 500€), ordenadas cronológicamente. Filter y sorted
+         *
+         * @return
+         **/
 
         public void getTransaccionesImporteMinimo(double valor){
-            cuetas.stream()
+            cuentas.stream()
                     .flatMap( p -> p.getTransacciones().stream())
                     .filter(i -> i.getImporte() >= valor)
                     .sorted(Comparator.comparing(Transaccion::getImporte))
                     .forEach(System.out::println);
+
         }
 
 
         /**2. getIngresosTotales(): el total de ingresos del banco. Filter, reduce y summarizingDouble*/
 
         public void getIngresoTotal(){
-            double totalIngreso = cuetas.stream()
+            double totalIngreso = cuentas.stream()
                     .flatMap(e -> e.getTransacciones().stream())
                     .filter(p -> p.getTipoTransaccion().equals(TipoTransaccion.INGRESO))
                     .mapToDouble(Transaccion::getImporte)
@@ -79,8 +87,8 @@ public class Banc {
 
         /**3. getGastosTotales(): ídem para gastos*/
 
-        public void getGastoTotales(){
-            double gastoTotal = cuetas.stream()
+        public void getGastoTotal(){
+            double gastoTotal = cuentas.stream()
                     .flatMap(p-> p.getTransacciones().stream())
                     .filter(p -> p.getTipoTransaccion() == TipoTransaccion.GASTO)
                     .mapToDouble(Transaccion::getImporte)
@@ -94,7 +102,7 @@ public class Banc {
 
         public void getCuentasPorSaldo(){
 
-            cuetas.stream()
+            cuentas.stream()
                     .sorted( Comparator.comparing(tema7_2.practica2.bancosMart.Cuenta::getSaldo).reversed())
                     .forEach(System.out::println);
         }
@@ -103,31 +111,36 @@ public class Banc {
             valores sean el número de transacciones de cada cuenta. Collectors.groupingBy,
             Collectors.counting*/
 
-        public void getNumTranccionesPorCuenta(){
-            Map<UUID, Long> map = cuetas.stream()
+        public Map<UUID, Long> getNumTransaccionesPorCuenta(){
+
+            Map<UUID, Long> map = cuentas.stream()
                     .collect(Collectors.groupingBy(Cuenta::getId, Collectors.counting()));
 
             map.forEach((id, cantidad) ->
                     System.out.println("Cuenta " + id + " tiene " + cantidad + " transacciones.")
             );
+            return map;
         }
 
 
-        /**6. getCuentasActivas(): mostrar las cuentas que tengan al menos una transacción este mes*/
 
-        public void getCuentasActivas(){
-            cuetas.stream()
-                    .flatMap(p -> p.getTransacciones().stream())
-                    .filter(p -> p.getFecha().getMonth() == Month.APRIL
-                    && p.getFecha().getYear() == 2025)
-                    .forEach(System.out::println);
-        }
+    /**6. getCuentasActivas(): mostrar las cuentas que tengan al menos una transacción este mes*/
 
-        /**7. getTransaccionesPorDescripcion(String palabra): devuelve un mapa donde la clave sea el id de
+    public void getCuentasActivas() {
+        LocalDate ahora = LocalDate.now();
+        cuentas.stream()
+                .filter(c -> c.getTransacciones().stream()
+                        .anyMatch(t -> t.getFecha().getMonth() == ahora.getMonth() &&
+                                t.getFecha().getYear() == ahora.getYear()))
+                .forEach(System.out::println);
+    }
+
+
+    /**7. getTransaccionesPorDescripcion(String palabra): devuelve un mapa donde la clave sea el id de
             cuenta, y el valor un set de las transacciones de esa cuenta que contengan la palabra.*/
 
-        public void getTransaccionesPorDescripcion(String palabra){
-             Map<UUID, Set<Transaccion>> ma =  cuetas.stream()
+        public Map<UUID, Set<Transaccion>>  getTransaccionesPorDescripcion(String palabra){
+             Map<UUID, Set<Transaccion>> ma =  cuentas.stream()
                      .collect(Collectors.toMap(
                              Cuenta::getId,
                              cuenta -> cuenta.getTransacciones().stream()
@@ -140,13 +153,44 @@ public class Banc {
                     System.out.println("Cuenta " + c + " tiene " + v + " transacciones.")
             );
 
+            return ma;
+
         }
 
         /**8. showAnalisisTemporal(): debe mostrar agrupadas por mes la suma total de ingresos y gastos:
             marzo 2025 – ingresos: 5000€, gastos: 3000€*/
 
         public void showAnalisisTemporal(){
+            /*Scanner sc = new Scanner(System.in);
+            System.out.println("Egrega el mes que quieres:");
+            Month mes = Month.valueOf(sc.next());
+            Map<LocalDate, Double> map = cuetas.stream()
+                    .collect(Collectors.groupingBy()*/
+            /*cuetas.stream()
+                    .flatMap(f -> f.getTransacciones().stream())
+                    .firstDayOfYear(p -> p.getFecha().getMonth() == mes
+                    .filter(p -> p.getTipoTransaccion() == TipoTransaccion.GASTO)
+                    .mapToDouble(Transaccion::getImporte)
+                    .sum();*/
 
+            Map<Month, List<Transaccion>> map = cuentas.stream()
+                    .flatMap(c -> c.getTransacciones().stream())
+                    .collect(Collectors.groupingBy(t -> t.getFecha().getMonth()));
+
+            map.forEach((c, v) ->{
+                System.out.println(c + "-");
+                Double ingreso = v.stream()
+                        .filter(p -> p.getTipoTransaccion() == TipoTransaccion.INGRESO)
+                        .mapToDouble(Transaccion::getImporte)
+                        .sum();
+
+                Double gasto = v.stream()
+                        .filter(p -> p.getTipoTransaccion() == TipoTransaccion.GASTO)
+                        .mapToDouble(Transaccion::getImporte)
+                        .sum();
+                System.out.println("Ingreso " + ingreso + " gasto " + gasto);
+
+            });
 
 
         }

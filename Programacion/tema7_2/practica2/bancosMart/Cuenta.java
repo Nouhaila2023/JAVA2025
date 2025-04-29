@@ -30,7 +30,7 @@ public class Cuenta {
      * del tiop de transaccion
      * @param transaccion
      */
-    private void addTransaccion(Transaccion transaccion) {
+    void addTransaccion(Transaccion transaccion) {
         transacciones.add(transaccion);
 
         if (transaccion.getTipoTransaccion().equals(TipoTransaccion.GASTO)) {

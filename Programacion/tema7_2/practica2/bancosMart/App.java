@@ -1,7 +1,8 @@
 package tema7_2.practica2.bancosMart;
 
 import java.time.LocalDate;
-import java.util.Scanner;
+import java.util.Random;
+
 
 public class App {
     /**
@@ -16,6 +17,8 @@ public class App {
     }
 
     public static void main(String[] args) {
+
+        Banc banco = new Banc();
 
         // Crear 10 clientes y sus cuentas
         for (int i = 1; i <= 10; i++) {
@@ -32,53 +35,64 @@ public class App {
             Cuenta cuenta = new Cuenta(cliente);
 
 
-            int numTransacciones = numero_aleatorio(1,10);
+            int numTransacciones = numero_aleatorio(1, 10);
 
-            for (int j = 1; j <= numTransacciones; j++) {
+            for (int j = 0; j < numTransacciones; j++) {
+                double importe = numero_aleatorio(50, 1000);
 
-                double importe = 50 + numTransacciones * 950; // entre 50€ y 1000€
+                TipoTransaccion tipo;
+                Random random = new Random();
 
+                if (random.nextBoolean()) {
+                    tipo = TipoTransaccion.INGRESO;
+                } else {
+                    tipo = TipoTransaccion.GASTO;
+                }
 
-                TipoTransaccion tipo = random.nextBoolean() ? TipoTransaccion.INGRESO : TipoTransaccion.GASTO;
+                LocalDate fecha = LocalDate.now().minusMonths(random.nextInt(12));
 
-
-
-                LocalDate fecha = LocalDate.now().minusMonths(random.nextInt(12)); // fechas de los últimos 12 meses
-
-                String descripcion = tipo == TipoTransaccion.INGRESO ? "Ingreso de prueba " + j : "Gasto de prueba " + j;
+                String descripcion;
+                if (tipo == TipoTransaccion.INGRESO) {
+                    descripcion = "Ingreso " + j;
+                } else {
+                    descripcion = "Gasto " + j;
+                }
 
                 Transaccion transaccion = new Transaccion(cuenta, importe, fecha, tipo, descripcion);
+                cuenta.addTransaccion(transaccion);
 
             }
-
-            // Añadir cuenta al banco
-            addCuenta(cuenta);
+            banco.addCuenta(cuenta);
         }
 
-        // Llamar a los métodos para probarlos
-        System.out.println("\n--- Transacciones con importe mínimo 500€ ---");
-        getTransaccionesImporteMinimo(500);
 
-        System.out.println("\n--- Ingresos totales del banco ---");
-        getIngresoTotal();
+        System.out.println("\n*=== TRANSACCIONES > 500€ ===*");
+        banco.getTransaccionesImporteMinimo(500);
 
-        System.out.println("\n--- Gastos totales del banco ---");
-        getGastoTotales();
+        System.out.println("\n*=== INGRESOS TOTALES ===*");
+        banco.getIngresoTotal();
 
-        System.out.println("\n--- Cuentas ordenadas por saldo ---");
-        getCuentasPorSaldo();
+        System.out.println("\n*=== GASTOS TOTALES ===*");
+        banco.getGastoTotal();
 
-        System.out.println("\n--- Número de transacciones por cuenta ---");
-        getNumTranccionesPorCuenta();
+        System.out.println("\n*=== CUENTAS ORDENADAS POR SALDO ===*");
+        banco.getCuentasPorSaldo();
 
-        System.out.println("\n--- Cuentas activas este mes ---");
-        getCuentasActivas();
+        System.out.println("\n*=== NUMERO DE TRANSACCIONES POR CUENTA ===*");
+        banco.getNumTransaccionesPorCuenta();
 
-        System.out.println("\n--- Transacciones que contienen la palabra 'prueba' ---");
-        getTransaccionesPorDescripcion("prueba");
+        System.out.println("\n*=== CUENTAS ACTIVAS ESTE MES ===*");
+        banco.getCuentasActivas();
 
-        System.out.println("\n--- Análisis temporal de ingresos y gastos ---");
-        showAnalisisTemporal();
+        System.out.println("\n*=== TRANSACCIONES CON DESCRIPCIÓN 'compra' ===*");
+        banco.getTransaccionesPorDescripcion("compra");
+
+        System.out.println("\n*=== ANÁLISIS TEMPORAL ===*");
+        banco.showAnalisisTemporal();
+
+
+
+
     }
 
 }
