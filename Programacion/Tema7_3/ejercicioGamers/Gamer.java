@@ -55,12 +55,11 @@ public class Gamer {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Gamer{");
-        sb.append("Gamer='").append(nick).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", juego='").append(juego).append('\'');
-        sb.append(", nivel=").append(nivel);
-        sb.append('}');
+        final StringBuffer sb = new StringBuffer();
+        sb.append(nick).append(";");
+        sb.append(email).append(";");
+        sb.append(juego).append(";");
+        sb.append(nivel).append(";");
         return sb.toString();
     }
 
