@@ -1,6 +1,7 @@
 package Tema7_3.wallapop.model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Usuario {
 
@@ -98,5 +99,17 @@ public class Usuario {
         sb.append(", password='").append(password).append('\'');
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(dni, usuario.dni);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(dni);
     }
 }

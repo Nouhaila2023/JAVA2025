@@ -48,8 +48,8 @@ public class VentasUsuario {
     }
 
     public void mostrarVentas() {
-        for (Compra compra : ventas) {
-            System.out.println(compra);
+        for (Compra venta : ventas) {
+            System.out.println(venta);
         }
     }
 

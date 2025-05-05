@@ -5,16 +5,16 @@ import java.util.Objects;
 
 public class Compra {
 
-    private Usuario vende;
-    private Usuario compra;
+    private Usuario vendedor;
+    private Usuario comprador;
     private LocalDate fecha;
     private double precioCompra;
     private Producto2Mano producto; // FALTABA
 
 
     public Compra(Usuario vende, Usuario compra, Producto2Mano producto, LocalDate fecha, double precioCompra) {
-        this.vende = vende;
-        this.compra = compra;
+        this.vendedor = vende;
+        this.comprador = compra;
         this.producto = producto;
         this.fecha = fecha;
         this.precioCompra = precioCompra;
@@ -30,21 +30,21 @@ public class Compra {
         return this;
     }
 
-    public Usuario getVende() {
-        return vende;
+    public Usuario getVendedor() {
+        return vendedor;
     }
 
-    public Compra setVende(Usuario vende) {
-        this.vende = vende;
+    public Compra setVendedor(Usuario vendedor) {
+        this.vendedor = vendedor;
         return this;
     }
 
-    public Usuario getCompra() {
-        return compra;
+    public Usuario getComprador() {
+        return comprador;
     }
 
-    public Compra setCompra(Usuario compra) {
-        this.compra = compra;
+    public Compra setComprador(Usuario comprador) {
+        this.comprador = comprador;
         return this;
     }
 
@@ -69,8 +69,8 @@ public class Compra {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Compra{");
-        sb.append("vende=").append(vende);
-        sb.append(", compra=").append(compra);
+        sb.append("vende=").append(vendedor);
+        sb.append(", compra=").append(comprador);
         sb.append(", fecha=").append(fecha);
         sb.append(", precioCompra=").append(precioCompra);
         sb.append(", producto=").append(producto);
@@ -83,11 +83,11 @@ public class Compra {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Compra compra1 = (Compra) o;
-        return Double.compare(precioCompra, compra1.precioCompra) == 0 && Objects.equals(vende, compra1.vende) && Objects.equals(compra, compra1.compra) && Objects.equals(fecha, compra1.fecha);
+        return Double.compare(precioCompra, compra1.precioCompra) == 0 && Objects.equals(vendedor, compra1.vendedor) && Objects.equals(comprador, compra1.comprador) && Objects.equals(fecha, compra1.fecha);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(vende, compra, fecha, precioCompra);
+        return Objects.hash(vendedor, comprador, fecha, precioCompra);
     }
 }
