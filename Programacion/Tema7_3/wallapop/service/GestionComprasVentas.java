@@ -1,6 +1,7 @@
 package Tema7_3.wallapop.service;
 
 import Tema7_3.wallapop.enumes.Categoria;
+import Tema7_3.wallapop.enumes.Estado;
 import Tema7_3.wallapop.model.Compra;
 import Tema7_3.wallapop.model.Producto2Mano;
 import Tema7_3.wallapop.model.Usuario;
@@ -67,19 +68,41 @@ public class GestionComprasVentas {
     public Map<Usuario, List<Compra>> obtenerComprasAgrupadasPorUsuario() {
         Map<Usuario, List<Compra>> comprasAgrupadas = compraList.stream()
                 .collect(Collectors.groupingBy(Compra::getComprador));
+
         comprasAgrupadas.forEach((usuario, compras) ->
                 compras.sort(Comparator.comparing(Compra::getFecha))
         );
         return comprasAgrupadas;
     }
 
-    /*public Map<Categoria, List<Compra>> comprasAgrupadasPorCateguria(){
+    public Map<Categoria, List<Compra>> comprasAgrupadasPorCateguria(){
        Map<Categoria, List<Compra>> comprasDeCateguria = compraList.stream()
+               .collect(Collectors.groupingBy(c -> c.getProducto().getCategoria()));
 
-        );
+        /*
+       comprasDeCateguria.forEach((categoria, compras) ->
+               compras.sort())
+        );*/
 
         return comprasDeCateguria;
-    }*/
+    }
+
+    public  Map<Estado,Long> comprasAgrupadaPorEstado(){
+        Map<Estado,Long> compras =  compraList.stream()
+                .collect(Collectors.groupingBy( c -> c.getProducto().getEstado(), Collectors.counting()));
+
+        return compras;
+    }
+
+    public void CategoriaUsuario(){
+
+        /**
+         *  ventasUsuarioSet.stream()
+         *                 .filter(c -> c.getUsuario().getFechaNacimiento())
+         */
+
+    }
+
 
 
     public Set<VentasUsuario> getVentasUsuarioSet() {
