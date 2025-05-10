@@ -11,7 +11,7 @@ public class Producto {
     /**
      * Atributos
      */
-    private UUID id;
+    private Stirng id;
     private String nombre;
     private String descripcion;
     private Categoria categoria;
@@ -23,7 +23,7 @@ public class Producto {
     /**
      * Constructor
      */
-    public Producto(UUID id, String nombre, String descripcion, Categoria categoria, Estado estado, boolean envio, double precio, Usuario usuario) {
+    public Producto(Stirng id, String nombre, String descripcion, Categoria categoria, Estado estado, boolean envio, double precio, Usuario usuario) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -34,17 +34,19 @@ public class Producto {
         this.usuario = usuario;
     }
 
-    /**
-     * Getter and Setter
-     */
-    public UUID getId() {
+    public Stirng getId() {
         return id;
     }
 
-    public Producto setId(UUID id) {
+    public Producto setId(Stirng id) {
         this.id = id;
         return this;
     }
+
+    /**
+     * Getter and Setter
+     */
+
 
     public String getNombre() {
         return nombre;

@@ -1,5 +1,7 @@
 package Tema7_3.tipoExamen.model;
 
+import Tema7_3.tipoExamen.model.enumes.Genero;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -9,9 +11,10 @@ public class Usuario {
      * Atributos
      */
 
+    private String id;
     private String nombre;
     private String apellido;
-    private String genero;
+    private Genero genero;
     private LocalDate fechaNacimiento;
     private String dni;
     private String login;
@@ -20,7 +23,8 @@ public class Usuario {
     /**
      * Constructor
      */
-    public Usuario(String nombre, String apellido, String genero, LocalDate fechaNacimiento, String dni, String login, String password) {
+    public Usuario(String id ,String nombre, String apellido, Genero genero, LocalDate fechaNacimiento, String dni, String login, String password) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.genero = genero;
@@ -30,9 +34,20 @@ public class Usuario {
         this.password = password;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public Usuario setId(String id) {
+        this.id = id;
+        return this;
+    }
+
     /**
      * Getter and Setter
      */
+
+
     public String getNombre() {
         return nombre;
     }
@@ -51,11 +66,11 @@ public class Usuario {
         return this;
     }
 
-    public String getGenero() {
+    public Genero getGenero() {
         return genero;
     }
 
-    public Usuario setGenero(String genero) {
+    public Usuario setGenero(Genero genero) {
         this.genero = genero;
         return this;
     }
