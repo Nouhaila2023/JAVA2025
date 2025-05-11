@@ -3,7 +3,7 @@ package Ejercicios_Udemy.Operadores;
 public class OperadorInstasOfTiposGenericos {
     public static void main(String[] args) {
 
-        Object texto = "Creando un objeto de la clase String ... que tal!";
+        /*Object texto = "Creando un objeto de la clase String ... que tal!";
 
         Object num = 7;
 
@@ -32,7 +32,7 @@ public class OperadorInstasOfTiposGenericos {
         System.out.println("decimal es del tipo Double = " + b1);
 
         b1 = decimal instanceof Number;
-        System.out.println("decimal es del tipo Numbre = " + b1);
+        System.out.println("decimal es del tipo Numbre = " + b1);*/
 
 
 

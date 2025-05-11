@@ -3,7 +3,7 @@ package Ejercicios_Udemy.Operadores;
 public class OperadorInstasOf {
     public static void main(String[] args) {
 
-        String texto = "Creando un objeto de la clase String ... que tal!";
+        /*String texto = "Creando un objeto de la clase String ... que tal!";
 
         Integer num = 7;
         double decimal = 45.34;
@@ -26,7 +26,7 @@ public class OperadorInstasOf {
         System.out.println("decimal es del tipo Double = " + b1);
 
         b1 = decimal instanceof Number;
-        System.out.println("decimal es del tipo Numbre = " + b1);
+        System.out.println("decimal es del tipo Numbre = " + b1);*/
 
 
 
