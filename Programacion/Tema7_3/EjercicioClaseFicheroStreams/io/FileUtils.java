@@ -39,7 +39,7 @@ public class FileUtils {
     public static Set<Material> leerMateriales() {
         Set<Material> materials = new HashSet<>();
 
-        try {
+        /*try {
             Set<Localizacion> localizaciones = leerLocalizaciones();
 
             materials = Files.lines(Paths.get("LocalMate/material.csv"))
@@ -47,7 +47,7 @@ public class FileUtils {
                         List<String> tokens = Arrays.asList(linea.split(","));
                         int idLocal = Integer.parseInt(tokens.get(6));
 
-                        // ✅ Buscar la localización correcta
+
                         Localizacion loc = localizaciones.stream()
                                 .filter(l -> l.getId() == idLocal)
                                 .findFirst()
@@ -67,7 +67,7 @@ public class FileUtils {
 
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
+        }*/
         return materials;
     }
 
