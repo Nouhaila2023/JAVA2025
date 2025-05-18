@@ -257,11 +257,11 @@ public class ServicioSoporte {
      *Set<Tecnico> findTecnicosRapidos(): muestra una lista de los técnicos que han solucionado tickets
      * en menos de 5 días.
      */
-    public Set<Tecnico> findTecnicosRapidos(){
+    /*public Set<Tecnico> findTecnicosRapidos(){
         return ticketsSoportes.stream()
                 .filter( f -> f.getFechaCreacion() < LocalDate.MIN(5))
 
-    }
+    }*/
 
 
 
