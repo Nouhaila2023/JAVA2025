@@ -11,7 +11,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ServicioSoporte {
-
     /**
      * Atributos
      */
@@ -33,18 +32,18 @@ public class ServicioSoporte {
 
     /**
      * Eliminar usuario
-     * @param usuario
-     */
-    public void deleteUsuario(Usuario usuario) {
-        this.usuario.remove(usuario);
+     * @param id
+     * */
+    public void deleteUsuario(int id) {
+          usuario.removeIf(u -> u.getId() == id);
     }
 
     /**
      * Eliminar tecnico
-     * @param tecnico
+     * @param id
      */
-    public void deleteTecnico(Tecnico tecnico) {
-        this.tecnico.remove(tecnico);
+    public void deleteTecnico(int id) {
+        tecnico.removeIf(t -> t.getId() == id);
     }
 
     /**
@@ -70,9 +69,9 @@ public class ServicioSoporte {
          int id = ticketSoportes.stream()
                 .mapToInt(TicketSoporte::getId)
                 .max()
-                 .orElse(0) +1;
+                 .orElse(0);
 
-         TicketSoporte t = new TicketSoporte(id, fechaCreacion, fechaFinalizacion, estado, prioridad, usuario, tecnico, comentarios);
+         TicketSoporte t = new TicketSoporte(id+1, fechaCreacion, fechaFinalizacion, estado, prioridad, usuario, tecnico, comentarios);
 
          ticketSoportes.add(t);
     }
@@ -137,7 +136,8 @@ public class ServicioSoporte {
                                    return lista;
                                }
                        )
-               ));
+               )
+       );
     }
 
     /**
@@ -163,7 +163,7 @@ public class ServicioSoporte {
        return ticketSoportes.stream()
                .filter( t -> t.getEstado() == Estado.ABIERTO)
                .sorted(Comparator.comparing(TicketSoporte::getFechaCreacion)
-                       .reversed())
+               .reversed())
                .toList();
     }
 
@@ -177,7 +177,7 @@ public class ServicioSoporte {
         return ticketSoportes.stream()
                 .filter( t -> t.getEstado() == Estado.RESUELTO)
                 .sorted(Comparator.comparing(TicketSoporte::getFechaFinalizacion)
-                        .reversed())
+                .reversed())
                 .toList();
     }
 
@@ -207,14 +207,6 @@ public class ServicioSoporte {
                 .filter( t -> t.getPrioridad() == prioridad)
                 .count();
     }
-
-
-
-
-
-
-
-
 
 
     /**

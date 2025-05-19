@@ -62,8 +62,6 @@ public class TicketSoporte implements Comparable<TicketSoporte> {
         this.comentation = comentation;
     }
 
-
-
     /**
      * Getter and Setter
      */

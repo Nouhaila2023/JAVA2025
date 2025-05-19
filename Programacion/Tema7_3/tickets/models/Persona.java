@@ -5,11 +5,11 @@ public class Persona {
     /**
      * Atributos
      */
-    private int id;
-    private String nombre;
-    private String apellido;
-    private String email;
-    private String movil;
+    protected int id;
+    protected String nombre;
+    protected String apellido;
+    protected String email;
+    protected String movil;
 
     /**
      * Constructor

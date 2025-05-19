@@ -270,11 +270,8 @@ public class ServicioSoporte {
 
 
 
-
-
-
     /**
-     * Getter
+     * Getter and Setter
      */
     public List<TicketSoporte> getTicketsSoportes() {
         return ticketsSoportes;
@@ -286,6 +283,18 @@ public class ServicioSoporte {
 
     public Set<Tecnico> getTecnicos() {
         return tecnicos;
+    }
+
+    public void setTicketsSoportes(List<TicketSoporte> ticketsSoportes) {
+        this.ticketsSoportes = ticketsSoportes;
+    }
+
+    public void setUsuarios(Set<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public void setTecnicos(Set<Tecnico> tecnicos) {
+        this.tecnicos = tecnicos;
     }
 
     /**
