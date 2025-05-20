@@ -7,6 +7,7 @@ import Tema7_3.tickets.models.TicketSoporte;
 import Tema7_3.tickets.models.Usuario;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -52,6 +53,10 @@ public class ServicioSoporte {
      */
     public void addTecnico(Tecnico tecnico) {
         this.tecnico.add(tecnico);
+    }
+
+    public void addTicketSoporte(TicketSoporte tiso) {
+        ticketSoportes.add(tiso);
     }
 
     /**
@@ -209,6 +214,77 @@ public class ServicioSoporte {
     }
 
 
+
+    public Set<TicketSoporte> findTicketsByEstadoAndPrioridad(Estado estado, Integer prioridad) {
+        return ticketSoportes.stream()
+                .filter(ticket -> ticket.getEstado().equals(estado))
+                .filter(ticket -> ticket.getPrioridad() == prioridad)
+                .collect(Collectors.toCollection(TreeSet::new));
+    }
+
+    public Map<Especialidad, List<Tecnico>> findTecnicosInTickets() {
+        return ticketSoportes.stream()
+                .map(TicketSoporte::getAsignado)
+                .collect(Collectors.groupingBy(Tecnico::getEspecialidad));
+    }
+
+    public Set<Tecnico> findTecnicosRapidos() {
+        return ticketSoportes.stream()
+                .filter(t ->
+                        ChronoUnit.DAYS.between(t.getFechaFinalizacion(),t.getFechaCreacion()) <= 5
+                )
+                .map(TicketSoporte::getAsignado)
+                .collect(Collectors.toSet());
+    }
+
+    public Long getTotalTicketsRetardados() {
+        return ticketSoportes.stream()
+                .filter(t -> t.getEstado() == Estado.RESUELTO)
+                .filter(t ->
+                        ChronoUnit.DAYS.between(t.getFechaFinalizacion(),t.getFechaCreacion()) > 7
+                )
+                .count();
+    }
+
+    //findUsuarioById
+    public Double getMediaResolucionTickets(Integer prioridad) {
+        return ticketSoportes.stream()
+                .filter(t -> t.getPrioridad() == (prioridad))
+                .filter(t -> t.getEstado().equals(Estado.RESUELTO))
+                .mapToLong( t ->
+                        ChronoUnit.DAYS.between(t.getFechaFinalizacion(),t.getFechaCreacion())
+                )
+                .average()
+                .orElse(0.0);
+    }
+
+    public Map<Tecnico, Double> getMediaResolucionTicketsGroupByTecnico() {
+        return ticketSoportes.stream()
+                .filter(t -> t.getEstado().equals(Estado.RESUELTO))
+                .collect(Collectors.groupingBy(TicketSoporte::getAsignado,
+                        Collectors.averagingLong(t ->
+                                ChronoUnit.DAYS.between(t.getFechaFinalizacion(),t.getFechaCreacion())
+                        )
+                ));
+    }
+
+    public Boolean areAllTicketsFinishedLessThanTenDays() {
+        return ticketSoportes.stream()
+                .allMatch(t ->
+                        ChronoUnit.DAYS.between(t.getFechaFinalizacion(),t.getFechaCreacion()) < 10
+                );
+    }
+
+    public Optional<TicketSoporte> getFirstTicketSolvedOneDay() {
+        return ticketSoportes.stream()
+                .filter(t -> t.getEstado().equals(Estado.RESUELTO))
+                .filter(t ->
+                        ChronoUnit.DAYS.between(t.getFechaFinalizacion(),t.getFechaCreacion()) == 1
+                )
+                .findFirst();
+    }
+
+
     /**
      * Construcotr
      */
@@ -245,4 +321,6 @@ public class ServicioSoporte {
         sb.append('}');
         return sb.toString();
     }
+
+
 }
