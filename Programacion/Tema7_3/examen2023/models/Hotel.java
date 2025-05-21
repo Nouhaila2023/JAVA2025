@@ -15,10 +15,9 @@ public class Hotel implements Comparable<Hotel>{
     protected Integer numHabitaciones;
     protected Double precioNoche;
     protected Integer calificacion;
-
+    protected static Long countId = 1L;
     /**
      * Con
-     * @param id
      * @param nombre
      * @param direccion
      * @param localidad
@@ -27,8 +26,8 @@ public class Hotel implements Comparable<Hotel>{
      * @param precioNoche
      * @param calificacion
      */
-    public Hotel(Long id, String nombre, String direccion, String localidad, String prvincia, Integer numHabitaciones, Double precioNoche, int calificacion) {
-        this.id = id;
+    public Hotel( String nombre, String direccion, String localidad, String prvincia, Integer numHabitaciones, Double precioNoche, int calificacion) {
+        this.id = Hotel.countId++;
         this.nombre = nombre;
         this.direccion = direccion;
         this.localidad = localidad;

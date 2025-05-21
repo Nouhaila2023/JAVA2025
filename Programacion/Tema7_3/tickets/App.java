@@ -1,7 +1,7 @@
 package Tema7_3.tickets;
 
 import Tema7_3.tickets.io.DaOTicketSoporte;
-import Tema7_3.tickets.services.ServicioSoporte;
+import Tema7_3.tickets.services.Buking;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ public class App {
 
 
 
-        ServicioSoporte ss = DaOTicketSoporte.loadCSV();
+        Buking ss = DaOTicketSoporte.loadCSV();
 
         //ss.getTickets().forEach(System.out::println);
         //ss.removeTecnico(2L);

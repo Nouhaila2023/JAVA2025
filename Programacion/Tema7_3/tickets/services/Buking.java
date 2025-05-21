@@ -1,5 +1,6 @@
 package Tema7_3.tickets.services;
 
+import Tema7_3.examen2023.models.Hotel;
 import Tema7_3.tickets.emu.Especialidad;
 import Tema7_3.tickets.emu.Estado;
 import Tema7_3.tickets.models.Tecnico;
@@ -11,7 +12,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ServicioSoporte {
+public class Buking {
     /**
      * Atributos
      */
@@ -319,7 +320,7 @@ public class ServicioSoporte {
     /**
      * Construcotr
      */
-    public ServicioSoporte() {
+    public Buking() {
         this.ticketSoportes = new ArrayList<>();
         this.usuario = new HashSet<>();
         this.tecnico = new HashSet<>();
@@ -352,6 +353,7 @@ public class ServicioSoporte {
         sb.append('}');
         return sb.toString();
     }
+
 
 
 }

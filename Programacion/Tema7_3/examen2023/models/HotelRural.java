@@ -11,7 +11,6 @@ public class HotelRural extends Hotel {
     /**
      * Con
      * @param calefaccin
-     * @param id
      * @param nombre
      * @param direccion
      * @param localidad
@@ -20,9 +19,9 @@ public class HotelRural extends Hotel {
      * @param precioNoche
      * @param calificacion
      */
-    public HotelRural(Long id, String nombre, String direccion, String localidad, String prvincia,
+    public HotelRural(String nombre, String direccion, String localidad, String prvincia,
                       Integer numHabitaciones, Double precioNoche, int calificacion, boolean calefaccin) {
-        super(id, nombre, direccion, localidad, prvincia, numHabitaciones, precioNoche, calificacion);
+        super(nombre, direccion, localidad, prvincia, numHabitaciones, precioNoche, calificacion);
         this.calefaccion = calefaccin;
     }
 

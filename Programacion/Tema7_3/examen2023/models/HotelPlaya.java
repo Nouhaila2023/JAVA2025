@@ -19,10 +19,10 @@ public class HotelPlaya extends Hotel{
      * @param precioNoche
      * @param calificacion
      */
-    public HotelPlaya(Long id, String nombre, String direccion, String localidad, String prvincia,
+    public HotelPlaya(String nombre, String direccion, String localidad, String prvincia,
                       Integer numHabitaciones, Double precioNoche, int calificacion, boolean aireAcondecionado) {
-        super(id, nombre, direccion, localidad, prvincia, numHabitaciones, precioNoche, calificacion);
-        this.calificacion = calificacion;
+        super(nombre, direccion, localidad, prvincia, numHabitaciones, precioNoche, calificacion);
+        this.aireAcondecionado = aireAcondecionado;
     }
 
     /**

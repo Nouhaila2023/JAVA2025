@@ -5,7 +5,7 @@ import Tema7_3.tickets.emu.Estado;
 import Tema7_3.tickets.models.Tecnico;
 import Tema7_3.tickets.models.TicketSoporte;
 import Tema7_3.tickets.models.Usuario;
-import Tema7_3.tickets.services.ServicioSoporte;
+import Tema7_3.tickets.services.Buking;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,10 +18,10 @@ import java.util.List;
 
 
 public class DaOTicketSoporte {
-    public static ServicioSoporte loadCSV() {
+    public static Buking loadCSV() {
 
         //OBJETO SERVICIO SOPORTE QUE DEVOLVERMOS CON TODA LA INFO CARGADA
-        ServicioSoporte ss = new ServicioSoporte();
+        Buking ss = new Buking();
 
         //1. Cargar usuarios
         //List<Usuario> usuarios;
@@ -99,7 +99,7 @@ public class DaOTicketSoporte {
 
     }
 
-    public static void saveCSV(ServicioSoporte ss) {
+    public static void saveCSV(Buking ss) {
         try {
 
             //Usuarios

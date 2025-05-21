@@ -31,19 +31,22 @@ public class Buking {
      * Eliminar hotel
      */
     public void deleteHotel(Long id){
-        hoteles.removeIf(h -> h.equals(id));
+        hoteles.removeIf(h -> h.getId().equals(id));
     }
 
     /**
      * Añadir reserva
      */
-    public void addReserva(Long id, LocalDate fechaEntrada, LocalDate fechaSalida
+    public void addReserva(LocalDate fechaEntrada, LocalDate fechaSalida
                            ,Integer cantidadHabitacion, Integer numPersonasPorHabitacion, String dni,
                            String nacinalidad, Hotel hotel){
-        Reserva reserva = new Reserva(id,fechaEntrada, fechaSalida, cantidadHabitacion,
+        Reserva reserva = new Reserva(fechaEntrada, fechaSalida, cantidadHabitacion,
                 numPersonasPorHabitacion, dni, nacinalidad, hotel);
 
         reservas.add(reserva);
+    }
+    public void addReserva(Reserva reserva){
+        this.reservas.add(reserva);
     }
 
     /**
@@ -222,6 +225,7 @@ public class Buking {
                                 r.getFechaSalida().isAfter(LocalDate.now()))
                 .toList();
     }
+
 
 
 

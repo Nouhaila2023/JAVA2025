@@ -16,10 +16,10 @@ public class Reserva implements Comparable<Reserva>{
     private String dni;
     private String nacionalidad;
     private Hotel hotel;
+    private static Long countId = 1L;
 
     /**
      * Constructor
-     * @param id
      * @param fechaEntrada
      * @param fechaSalida
      * @param cantidadHabitaciones
@@ -28,8 +28,9 @@ public class Reserva implements Comparable<Reserva>{
      * @param nacionalidad
      * @param hotel
      */
-    public Reserva(Long id, LocalDate fechaEntrada, LocalDate fechaSalida, Integer cantidadHabitaciones, Integer numPersonasPorHabitacion, String dni, String nacionalidad, Hotel hotel) {
-        this.id = id;
+    public Reserva(LocalDate fechaEntrada, LocalDate fechaSalida, Integer cantidadHabitaciones,
+                   Integer numPersonasPorHabitacion, String dni, String nacionalidad, Hotel hotel) {
+        this.id = countId++;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
         this.cantidadHabitaciones = cantidadHabitaciones;
