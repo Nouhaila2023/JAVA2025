@@ -132,7 +132,7 @@ public class ServicioSoporte {
      * @return
      */
     public Map<Especialidad, List<Tecnico>> getTecnicosGroupByEspecialidad(){
-       return tecnico.stream()
+       /*return tecnico.stream()
                .collect(Collectors.groupingBy(Tecnico::getEspecialidad,
                        Collectors.collectingAndThen(
                                Collectors.toList(),
@@ -142,7 +142,21 @@ public class ServicioSoporte {
                                }
                        )
                )
-       );
+       );*/
+
+        //otra manera->
+
+        //optener tecnico agropados por especialidad
+        Map<Especialidad , List<Tecnico>> tecs = tecnico.stream()
+                .collect(Collectors.groupingBy(Tecnico::getEspecialidad));
+
+        //Ordenar cada lista de tecnico por valoracion
+        tecs.forEach((k,v) -> {
+            v.sort(Comparator.comparing(Tecnico::getValoracion));
+        });
+        //Devolvemos el mapa cpn las listas ordenadas
+        return tecs;
+
     }
 
     /**
@@ -283,6 +297,23 @@ public class ServicioSoporte {
                 )
                 .findFirst();
     }
+
+    /**
+     * Set<TicketSoporte> findTicketsByEstadoAndPrioridad(Estado estado, Integer prioridad): conjunto
+     *  con los tickets con el estado y la prioridad indicados, ordenados por fecha de creación ascendente.
+     * @param estado
+     * @param prioridad
+     * @return
+     */
+
+    /*public Set<TicketSoporte> findTicketsByEstadoAndPrioridad(Estado estado, Integer prioridad){
+        return ticketSoportes.stream()
+                .filter(t -> t.getEstado() == estado )
+                .filter( t -> t.getPrioridad() == prioridad)
+                .collect(Collectors.toCollection(TreeSet::new));
+    }*/
+
+
 
 
     /**
