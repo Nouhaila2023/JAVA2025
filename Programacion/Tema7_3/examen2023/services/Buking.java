@@ -87,9 +87,6 @@ public class Buking {
                 .toList();
     }
 
-    /**
-     * devolvera los 2 hoteles con los precios de habitaciones mas caros
-     */
     public List<Hotel> getHotelsCaros(){
         return hoteles.stream()
                 .sorted(Comparator.comparing(Hotel::getPrecioNoche).reversed())
@@ -97,10 +94,7 @@ public class Buking {
                 .toList();
     }
 
-    /**
-     * mustrar los hoteles agrupados por localidad
-     * y ordenados de mayor a menor precio
-     */
+
 
     public  HashMap<String, List<Hotel>> getHotelesLocallidad(){
          HashMap<String, List<Hotel>> hotelesLocallidad = (HashMap<String, List<Hotel>>) hoteles.stream()
@@ -113,9 +107,7 @@ public class Buking {
         return hotelesLocallidad;
     }
 
-    /**
-     * devuelve todos los hoteles de tipo playa
-     */
+
 
     public Set<Hotel> getHotelesPlaya(){
         return hoteles.stream()

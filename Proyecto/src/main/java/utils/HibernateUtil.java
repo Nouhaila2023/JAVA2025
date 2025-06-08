@@ -10,8 +10,8 @@ public class HibernateUtil {
         try {
             Configuration configuration = new Configuration().configure();
             return configuration.buildSessionFactory();
-        } catch (Throwable ex) {
-            System.err.println("Error inicial SessionFactory: " + ex);
+        } catch (Throwable e) {
+            System.err.println("Error inicial SessionFactory: " + e);
             throw new ExceptionInInitializerError(ex);
         }
     }
